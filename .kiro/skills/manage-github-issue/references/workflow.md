@@ -77,6 +77,7 @@ gh issue create \
   --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow \
   --title "[TIPO] Título da issue" \
   --type Feature \
+  --assignee "@me" \
   --body-file <arquivo-temporario>.md
 ```
 
@@ -138,6 +139,7 @@ Apresente as alterações que serão aplicadas e aguarde confirmação antes de 
 gh issue edit <ISSUE_NUMBER> \
   --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow \
   --title "Novo título" \
+  --add-assignee "@me" \
   --body-file <arquivo-temporario>.md
 ```
 
@@ -148,5 +150,6 @@ gh issue edit <ISSUE_NUMBER> \
 - Sempre usar `gh` CLI.
 - Sempre operar no repositório `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow`.
 - Títulos sempre em português, claros e objetivos.
-- Labels e assignees somente quando explicitamente informados.
+- Assignee sempre `@me` (joaopuel) em toda criação e edição de issue.
+- Labels somente quando explicitamente informados.
 - Proibido executar comandos sem solicitar permissão do usuário antes.

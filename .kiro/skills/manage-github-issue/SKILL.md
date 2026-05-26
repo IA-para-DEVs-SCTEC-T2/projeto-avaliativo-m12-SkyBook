@@ -3,7 +3,7 @@ name: manage-github-issue
 description: Cria ou atualiza issues no GitHub seguindo o template padrão do projeto, usando o GitHub CLI (gh). Use quando o usuário pedir para criar, abrir, registrar, alterar ou editar uma issue no GitHub, ou quando precisar gerenciar o backlog do projeto no repositório IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow.
 metadata:
   author: joaopuel
-  version: "1.2"
+  version: "1.1"
 allowed-tools:
   - shell
 ---
@@ -21,7 +21,8 @@ Consulte o [fluxo detalhado](references/workflow.md) para o passo a passo comple
 - Nunca alterar uma issue sem antes buscar seus dados atuais com `gh issue view`.
 - Sempre usar `--repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow` em todos os comandos `gh`.
 - Títulos sempre em português, claros e objetivos.
-- Labels e assignees somente quando explicitamente informados pelo usuário.
+- **Assignee**: sempre atribuir ao usuário autenticado (`@me` / `joaopuel`) em toda issue criada ou editada, sem necessidade de o usuário informar.
+- Labels somente quando explicitamente informados pelo usuário.
 
 ## Classificação das issues
 
