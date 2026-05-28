@@ -8,21 +8,45 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Descrição
-      description: Descreva brevemente a tarefa técnica a ser realizada.
+      label: Descrição da demanda
+      description: Breve descrição do que deve ser implementado/atualizado/corrigido.
       placeholder: |
-        Configurar pipeline de CI/CD para execução automática de testes
-        e deploy no ambiente de staging.
+        Descreva aqui de forma objetiva a tarefa técnica a ser realizada,
+        contextualizando o problema ou necessidade que ela endereça.
+    validations:
+      required: true
+
+  - type: textarea
+    id: objectives
+    attributes:
+      label: Objetivo
+      description: Lista de objetivos que devem ser realizados no decorrer da demanda.
+      placeholder: |
+        - Objetivo 1
+        - Objetivo 2
+        - Objetivo 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo
+      description: Lista de pontos/trechos/arquivos que a demanda propõe modificar.
+      placeholder: |
+        - Módulo / camada afetada
+        - Arquivo ou componente específico
+        - Configurações ou scripts envolvidos
     validations:
       required: true
 
   - type: checkboxes
-    id: checklist
+    id: expected-results
     attributes:
-      label: Checklist técnico
-      description: Liste as tarefas técnicas necessárias.
+      label: Resultado esperado
+      description: Checklist de resultados esperados ao final da demanda.
       options:
-        - label: Descreva aqui a primeira tarefa técnica
-        - label: Descreva aqui a segunda tarefa técnica
+        - label: Descreva aqui o primeiro resultado esperado
+        - label: Descreva aqui o segundo resultado esperado
     validations:
       required: true

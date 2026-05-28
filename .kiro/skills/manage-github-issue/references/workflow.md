@@ -28,11 +28,10 @@ Aguarde a resposta antes de prosseguir.
 
 ### 2A.2 — Montar o corpo da issue
 
-O corpo da issue deve seguir o template correspondente ao tipo de issue sendo criada. Os templates estão em `.kiro/skills/github-issue-management/assets/`:
+O corpo da issue deve seguir o template correspondente ao tipo de issue sendo criada. Os templates estão em `.kiro/skills/manage-github-issue/assets/`:
 
 | Tipo de issue | Template a utilizar       |
 |---------------|---------------------------|
-| Epic          | `epic_template.yml`       |
 | Story         | `user_story_template.yml` |
 | Tech          | `tech_template.yml`       |
 | Docs          | `docs_template.yml`       |

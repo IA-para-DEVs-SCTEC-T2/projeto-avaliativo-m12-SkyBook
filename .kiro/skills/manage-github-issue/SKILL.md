@@ -3,7 +3,7 @@ name: manage-github-issue
 description: Cria ou atualiza issues no GitHub seguindo o template padrão do projeto, usando o GitHub CLI (gh). Use quando o usuário pedir para criar, abrir, registrar, alterar ou editar uma issue no GitHub, ou quando precisar gerenciar o backlog do projeto no repositório IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow.
 metadata:
   author: joaopuel
-  version: "1.1"
+  version: "1.2"
 allowed-tools:
   - shell
 ---
@@ -28,18 +28,17 @@ Consulte o [fluxo detalhado](references/workflow.md) para o passo a passo comple
 
 Consulte as referências para detalhes completos:
 
-- [Padrão de títulos](references/issue-title.md) — prefixos `[EPIC]`, `[STORY]`, `[TECH]`, `[DOCS]`
+- [Padrão de títulos](references/issue-title.md) — prefixos `[STORY]`, `[TECH]`, `[DOCS]`
 - [Labels disponíveis](references/issue-labels.md) — tipos, área técnica e prioridade
-- [Hierarquia de issues](references/issue-hierarchy.md) — vínculos entre Epic, Story e Tech
+- [Hierarquia de issues](references/issue-hierarchy.md) — vínculos entre Story e Tech
 
 ### Resumo dos tipos
 
-| Tipo  | Prefixo   | Descrição                                        |
-|-------|-----------|--------------------------------------------------|
-| Epic  | `[EPIC]`  | Objetivo macro de um conjunto de funcionalidades |
-| Story | `[STORY]` | Entrega funcional implementável                  |
-| Tech  | `[TECH]`  | Tarefa técnica (infra, config, refactoring)      |
-| Docs  | `[DOCS]`  | Documentação do projeto                          |
+| Tipo  | Prefixo   | Descrição                                   |
+|-------|-----------|---------------------------------------------|
+| Story | `[STORY]` | Entrega funcional implementável             |
+| Tech  | `[TECH]`  | Tarefa técnica (infra, config, refactoring) |
+| Docs  | `[DOCS]`  | Documentação do projeto                     |
 
 - O campo `--type` é **sempre `Feature`** em todos os casos.
 - Tarefas técnicas pequenas ficam como checklist dentro da Story, não como issues separadas.
@@ -50,7 +49,6 @@ Os templates de corpo das issues estão em `assets/`:
 
 | Tipo  | Template                  |
 |-------|---------------------------|
-| Epic  | `epic_template.yml`       |
 | Story | `user_story_template.yml` |
 | Tech  | `tech_template.yml`       |
 | Docs  | `docs_template.yml`       |
