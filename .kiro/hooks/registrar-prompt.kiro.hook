@@ -1,0 +1,12 @@
+{
+  "name": "Registrar Prompt Relevante",
+  "version": "1.0.0",
+  "description": "Avalia cada prompt enviado e registra no docs/prompts.md caso seja relevante para implementação, automação, testes ou documentação.",
+  "when": {
+    "type": "promptSubmit"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Antes de executar qualquer outra ação, avalie se o prompt do usuário é relevante para registro seguindo TODOS os critérios abaixo:\n\n**CRITÉRIOS DE RELEVÂNCIA (todos devem ser atendidos):**\n1. O prompt deve estar relacionado a: implementação ou atualização de funcionalidade, automação, testes ou documentação\n2. O prompt deve ter mais de 150 caracteres\n3. NÃO registrar prompts simples/não relevantes como: 'pare', 'não', 'sim', 'prossiga', 'execute', 'continue', 'ok', 'certo', 'pode', 'vai', 'tudo bem', ou qualquer variação curta de confirmação/negação\n4. NÃO registrar prompts que sejam perguntas (que terminem com '?' ou que sejam claramente interrogativas)\n\n**SE O PROMPT FOR RELEVANTE**, registre-o em `docs/prompts.md` seguindo exatamente este formato, adicionando ao final do arquivo:\n\n```\n\n---\n\n## <resumo conciso do prompt em até 10 palavras>\n\n* Data: <data e hora atual no formato YYYY-MM-DD HH:MM>\n* Autor: <nome obtido via git config user.name, ou 'Desconhecido' se não disponível>\n* Tipo: <classifique como um dos tipos: Zero shot, Few shot, Chain of Thought, Instrução direta, Contextual>\n\n### Prompt original\n```\n<texto integral do prompt do usuário>\n```\n```\n\n**IMPORTANTE:** Ao registrar o texto do prompt, preserve fielmente a formatação original, incluindo todas as quebras de linha, parágrafos, marcadores e espaçamentos. Não comprima o texto em uma única linha contínua.\n\nPara obter o autor, execute: `git config user.name`\nPara obter a data atual, use a data/hora do sistema.\n\n**SE O PROMPT NÃO FOR RELEVANTE**, não faça nada relacionado ao registro e prossiga normalmente com a tarefa solicitada.\n\nApós a avaliação (e registro se aplicável), execute normalmente a tarefa solicitada pelo usuário."
+  }
+}
