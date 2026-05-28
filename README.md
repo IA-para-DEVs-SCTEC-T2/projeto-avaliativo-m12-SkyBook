@@ -12,4 +12,3 @@ Este projeto utiliza skills do Kiro para automatizar o fluxo de desenvolvimento:
 ### Documentação viva
 
 - `docs/prompts.md` — histórico de prompts utilizados nas interações com IA
-- `docs/prompt-improvement.md` — registro de refinamentos e melhorias de prompts
