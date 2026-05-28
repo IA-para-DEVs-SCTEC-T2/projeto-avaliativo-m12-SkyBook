@@ -80,3 +80,23 @@ Atualize os templates presentes nos assets da skill /manage-github-issue. Todos 
 ```
 Atualize também a skill para descosiderar EPIC issues. Remover toda referência a EPIC issues e remover o asset
 ```
+
+---
+
+## Criar steering de produto para sistema de reservas de poltronas
+
+* Data: 2026-05-28 14:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Crie o steering the produto deste projeto.
+Detalhes
+1. Esse projeto é um sistema de reservas de poltronas de uma aeronave.
+2. As funcionalidades para o MVP devem ser:
+2.1. Listar as poltronas da aeronave com seu status (disponível ou não).
+2.2. Realizar as reservas de poltronas escolhidas.
+2.3. Obter o resumo das reservas e o valor total.
+```
