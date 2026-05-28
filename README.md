@@ -1,5 +1,5 @@
-# projeto-avaliativo-m12-BookingFlow
-Gerenciamento de reservas de hotel
+# SkyBook
+Sistema de reservas de poltronas de aeronave
 
 ## Automações de Fluxo
 

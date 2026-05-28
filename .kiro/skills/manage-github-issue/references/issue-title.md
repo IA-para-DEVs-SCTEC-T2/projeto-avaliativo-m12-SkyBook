@@ -1,6 +1,6 @@
 # Padrão de Títulos para Issues no GitHub
 
-Este documento define o padrão de nomenclatura para títulos de issues no projeto BookingFlow.
+Este documento define o padrão de nomenclatura para títulos de issues no projeto SkyBook.
 
 > **Referência**: Este arquivo documenta os prefixos de título utilizados na seção `title` dos seguintes templates:
 > - `title: "[STORY] "` → [`user_story_template.yml`](../assets/user_story_template.yml)

@@ -1,6 +1,6 @@
 # Labels para Issues no GitHub
 
-Este documento define as labels disponíveis para categorização de issues no projeto BookingFlow.
+Este documento define as labels disponíveis para categorização de issues no projeto SkyBook.
 
 > **Referência**: Este arquivo documenta as labels utilizadas na seção `labels` dos seguintes templates:
 > - `labels: ["story"]` → [`user_story_template.yml`](../assets/user_story_template.yml)

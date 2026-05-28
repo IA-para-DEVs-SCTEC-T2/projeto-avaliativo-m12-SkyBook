@@ -1,13 +1,13 @@
-package com.ia.para.devs.bookingflow;
+package com.ia.para.devs.skybook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookingflowApplication {
+public class SkybookApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookingflowApplication.class, args);
+		SpringApplication.run(SkybookApplication.class, args);
 	}
 
 }

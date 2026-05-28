@@ -1,6 +1,6 @@
 ---
 name: manage-github-issue
-description: Cria ou atualiza issues no GitHub seguindo o template padrão do projeto, usando o GitHub CLI (gh). Use quando o usuário pedir para criar, abrir, registrar, alterar ou editar uma issue no GitHub, ou quando precisar gerenciar o backlog do projeto no repositório IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow.
+description: Cria ou atualiza issues no GitHub seguindo o template padrão do projeto, usando o GitHub CLI (gh). Use quando o usuário pedir para criar, abrir, registrar, alterar ou editar uma issue no GitHub, ou quando precisar gerenciar o backlog do projeto no repositório IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook.
 metadata:
   author: joaopuel
   version: "1.2"
@@ -10,7 +10,7 @@ allowed-tools:
 
 ## Gerenciamento de Issues no GitHub
 
-Skill para criar e alterar issues no repositório `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow` usando o `gh` CLI.
+Skill para criar e alterar issues no repositório `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook` usando o `gh` CLI.
 
 Consulte o [fluxo detalhado](references/workflow.md) para o passo a passo completo de criação e alteração de issues.
 
@@ -19,7 +19,7 @@ Consulte o [fluxo detalhado](references/workflow.md) para o passo a passo comple
 - Sempre perguntar ao usuário se deseja **criar** ou **alterar** uma issue antes de qualquer ação.
 - Nunca executar comandos sem solicitar permissão do usuário antes.
 - Nunca alterar uma issue sem antes buscar seus dados atuais com `gh issue view`.
-- Sempre usar `--repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow` em todos os comandos `gh`.
+- Sempre usar `--repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook` em todos os comandos `gh`.
 - Títulos sempre em português, claros e objetivos.
 - **Assignee**: sempre atribuir ao usuário autenticado (`@me` / `joaopuel`) em toda issue criada ou editada, sem necessidade de o usuário informar.
 - Labels somente quando explicitamente informados pelo usuário.

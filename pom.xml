@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ia.para.devs</groupId>
-	<artifactId>bookingflow</artifactId>
+	<artifactId>skybook</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>

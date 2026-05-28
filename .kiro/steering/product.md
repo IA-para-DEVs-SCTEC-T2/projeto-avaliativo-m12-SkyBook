@@ -2,11 +2,11 @@
 inclusion: always
 ---
 
-# BookingFlow — Visão de Produto
+# SkyBook — Visão de Produto
 
-## O que é o BookingFlow
+## O que é o SkyBook
 
-O **BookingFlow** é um sistema de reservas de poltronas de aeronave. Ele permite que passageiros visualizem a disponibilidade de assentos, realizem reservas e obtenham um resumo consolidado com o valor total a pagar.
+O **SkyBook** é um sistema de reservas de poltronas de aeronave. Ele permite que passageiros visualizem a disponibilidade de assentos, realizem reservas e obtenham um resumo consolidado com o valor total a pagar.
 
 ## Escopo do MVP
 

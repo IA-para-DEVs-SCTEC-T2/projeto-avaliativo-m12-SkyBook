@@ -1,6 +1,6 @@
 # Hierarquia de Issues no GitHub
 
-Este documento define as regras de hierarquia e vínculo entre issues no projeto BookingFlow.
+Este documento define as regras de hierarquia e vínculo entre issues no projeto SkyBook.
 
 ## Estrutura hierárquica
 
@@ -30,10 +30,10 @@ Além do texto no body, **sempre** crie o vínculo nativo de sub-issue no GitHub
 
 ```bash
 # ID da issue pai
-gh issue view <ISSUE_PAI_NUMBER> --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow --json id --jq .id
+gh issue view <ISSUE_PAI_NUMBER> --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook --json id --jq .id
 
 # ID da issue filha
-gh issue view <ISSUE_FILHA_NUMBER> --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow --json id --jq .id
+gh issue view <ISSUE_FILHA_NUMBER> --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook --json id --jq .id
 ```
 
 ### Passo 2 — Criar o vínculo de sub-issue
@@ -50,8 +50,8 @@ Substitua:
 
 **Tech vinculada a uma Story:**
 ```bash
-STORY_ID=$(gh issue view 62 --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow --json id --jq .id)
-TECH_ID=$(gh issue view 99 --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow --json id --jq .id)
+STORY_ID=$(gh issue view 62 --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook --json id --jq .id)
+TECH_ID=$(gh issue view 99 --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook --json id --jq .id)
 gh api graphql -f query="mutation { addSubIssue(input: { issueId: \"$STORY_ID\", subIssueId: \"$TECH_ID\" }) { issue { id title } subIssue { id title } } }"
 ```
 

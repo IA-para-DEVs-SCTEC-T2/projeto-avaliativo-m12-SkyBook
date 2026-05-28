@@ -100,3 +100,16 @@ Detalhes
 2.2. Realizar as reservas de poltronas escolhidas.
 2.3. Obter o resumo das reservas e o valor total.
 ```
+
+---
+
+## Renomear projeto de BookingFlow para SkyBook em todo o projeto
+
+* Data: 2026-05-28 14:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Esse projeto teve seu nome e nome do repositório alterado para SkyBook. Procure por todo o projeto onde o nome do projeto/repositório estavam sendo utilizados e atualize.
+```
