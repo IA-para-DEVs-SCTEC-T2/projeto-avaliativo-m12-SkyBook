@@ -1,10 +1,9 @@
 # Labels para Issues no GitHub
 
-Este documento define as labels disponíveis para categorização de issues no projeto MockAI.
+Este documento define as labels disponíveis para categorização de issues no projeto SkyBook.
 
 > **Referência**: Este arquivo documenta as labels utilizadas na seção `labels` dos seguintes templates:
 > - `labels: ["story"]` → [`user_story_template.yml`](../assets/user_story_template.yml)
-> - `labels: ["epic"]` → [`epic_template.yml`](../assets/epic_template.yml)
 > - `labels: ["tech"]` → [`tech_template.yml`](../assets/tech_template.yml)
 > - `labels: ["docs"]` → [`docs_template.yml`](../assets/docs_template.yml)
 
@@ -12,20 +11,11 @@ Este documento define as labels disponíveis para categorização de issues no p
 
 ### Tipo de Issue
 
-#### `epic`
-- **Descrição**: Agrupador de alto nível
-- **Uso**: Issues que agrupam múltiplas stories, tasks ou bugs relacionados
-- **Características**:
-  - Representa uma iniciativa maior ou tema de trabalho
-  - Issue pai que organiza outras issues
-  - Geralmente tem escopo amplo e longa duração
-
 #### `story`
 - **Descrição**: Unidade principal de entrega
 - **Uso**: Issues que representam uma funcionalidade completa do ponto de vista do usuário
 - **Características**:
   - Descreve valor para o usuário final
-  - Pode estar vinculada a um EPIC
   - Geralmente segue o formato "Como [usuário], quero [ação] para [benefício]"
 
 #### `docs`
@@ -104,13 +94,14 @@ Este documento define as labels disponíveis para categorização de issues no p
 
 As labels podem e devem ser combinadas para melhor categorização. Exemplos:
 
-- `epic` + `backend` + `priority:high`
+- `story` + `backend` + `priority:high`
 - `story` + `frontend` + `priority:medium`
 - `docs` + `ai` + `priority:low`
+- `tech` + `backend` + `priority:high`
 
 ## Boas Práticas
 
-1. **Sempre use pelo menos uma label de tipo** (`epic`, `story`, `tech`, `docs`, etc.)
+1. **Sempre use pelo menos uma label de tipo** (`story`, `tech`, `docs`)
 2. **Adicione labels de área técnica** quando aplicável (`backend`, `frontend`, `ai`)
 3. **Defina a prioridade** para facilitar o planejamento (`priority:high`, `priority:medium`, `priority:low`)
 4. **Seja consistente** na aplicação das labels

@@ -2,9 +2,9 @@
 
 ## Repositório e projeto fixos
 
-- Repositório: `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow`
-- Projeto: `projeto-avaliativo-m12-BookingFlow` (project number: 26, owner: `IA-para-DEVs-SCTEC-T2`)
-- Sempre use `--repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow` em todos os comandos `gh`
+- Repositório: `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook`
+- Projeto: `SkyBook` (project number: 26, owner: `IA-para-DEVs-SCTEC-T2`)
+- Sempre use `--repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook` em todos os comandos `gh`
 
 ---
 
@@ -28,11 +28,10 @@ Aguarde a resposta antes de prosseguir.
 
 ### 2A.2 — Montar o corpo da issue
 
-O corpo da issue deve seguir o template correspondente ao tipo de issue sendo criada. Os templates estão em `.kiro/skills/github-issue-management/assets/`:
+O corpo da issue deve seguir o template correspondente ao tipo de issue sendo criada. Os templates estão em `.kiro/skills/manage-github-issue/assets/`:
 
 | Tipo de issue | Template a utilizar       |
 |---------------|---------------------------|
-| Epic          | `epic_template.yml`       |
 | Story         | `user_story_template.yml` |
 | Tech          | `tech_template.yml`       |
 | Docs          | `docs_template.yml`       |
@@ -74,7 +73,7 @@ Apresente o comando que será executado e aguarde confirmação antes de prosseg
 
 ```bash
 gh issue create \
-  --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow \
+  --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook \
   --title "[TIPO] Título da issue" \
   --type Feature \
   --assignee "@me" \
@@ -99,7 +98,7 @@ gh project item-add 26 --owner IA-para-DEVs-SCTEC-T2 --url <URL_DA_ISSUE_CRIADA>
 O `gh issue create` nem sempre aplica o campo `type` corretamente. Execute sempre após a criação:
 
 ```bash
-gh api repos/IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow/issues/<ISSUE_NUMBER> \
+gh api repos/IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook/issues/<ISSUE_NUMBER> \
   --method PATCH -f type="Feature" 2>&1 | head -5
 ```
 
@@ -120,7 +119,7 @@ Aguarde a resposta antes de prosseguir.
 Ao receber o número ou URL, execute imediatamente:
 
 ```bash
-gh issue view <ISSUE_NUMBER> --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow
+gh issue view <ISSUE_NUMBER> --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook
 ```
 
 Use as informações retornadas (título, descrição, labels, assignees, type, status) como contexto base para a alteração. Nunca altere uma issue sem antes buscar seus dados atuais.
@@ -137,7 +136,7 @@ Apresente as alterações que serão aplicadas e aguarde confirmação antes de 
 
 ```bash
 gh issue edit <ISSUE_NUMBER> \
-  --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow \
+  --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook \
   --title "Novo título" \
   --add-assignee "@me" \
   --body-file <arquivo-temporario>.md
@@ -148,7 +147,7 @@ gh issue edit <ISSUE_NUMBER> \
 ## Regras gerais
 
 - Sempre usar `gh` CLI.
-- Sempre operar no repositório `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-BookingFlow`.
+- Sempre operar no repositório `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook`.
 - Títulos sempre em português, claros e objetivos.
 - Assignee sempre `@me` (joaopuel) em toda criação e edição de issue.
 - Labels somente quando explicitamente informados.

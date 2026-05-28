@@ -54,3 +54,62 @@ Crie um skill que deve ser responsável por finalizar a demanda e abrir o PR.
 ```
 /finish-issue Atualize essa skill para primeiro verificar se há alguma alteração não commitada com git status. Proibido prosseguir o fluxo caso ainda haja alterações não commitadas
 ```
+
+---
+
+## Atualizar templates de issues com tópicos padronizados
+
+* Data: 2026-05-28 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Atualize os templates presentes nos assets da skill /manage-github-issue. Todos os templates devem ter os tópicos:1. Decrição da demanda: breve descrição do que deve ser implementado/atualizado/corrigido.2. Objetivo: Lista de objetivos que devem ser realizados no decorrer da demanda3. Escopo: Lista de pontos/trechos/arquivos que demanda propoe modificar4. Resultado esperado: checklist de resultados esperados ao final da demanda
+```
+
+---
+
+## Remover suporte a EPIC issues da skill manage-github-issue
+
+* Data: 2026-05-28 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Atualize também a skill para descosiderar EPIC issues. Remover toda referência a EPIC issues e remover o asset
+```
+
+---
+
+## Criar steering de produto para sistema de reservas de poltronas
+
+* Data: 2026-05-28 14:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Crie o steering the produto deste projeto.
+Detalhes
+1. Esse projeto é um sistema de reservas de poltronas de uma aeronave.
+2. As funcionalidades para o MVP devem ser:
+2.1. Listar as poltronas da aeronave com seu status (disponível ou não).
+2.2. Realizar as reservas de poltronas escolhidas.
+2.3. Obter o resumo das reservas e o valor total.
+```
+
+---
+
+## Renomear projeto de BookingFlow para SkyBook em todo o projeto
+
+* Data: 2026-05-28 14:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Esse projeto teve seu nome e nome do repositório alterado para SkyBook. Procure por todo o projeto onde o nome do projeto/repositório estavam sendo utilizados e atualize.
+```

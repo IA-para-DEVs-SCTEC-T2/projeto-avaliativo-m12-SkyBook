@@ -1,10 +1,9 @@
 # Padrão de Títulos para Issues no GitHub
 
-Este documento define o padrão de nomenclatura para títulos de issues no projeto MockAI.
+Este documento define o padrão de nomenclatura para títulos de issues no projeto SkyBook.
 
 > **Referência**: Este arquivo documenta os prefixos de título utilizados na seção `title` dos seguintes templates:
 > - `title: "[STORY] "` → [`user_story_template.yml`](../assets/user_story_template.yml)
-> - `title: "[EPIC] "` → [`epic_template.yml`](../assets/epic_template.yml)
 > - `title: "[TECH] "` → [`tech_template.yml`](../assets/tech_template.yml)
 > - `title: "[DOCS] "` → [`docs_template.yml`](../assets/docs_template.yml)
 
@@ -18,22 +17,12 @@ Os títulos das issues devem seguir o formato:
 
 ## Tipos de Issues
 
-### [EPIC]
-- **Quando usar**: Issues marcadas com a label `epic`
-- **Propósito**: Agrupa múltiplas issues relacionadas (stories, tasks, bugs)
-- **Características**: 
-  - Issue pai que organiza outras issues
-  - Representa uma iniciativa maior ou tema de trabalho
-  - Pode conter múltiplas stories e tasks
-- **Exemplo**: `[EPIC] Implementação do sistema de autenticação`
-
 ### [STORY]
 - **Quando usar**: Issues marcadas com a label `story`
 - **Propósito**: Criação de uma nova funcionalidade
 - **Características**:
   - Representa uma user story
   - Descreve valor para o usuário final
-  - Pode estar vinculada a um EPIC
 - **Exemplo**: `[STORY] Como usuário, quero fazer login para acessar o sistema`
 
 ### [DOCS]
@@ -65,7 +54,6 @@ Os títulos das issues devem seguir o formato:
 ## Exemplos Completos
 
 ```
-[EPIC] Sistema de gerenciamento de especificações OpenAPI
 [STORY] Como desenvolvedor, quero importar uma especificação OpenAPI para criar mocks automaticamente
 [TECH] Configurar pipeline de CI/CD para testes automatizados
 [DOCS] Criar guia de contribuição para o projeto
