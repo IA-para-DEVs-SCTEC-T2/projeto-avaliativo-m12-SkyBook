@@ -113,3 +113,46 @@ Detalhes
 ```
 Esse projeto teve seu nome e nome do repositório alterado para SkyBook. Procure por todo o projeto onde o nome do projeto/repositório estavam sendo utilizados e atualize.
 ```
+
+---
+
+## Criar steerings de estrutura e tecnologias do projeto
+
+* Data: 2026-05-28 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Crie steerings da estrutura e tecnologias do projeto
+Detalhes
+1. Steering structure:
+1.1. O projeto deve ser criado serguindo a arquitetura MVC
+1.2. Devem ser criados DTOs para armazenar os dados de entradas e saídas de endpoints
+1.3. Devem ser utilizadas entidades para a manipulação e persistência dos dados no banco H2
+2. Steering tech:
+2.1. Leia as informações do arquivo pom para obter as tecnologias e bibliotecas utilizadas no projeto
+```
+
+---
+
+## Documentar modelagem de entidades com diagrama Mermaid
+
+* Data: 2026-05-28 15:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Vamos criar agora a modelagem da base de dados. Criando 3 entitdades:
+AirplaneSeatEntity: armazena dados do assento do avião.
+UserEntity: armazena dados do usuário
+BookingEntity: armazena os dados da reserva
+Detalhes
+1. Crie um diagrama do tipo Mermaid para representar as entidades em um arquivo no diretório docs/
+2. Adicione as entidades no arquivo de estrutura do projeto
+Restrições
+Apenas crie e atualize as documentações.
+Proibido criar as entidades de fato neste momento.
+```
