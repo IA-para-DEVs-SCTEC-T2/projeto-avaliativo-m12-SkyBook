@@ -330,3 +330,16 @@ Detalhes
 5. Por último, será a classe econômica que terá o custo de 110,00 e serão todas as poltronas restantes.
 6. Mostre a sua linha de pensamento enquanto executa a implementação.
 ```
+
+---
+
+## Ajustar cenários de uso e steering com definição da aeronave
+
+* Data: 2026-05-29 17:50
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:```json[{ "id": 1, "code": "1A", "price": 198.89, "available": true },{ "id": 2, "code": "1B", "price": 198.89, "available": false }...{ "id": 59, "code": "10E", "price": <valor>, "available": true },{ "id": 60, "code": "10F", "price": <valor>, "available": false }]```Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.Adicione também no steering do produto essa definião da aeronave que está sendo considerada.Exclua o cenário 2 dessa funcionalidade.
+```

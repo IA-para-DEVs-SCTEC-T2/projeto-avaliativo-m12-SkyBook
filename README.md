@@ -129,44 +129,29 @@ A aplicação estará disponível em: `http://localhost:8080`
 
 ### Endpoints
 
-| Recurso | URL |
-|---|---|
-| Swagger UI | `http://localhost:8080/swagger-ui.html` |
-| H2 Console | `http://localhost:8080/h2-console` |
+| Recurso | Método | URL |
+|---|---|---|
+| Listar poltronas | GET | `http://localhost:8080/seats/listSeats` |
+| Swagger UI | — | `http://localhost:8080/swagger-ui.html` |
+| H2 Console | — | `http://localhost:8080/h2-console` |
 
 ### Cenários de Uso
 
-#### Cenário 1 — [Nome do cenário]
+> ⚠️ **Aviso:** No MVP é considerado apenas um avião com 60 assentos fixos (10 fileiras × 6 colunas A–F), pré-carregados na inicialização. Portanto, somente o cenário abaixo deve ocorrer.
 
-**Entrada:**
-```json
-{
-  "campo": "valor"
-}
-```
+#### Cenário 1 — Listagem de poltronas disponíveis e indisponíveis
+
+**Entrada:** `GET /seats/listSeats`
 
 **Saída esperada:**
 ```json
-{
-  "id": 1,
-  "campo": "valor"
-}
-```
-
-#### Cenário 2 — [Nome do cenário]
-
-**Entrada:**
-```json
-{
-  "campo": "valor"
-}
-```
-
-**Saída esperada:**
-```json
-{
-  "campo": "resultado"
-}
+[
+  { "id": 1,  "code": "1A",  "price": 198.89, "available": true  },
+  { "id": 2,  "code": "1B",  "price": 198.89, "available": false },
+  ...
+  { "id": 59, "code": "10E", "price": 110.00, "available": true  },
+  { "id": 60, "code": "10F", "price": 110.00, "available": false }
+]
 ```
 
 ### Como Executar os Testes
@@ -254,6 +239,8 @@ Apenas crie as entidades neste momento. Não crie outras funcionalidades não so
 ```
 
 ### Ciclos de Geração e Refinamento com IA
+
+> Documentação detalhada dos ciclos em [`docs/feat-list-seats.md`](docs/feat-list-seats.md)
 
 #### Ciclo 1 — [Nome da funcionalidade]
 
