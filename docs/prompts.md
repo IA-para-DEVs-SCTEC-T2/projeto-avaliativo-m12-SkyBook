@@ -5,7 +5,7 @@
 
 * Data: 2026-05-26 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -18,7 +18,7 @@ Ajuste esse script. As branches desse projeto tem o seguinte formato feature/<ta
 
 * Data: 2026-05-26 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -48,7 +48,7 @@ Crie um skill que deve ser responsável por finalizar a demanda e abrir o PR.
 
 * Data: 2026-05-26 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -61,7 +61,7 @@ Crie um skill que deve ser responsável por finalizar a demanda e abrir o PR.
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -74,7 +74,7 @@ Atualize os templates presentes nos assets da skill /manage-github-issue. Todos 
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -87,7 +87,7 @@ Atualize também a skill para descosiderar EPIC issues. Remover toda referência
 
 * Data: 2026-05-28 14:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -107,7 +107,7 @@ Detalhes
 
 * Data: 2026-05-28 14:30
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -120,7 +120,7 @@ Esse projeto teve seu nome e nome do repositório alterado para SkyBook. Procure
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -141,7 +141,7 @@ Detalhes
 
 * Data: 2026-05-28 15:30
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -163,7 +163,7 @@ Proibido criar as entidades de fato neste momento.
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -213,7 +213,7 @@ Crie um template do README de acordo com os requisito dispostos nesse arquivo. A
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -229,7 +229,7 @@ Terceira parte: deve conter como a IA foi utilizada no fluxo de desenvolvimento.
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -247,7 +247,7 @@ Alguns ajustes:
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -264,7 +264,7 @@ Apenas atualize com as informações que já existem no projeto agora e, para as
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -277,7 +277,7 @@ Ajuste a skill manage-git-issue para sempre inserir as labels apropriadas ao cri
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -290,7 +290,7 @@ Busque informações da issue 14 e implemente a funcionalidade proposta
 
 * Data: 2026-05-29 16:50
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -303,7 +303,7 @@ Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.
 
 * Data: 2026-05-29 17:10
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -337,7 +337,7 @@ Detalhes
 
 * Data: 2026-05-29 17:50
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -365,7 +365,7 @@ class <class-name>Test {
 
 * Data: 2026-05-29 18:30
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -397,4 +397,17 @@ Realize os seguintes ajustes:1. O endpoint para a realização da reserva deve t
 ```
 Em vez de Ids, a lista de poltronas no objeto de entrada do enpoint bookSeat deve ser formado pelos códigos string das poltronas. Altere todos os pontos necessários.
 Quebre essa alteração em pequenos passos, descrevendo seu processo de pensamento, e aplique as alterações.
+```
+
+---
+
+## Criar doc feat-book-seat com 3 ciclos de prompting
+
+* Data: 2026-05-29 19:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Crie o arquivo docs/feat-book-seat.md e adicione os 3 últimos prompts presentes em c:\git\projeto-avaliativo-m12-SkyBook\docs\prompts.mdseguindo a ordem dos ciclos 1 ,2 e 3, descritas no aquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
 ```
