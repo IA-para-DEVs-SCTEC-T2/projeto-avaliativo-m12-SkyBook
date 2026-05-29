@@ -371,3 +371,16 @@ class <class-name>Test {
 ```
 Busque a issue 15 Realização de reserva de poltrona e implemente suas funcionalidades e implemente testes unitários
 ```
+
+---
+
+## Ajustar rota bookSeat, criar ErrorResponseDTO e GlobalExceptionHandler
+
+* Data: 2026-05-29 19:00
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Realize os seguintes ajustes:1. O endpoint para a realização da reserva deve ter a rota /bookings/bookSeat2. Crie um DTO para armazenar as informações de erros. Ele deve conter o status do erro, a mensagem de erro e o timestamp de quando ocorreu.3. Para lidar com os erros desse endpoint, deve ser criada a classe GlobalExceptionHandler que deve capturar os erros e retornar o objeto DTO que armazena as informações de erro.Como nesse exemplo:@ExceptionHandler(<excpetion-name>.class) public ResponseEntity<<error-dto>> handlerBadRequest(<excpetion-name> ex) {     return ResponseEntity //             .status(HttpStatus.<status>) //             .body(new <error-dto>(HttpStatus.<status>.name(), ex.getMessage(), LocalDateTime.now())); }
+```

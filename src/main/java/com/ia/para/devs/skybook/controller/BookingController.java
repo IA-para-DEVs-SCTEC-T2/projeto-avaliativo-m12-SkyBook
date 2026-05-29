@@ -37,7 +37,7 @@ public class BookingController {
      * @param request DTO com dados do passageiro e IDs das poltronas a reservar
      * @return lista de {@link BookingResponseDTO} com os detalhes de cada reserva criada
      */
-    @PostMapping
+    @PostMapping("/bookSeat")
     @Operation(
         summary = "Reservar poltronas",
         description = "Cria reservas para uma ou mais poltronas disponíveis e atualiza seu status para indisponível"
