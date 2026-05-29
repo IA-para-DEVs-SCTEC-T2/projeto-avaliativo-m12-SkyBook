@@ -5,7 +5,7 @@
 
 * Data: 2026-05-26 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -18,7 +18,7 @@ Ajuste esse script. As branches desse projeto tem o seguinte formato feature/<ta
 
 * Data: 2026-05-26 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -48,7 +48,7 @@ Crie um skill que deve ser responsável por finalizar a demanda e abrir o PR.
 
 * Data: 2026-05-26 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -61,11 +61,15 @@ Crie um skill que deve ser responsável por finalizar a demanda e abrir o PR.
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
-Atualize os templates presentes nos assets da skill /manage-github-issue. Todos os templates devem ter os tópicos:1. Decrição da demanda: breve descrição do que deve ser implementado/atualizado/corrigido.2. Objetivo: Lista de objetivos que devem ser realizados no decorrer da demanda3. Escopo: Lista de pontos/trechos/arquivos que demanda propoe modificar4. Resultado esperado: checklist de resultados esperados ao final da demanda
+Atualize os templates presentes nos assets da skill /manage-github-issue. Todos os templates devem ter os tópicos:
+1. Decrição da demanda: breve descrição do que deve ser implementado/atualizado/corrigido.
+2. Objetivo: Lista de objetivos que devem ser realizados no decorrer da demanda
+3. Escopo: Lista de pontos/trechos/arquivos que demanda propoe modificar
+4. Resultado esperado: checklist de resultados esperados ao final da demanda
 ```
 
 ---
@@ -74,7 +78,7 @@ Atualize os templates presentes nos assets da skill /manage-github-issue. Todos 
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -87,7 +91,7 @@ Atualize também a skill para descosiderar EPIC issues. Remover toda referência
 
 * Data: 2026-05-28 14:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -107,7 +111,7 @@ Detalhes
 
 * Data: 2026-05-28 14:30
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -120,7 +124,7 @@ Esse projeto teve seu nome e nome do repositório alterado para SkyBook. Procure
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -141,7 +145,7 @@ Detalhes
 
 * Data: 2026-05-28 15:30
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -163,7 +167,7 @@ Proibido criar as entidades de fato neste momento.
 
 * Data: 2026-05-28 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -213,7 +217,7 @@ Crie um template do README de acordo com os requisito dispostos nesse arquivo. A
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -229,7 +233,7 @@ Terceira parte: deve conter como a IA foi utilizada no fluxo de desenvolvimento.
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -247,7 +251,7 @@ Alguns ajustes:
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -264,7 +268,7 @@ Apenas atualize com as informações que já existem no projeto agora e, para as
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -277,7 +281,7 @@ Ajuste a skill manage-git-issue para sempre inserir as labels apropriadas ao cri
 
 * Data: 2026-05-29 00:00
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -290,11 +294,17 @@ Busque informações da issue 14 e implemente a funcionalidade proposta
 
 * Data: 2026-05-29 16:50
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
-Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.2. O endpoints deve ter a roda /listSeats3. Adicione também no endpoint a anotação que descreve o status 200 retornado pelo endpoint. Para isso, siga o seguinte exemplo:@ApiResponses({     @ApiResponse(responseCode = "200", description = "descrição do status") })
+Ajustes:
+1. Adicione javadoc em todos os métodos publicos e nas classes criadas.
+2. O endpoints deve ter a roda /listSeats
+3. Adicione também no endpoint a anotação que descreve o status 200 retornado pelo endpoint. Para isso, siga o seguinte exemplo:
+@ApiResponses({
+    @ApiResponse(responseCode = "200", description = "descrição do status")
+})
 ```
 
 ---
@@ -303,7 +313,7 @@ Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.
 
 * Data: 2026-05-29 17:10
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
@@ -337,11 +347,23 @@ Detalhes
 
 * Data: 2026-05-29 17:50
 * Autor: joaopuel
-* Tipo: Instrução direta
+* Tipo: Zero shot
 
 ### Prompt original
 ```
-Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:```json[{ "id": 1, "code": "1A", "price": 198.89, "available": true },{ "id": 2, "code": "1B", "price": 198.89, "available": false }...{ "id": 59, "code": "10E", "price": <valor>, "available": true },{ "id": 60, "code": "10F", "price": <valor>, "available": false }]```Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.Adicione também no steering do produto essa definião da aeronave que está sendo considerada.Exclua o cenário 2 dessa funcionalidade.
+Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:
+```json
+[
+  { "id": 1, "code": "1A", "price": 198.89, "available": true },
+  { "id": 2, "code": "1B", "price": 198.89, "available": false }
+  ...
+  { "id": 59, "code": "10E", "price": <valor>, "available": true },
+  { "id": 60, "code": "10F", "price": <valor>, "available": false }
+]
+```
+Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.
+Adicione também no steering do produto essa definião da aeronave que está sendo considerada.
+Exclua o cenário 2 dessa funcionalidade.
 ```
 
 ---
@@ -357,4 +379,111 @@ Como não há funcionalidade para inserção de poltronas. No cenário 1 adicion
 Adicione testes unitários para AirplaneSeatService e AirplaneSeatController. Use Junit e Mockito. As classes de testes devem ser criadas da seguinte forma:
 @ExtendWith(MockitoExtension.class)
 class <class-name>Test {
+```
+
+---
+
+## Implementar reserva de poltronas com testes unitários (issue 15)
+
+* Data: 2026-05-29 18:30
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Busque a issue 15 Realização de reserva de poltrona e implemente suas funcionalidades e implemente testes unitários
+```
+
+---
+
+## Ajustar rota bookSeat, criar ErrorResponseDTO e GlobalExceptionHandler
+
+* Data: 2026-05-29 19:00
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Realize os seguintes ajustes:
+1. O endpoint para a realização da reserva deve ter a rota /bookings/bookSeat
+2. Crie um DTO para armazenar as informações de erros. Ele deve conter o status do erro, a mensagem de erro e o timestamp de quando ocorreu.
+3. Para lidar com os erros desse endpoint, deve ser criada a classe GlobalExceptionHandler que deve capturar os erros e retornar o objeto DTO que armazena as informações de erro.
+Como nesse exemplo:
+@ExceptionHandler(<excpetion-name>.class)
+public ResponseEntity<<error-dto>> handlerBadRequest(<excpetion-name> ex) {
+    return ResponseEntity
+            .status(HttpStatus.<status>)
+            .body(new <error-dto>(HttpStatus.<status>.name(), ex.getMessage(), LocalDateTime.now()));
+}
+```
+
+---
+
+## Substituir seatIds por seatCodes no endpoint bookSeat
+
+* Data: 2026-05-29 19:15
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Em vez de Ids, a lista de poltronas no objeto de entrada do enpoint bookSeat deve ser formado pelos códigos string das poltronas. Altere todos os pontos necessários.
+Quebre essa alteração em pequenos passos, descrevendo seu processo de pensamento, e aplique as alterações.
+```
+
+---
+
+## Criar doc feat-book-seat com 3 ciclos de prompting
+
+* Data: 2026-05-29 19:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Crie o arquivo docs/feat-book-seat.md e adicione os 3 últimos prompts presentes em c:\git\projeto-avaliativo-m12-SkyBook\docs\prompts.mdseguindo a ordem dos ciclos 1 ,2 e 3, descritas no aquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
+```
+
+---
+
+## Refatorar BookingService SOLID SRP com testes e Chain of Thought
+
+* Data: 2026-05-29 20:00
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Refatore a classe BookingService, usando princípios do SOLID e clean code.
+1. Por exemplo, seguindo o Princípio da Responsabilidade Única, separe a funcionalidade do método createBookings em métodos menores.
+2. Além disso, faça ajustes para que a busca e a atualização de poltronas seja realizada no AirplaneSeatService. A busca e criação de usuáros seja feita no UserService. Enquanto o BookingService apenas lida com o que diz respeito as reservas.
+3. Os repositórios airplaneSeatRepository, bookingRepository e userRepository somente devem ser acessados pelos serviços correspondentes.
+Faça ajustes nos testes unitários para que estejam de acordo com estas alterações.
+Divida as alterações em pequenos passos, demostrando a sua linha de pensamento, e, depois, aplique as alterações.
+```
+
+---
+
+## Documentar refatoração SOLID BookingService em feat-book-seat.md
+
+* Data: 2026-05-29 20:15
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.mdAdicione no final do arquivo também o exemplo de refatoração aplicada com o último prompt, seguindo a requisição sobre isso do arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
+```
+
+---
+
+## Adicionar lições aprendidas dos ciclos em feat-book-seat.md
+
+* Data: 2026-05-29 20:30
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Adicione também a lição aprendida com com o refatoramento e as outros refinamentos no arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.md
 ```
