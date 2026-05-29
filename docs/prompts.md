@@ -65,7 +65,11 @@ Crie um skill que deve ser responsável por finalizar a demanda e abrir o PR.
 
 ### Prompt original
 ```
-Atualize os templates presentes nos assets da skill /manage-github-issue. Todos os templates devem ter os tópicos:1. Decrição da demanda: breve descrição do que deve ser implementado/atualizado/corrigido.2. Objetivo: Lista de objetivos que devem ser realizados no decorrer da demanda3. Escopo: Lista de pontos/trechos/arquivos que demanda propoe modificar4. Resultado esperado: checklist de resultados esperados ao final da demanda
+Atualize os templates presentes nos assets da skill /manage-github-issue. Todos os templates devem ter os tópicos:
+1. Decrição da demanda: breve descrição do que deve ser implementado/atualizado/corrigido.
+2. Objetivo: Lista de objetivos que devem ser realizados no decorrer da demanda
+3. Escopo: Lista de pontos/trechos/arquivos que demanda propoe modificar
+4. Resultado esperado: checklist de resultados esperados ao final da demanda
 ```
 
 ---
@@ -294,7 +298,13 @@ Busque informações da issue 14 e implemente a funcionalidade proposta
 
 ### Prompt original
 ```
-Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.2. O endpoints deve ter a roda /listSeats3. Adicione também no endpoint a anotação que descreve o status 200 retornado pelo endpoint. Para isso, siga o seguinte exemplo:@ApiResponses({     @ApiResponse(responseCode = "200", description = "descrição do status") })
+Ajustes:
+1. Adicione javadoc em todos os métodos publicos e nas classes criadas.
+2. O endpoints deve ter a roda /listSeats
+3. Adicione também no endpoint a anotação que descreve o status 200 retornado pelo endpoint. Para isso, siga o seguinte exemplo:
+@ApiResponses({
+    @ApiResponse(responseCode = "200", description = "descrição do status")
+})
 ```
 
 ---
@@ -341,7 +351,19 @@ Detalhes
 
 ### Prompt original
 ```
-Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:```json[{ "id": 1, "code": "1A", "price": 198.89, "available": true },{ "id": 2, "code": "1B", "price": 198.89, "available": false }...{ "id": 59, "code": "10E", "price": <valor>, "available": true },{ "id": 60, "code": "10F", "price": <valor>, "available": false }]```Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.Adicione também no steering do produto essa definião da aeronave que está sendo considerada.Exclua o cenário 2 dessa funcionalidade.
+Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:
+```json
+[
+  { "id": 1, "code": "1A", "price": 198.89, "available": true },
+  { "id": 2, "code": "1B", "price": 198.89, "available": false }
+  ...
+  { "id": 59, "code": "10E", "price": <valor>, "available": true },
+  { "id": 60, "code": "10F", "price": <valor>, "available": false }
+]
+```
+Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.
+Adicione também no steering do produto essa definião da aeronave que está sendo considerada.
+Exclua o cenário 2 dessa funcionalidade.
 ```
 
 ---
@@ -382,7 +404,17 @@ Busque a issue 15 Realização de reserva de poltrona e implemente suas funciona
 
 ### Prompt original
 ```
-Realize os seguintes ajustes:1. O endpoint para a realização da reserva deve ter a rota /bookings/bookSeat2. Crie um DTO para armazenar as informações de erros. Ele deve conter o status do erro, a mensagem de erro e o timestamp de quando ocorreu.3. Para lidar com os erros desse endpoint, deve ser criada a classe GlobalExceptionHandler que deve capturar os erros e retornar o objeto DTO que armazena as informações de erro.Como nesse exemplo:@ExceptionHandler(<excpetion-name>.class) public ResponseEntity<<error-dto>> handlerBadRequest(<excpetion-name> ex) {     return ResponseEntity //             .status(HttpStatus.<status>) //             .body(new <error-dto>(HttpStatus.<status>.name(), ex.getMessage(), LocalDateTime.now())); }
+Realize os seguintes ajustes:
+1. O endpoint para a realização da reserva deve ter a rota /bookings/bookSeat
+2. Crie um DTO para armazenar as informações de erros. Ele deve conter o status do erro, a mensagem de erro e o timestamp de quando ocorreu.
+3. Para lidar com os erros desse endpoint, deve ser criada a classe GlobalExceptionHandler que deve capturar os erros e retornar o objeto DTO que armazena as informações de erro.
+Como nesse exemplo:
+@ExceptionHandler(<excpetion-name>.class)
+public ResponseEntity<<error-dto>> handlerBadRequest(<excpetion-name> ex) {
+    return ResponseEntity
+            .status(HttpStatus.<status>)
+            .body(new <error-dto>(HttpStatus.<status>.name(), ex.getMessage(), LocalDateTime.now()));
+}
 ```
 
 ---
@@ -422,7 +454,12 @@ Crie o arquivo docs/feat-book-seat.md e adicione os 3 últimos prompts presentes
 
 ### Prompt original
 ```
-Refatore a classe BookingService, usando princípios do SOLID e clean code.1. Por exemplo, seguindo o Princípio da Responsabilidade Única, separe a funcionalidade do método createBookings em métodos menores.2. Além disso, faça ajustes para que a busca e a atualização de poltronas seja realizada no AirplaneSeatService. A busca e criação de usuáros seja feita no UserService. Enquanto o BookingService apenas lida com o que diz respeito as reservas.3. Os repositórios airplaneSeatRepository, bookingRepository e userRepository somente devem ser acessados pelos serviços correspondentes.Faça ajustes nos testes unitários para que estejam de acordo com estas alterações.Divida as alterações em pequenos passos, demostrando a sua linha de pensamento, e, depois, aplique as alterações.
+Refatore a classe BookingService, usando princípios do SOLID e clean code.
+1. Por exemplo, seguindo o Princípio da Responsabilidade Única, separe a funcionalidade do método createBookings em métodos menores.
+2. Além disso, faça ajustes para que a busca e a atualização de poltronas seja realizada no AirplaneSeatService. A busca e criação de usuáros seja feita no UserService. Enquanto o BookingService apenas lida com o que diz respeito as reservas.
+3. Os repositórios airplaneSeatRepository, bookingRepository e userRepository somente devem ser acessados pelos serviços correspondentes.
+Faça ajustes nos testes unitários para que estejam de acordo com estas alterações.
+Divida as alterações em pequenos passos, demostrando a sua linha de pensamento, e, depois, aplique as alterações.
 ```
 
 ---
