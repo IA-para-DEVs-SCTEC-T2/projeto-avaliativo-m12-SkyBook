@@ -71,3 +71,48 @@ gh pr create \
  --body-file "$BODY_FILE"
 
 rm "$BODY_FILE"
+
+echo
+echo "Movendo issue #$ISSUE_ID para 'Em Revisão' no projeto..."
+
+PROJECT_ID="PVT_kwDOEJ21384BYyYK"
+STATUS_FIELD_ID="PVTSSF_lADOEJ21384BYyYKzhT1os0"
+EM_REVISAO_ID="df73e18b"
+
+ITEM_ID=$(gh api graphql -f query='
+  query {
+    organization(login: "IA-para-DEVs-SCTEC-T2") {
+      projectV2(number: 26) {
+        items(first: 100) {
+          nodes {
+            id
+            content {
+              ... on Issue {
+                number
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+' --jq ".data.organization.projectV2.items.nodes[] | select(.content.number == $ISSUE_ID) | .id")
+
+if [ -z "$ITEM_ID" ]; then
+  echo "Aviso: issue #$ISSUE_ID não encontrada no projeto. Verifique se ela foi adicionada ao board."
+else
+  gh api graphql -f query='
+    mutation($project: ID!, $item: ID!, $field: ID!, $value: String!) {
+      updateProjectV2ItemFieldValue(input: {
+        projectId: $project
+        itemId: $item
+        fieldId: $field
+        value: { singleSelectOptionId: $value }
+      }) {
+        projectV2Item { id }
+      }
+    }
+  ' -f project="$PROJECT_ID" -f item="$ITEM_ID" -f field="$STATUS_FIELD_ID" -f value="$EM_REVISAO_ID" > /dev/null
+
+  echo "Issue movida para 'Em Revisão' com sucesso."
+fi
