@@ -131,17 +131,16 @@ A aplicação estará disponível em: `http://localhost:8080`
 
 | Recurso | Método | URL |
 |---|---|---|
-| Listar poltronas | GET | `http://localhost:8080/seats/listSeats` |
-| Swagger UI | — | `http://localhost:8080/swagger-ui.html` |
-| H2 Console | — | `http://localhost:8080/h2-console` |
+| Listar poltronas | GET | `http://localhost:8080/skybook/seats/listSeats` |
+| Reservar poltronas | POST | `http://localhost:8080/skybook/bookings/bookSeat` |
+| Swagger UI | — | `http://localhost:8080/skybook/swagger-ui.html` |
+| H2 Console | — | `http://localhost:8080/skybook/h2-console` |
 
 ### Cenários de Uso
 
-> ⚠️ **Aviso:** No MVP é considerado apenas um avião com 60 assentos fixos (10 fileiras × 6 colunas A–F), pré-carregados na inicialização. Portanto, somente o cenário abaixo deve ocorrer.
-
 #### Cenário 1 — Listagem de poltronas disponíveis e indisponíveis
 
-**Entrada:** `GET /seats/listSeats`
+**Entrada:** `GET /skybook/seats/listSeats`
 
 **Saída esperada:**
 ```json
@@ -153,6 +152,42 @@ A aplicação estará disponível em: `http://localhost:8080`
   { "id": 60, "code": "10F", "price": 110.00, "available": false }
 ]
 ```
+
+#### Cenário 2 — Reserva de poltronas
+
+**Entrada:** `POST /skybook/bookings/bookSeat`
+
+```json
+{
+  "passengerName": "João Silva",
+  "passengerEmail": "joao@email.com",
+  "seatCodes": ["1A", "3C"]
+}
+```
+
+**Saída esperada (201 Created):**
+```json
+[
+  {
+    "bookingId": 1,
+    "seatCode": "1A",
+    "seatPrice": 198.89,
+    "passengerName": "João Silva",
+    "bookedAt": "2026-05-29T20:00:00"
+  },
+  {
+    "bookingId": 2,
+    "seatCode": "3C",
+    "seatPrice": 149.90,
+    "passengerName": "João Silva",
+    "bookedAt": "2026-05-29T20:00:00"
+  }
+]
+```
+
+**Erros possíveis:**
+- `404 Not Found` — código de poltrona não existe
+- `409 Conflict` — poltrona já está reservada
 
 ### Como Executar os Testes
 
@@ -184,8 +219,8 @@ Configurado via GitHub Actions em `.github/workflows/`.
 | Especificação | Kiro | Claude Sonnet 4.6 | Definição de requisitos, escopo e steerings do projeto |
 | Arquitetura | Kiro | Claude Sonnet 4.6 | Planejamento da estrutura MVC e modelagem de dados |
 | Geração de código | Kiro | Claude Sonnet 4.6 | Criação das entidades JPA e DTOs |
-| Refatoração | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Aplicação de princípios SOLID] |
-| Testes | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Geração da suíte de testes unitários] |
+| Refatoração | Kiro | Claude Sonnet 4.6 | Refatoração do BookingService com princípios SOLID (SRP, DIP) e Clean Code |
+| Testes | Kiro | Claude Sonnet 4.6 | Geração da suíte de testes unitários com JUnit e Mockito |
 | Documentação | Kiro | Claude Sonnet 4.6 | Criação do data-model, template de README e docs/prompts.md |
 | Pipeline CI/CD | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Configuração do GitHub Actions] |
 
