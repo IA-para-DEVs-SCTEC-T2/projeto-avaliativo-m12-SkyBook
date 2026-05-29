@@ -156,3 +156,16 @@ Restrições
 Apenas crie e atualize as documentações.
 Proibido criar as entidades de fato neste momento.
 ```
+
+---
+
+## Mover issue para "Em Revisão" ao abrir PR no open_pr.sh
+
+* Data: 2026-05-28 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Altere o script para também mover a task para a coluna "Em revisão". Use como exemplo a parte de movimentar a issue no script c:\git\projeto-avaliativo-m12-BookingFlow\.kiro\skills\start-issue\scripts\start_issue.sh
+```
