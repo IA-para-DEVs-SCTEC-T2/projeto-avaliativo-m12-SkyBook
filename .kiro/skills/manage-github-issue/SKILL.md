@@ -22,7 +22,7 @@ Consulte o [fluxo detalhado](references/workflow.md) para o passo a passo comple
 - Sempre usar `--repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook` em todos os comandos `gh`.
 - Títulos sempre em português, claros e objetivos.
 - **Assignee**: sempre atribuir ao usuário autenticado (`@me` / `joaopuel`) em toda issue criada ou editada, sem necessidade de o usuário informar.
-- Labels somente quando explicitamente informados pelo usuário.
+- **Labels**: sempre aplicar automaticamente as labels apropriadas ao criar uma issue, conforme as regras definidas em [Labels disponíveis](references/issue-labels.md). Não aguardar instrução do usuário para isso.
 
 ## Classificação das issues
 

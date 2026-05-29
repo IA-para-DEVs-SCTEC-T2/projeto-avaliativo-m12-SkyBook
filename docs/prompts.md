@@ -257,3 +257,16 @@ Restrições
 Não adicione funcionalidades, tecnologias, desiões de organização, exemplos de prompts, ferramentas utilizadas ou quais quer outras informações que não existem ou não estão detalhadas neste projeto neste momento.
 Apenas atualize com as informações que já existem no projeto agora e, para as partes que não houver informações suficientes, manter os placeholders presentes no template.
 ```
+
+---
+
+## Ajustar skill manage-github-issue para inserir labels automaticamente
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste a skill manage-git-issue para sempre inserir as labels apropriadas ao criar uma nova issue.
+```
