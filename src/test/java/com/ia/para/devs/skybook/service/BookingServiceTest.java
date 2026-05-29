@@ -58,12 +58,12 @@ class BookingServiceTest {
         UserEntity user = buildUser(10L, "João", "joao@email.com");
         BookingEntity savedBooking = buildBooking(100L, user, seat);
 
-        when(airplaneSeatRepository.findById(1L)).thenReturn(Optional.of(seat));
+        when(airplaneSeatRepository.findByCode("1A")).thenReturn(Optional.of(seat));
         when(airplaneSeatRepository.save(seat)).thenReturn(seat);
         when(userRepository.findByEmail("joao@email.com")).thenReturn(Optional.of(user));
         when(bookingRepository.save(any(BookingEntity.class))).thenReturn(savedBooking);
 
-        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of(1L));
+        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of("1A"));
         List<BookingResponseDTO> result = bookingService.createBookings(request);
 
         assertThat(result).hasSize(1);
@@ -83,13 +83,13 @@ class BookingServiceTest {
         UserEntity newUser = buildUser(20L, "Maria", "maria@email.com");
         BookingEntity savedBooking = buildBooking(101L, newUser, seat);
 
-        when(airplaneSeatRepository.findById(2L)).thenReturn(Optional.of(seat));
+        when(airplaneSeatRepository.findByCode("2B")).thenReturn(Optional.of(seat));
         when(airplaneSeatRepository.save(seat)).thenReturn(seat);
         when(userRepository.findByEmail("maria@email.com")).thenReturn(Optional.empty());
         when(userRepository.save(any(UserEntity.class))).thenReturn(newUser);
         when(bookingRepository.save(any(BookingEntity.class))).thenReturn(savedBooking);
 
-        BookingRequestDTO request = new BookingRequestDTO("Maria", "maria@email.com", List.of(2L));
+        BookingRequestDTO request = new BookingRequestDTO("Maria", "maria@email.com", List.of("2B"));
         List<BookingResponseDTO> result = bookingService.createBookings(request);
 
         assertThat(result).hasSize(1);
@@ -103,12 +103,12 @@ class BookingServiceTest {
         UserEntity existingUser = buildUser(30L, "Carlos", "carlos@email.com");
         BookingEntity savedBooking = buildBooking(102L, existingUser, seat);
 
-        when(airplaneSeatRepository.findById(3L)).thenReturn(Optional.of(seat));
+        when(airplaneSeatRepository.findByCode("3C")).thenReturn(Optional.of(seat));
         when(airplaneSeatRepository.save(seat)).thenReturn(seat);
         when(userRepository.findByEmail("carlos@email.com")).thenReturn(Optional.of(existingUser));
         when(bookingRepository.save(any(BookingEntity.class))).thenReturn(savedBooking);
 
-        BookingRequestDTO request = new BookingRequestDTO("Carlos", "carlos@email.com", List.of(3L));
+        BookingRequestDTO request = new BookingRequestDTO("Carlos", "carlos@email.com", List.of("3C"));
         bookingService.createBookings(request);
 
         verify(userRepository, never()).save(any(UserEntity.class));
@@ -123,9 +123,9 @@ class BookingServiceTest {
     void createBookings_shouldThrow409_whenSeatIsUnavailable() {
         AirplaneSeatEntity unavailableSeat = buildSeat(5L, "5A", new BigDecimal("110.00"), false);
 
-        when(airplaneSeatRepository.findById(5L)).thenReturn(Optional.of(unavailableSeat));
+        when(airplaneSeatRepository.findByCode("5A")).thenReturn(Optional.of(unavailableSeat));
 
-        BookingRequestDTO request = new BookingRequestDTO("Ana", "ana@email.com", List.of(5L));
+        BookingRequestDTO request = new BookingRequestDTO("Ana", "ana@email.com", List.of("5A"));
 
         assertThatThrownBy(() -> bookingService.createBookings(request))
                 .isInstanceOf(ResponseStatusException.class)
@@ -137,9 +137,9 @@ class BookingServiceTest {
     @Test
     @DisplayName("createBookings → lança 404 quando poltrona não é encontrada")
     void createBookings_shouldThrow404_whenSeatNotFound() {
-        when(airplaneSeatRepository.findById(99L)).thenReturn(Optional.empty());
+        when(airplaneSeatRepository.findByCode("99Z")).thenReturn(Optional.empty());
 
-        BookingRequestDTO request = new BookingRequestDTO("Pedro", "pedro@email.com", List.of(99L));
+        BookingRequestDTO request = new BookingRequestDTO("Pedro", "pedro@email.com", List.of("99Z"));
 
         assertThatThrownBy(() -> bookingService.createBookings(request))
                 .isInstanceOf(ResponseStatusException.class)
@@ -160,9 +160,9 @@ class BookingServiceTest {
         AirplaneSeatEntity seat3 = buildSeat(5L, "5A", new BigDecimal("110.00"), true);
         UserEntity user = buildUser(10L, "João", "joao@email.com");
 
-        when(airplaneSeatRepository.findById(1L)).thenReturn(Optional.of(seat1));
-        when(airplaneSeatRepository.findById(2L)).thenReturn(Optional.of(seat2));
-        when(airplaneSeatRepository.findById(5L)).thenReturn(Optional.of(seat3));
+        when(airplaneSeatRepository.findByCode("1A")).thenReturn(Optional.of(seat1));
+        when(airplaneSeatRepository.findByCode("1B")).thenReturn(Optional.of(seat2));
+        when(airplaneSeatRepository.findByCode("5A")).thenReturn(Optional.of(seat3));
         when(airplaneSeatRepository.save(any(AirplaneSeatEntity.class))).thenAnswer(inv -> inv.getArgument(0));
         when(userRepository.findByEmail("joao@email.com")).thenReturn(Optional.of(user));
         when(bookingRepository.save(any(BookingEntity.class))).thenAnswer(inv -> {
@@ -171,7 +171,7 @@ class BookingServiceTest {
             return b;
         });
 
-        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of(1L, 2L, 5L));
+        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of("1A", "1B", "5A"));
         List<BookingResponseDTO> result = bookingService.createBookings(request);
 
         assertThat(result).hasSize(3);
@@ -189,10 +189,10 @@ class BookingServiceTest {
         AirplaneSeatEntity available = buildSeat(1L, "1A", new BigDecimal("198.89"), true);
         AirplaneSeatEntity unavailable = buildSeat(2L, "1B", new BigDecimal("198.89"), false);
 
-        when(airplaneSeatRepository.findById(1L)).thenReturn(Optional.of(available));
-        when(airplaneSeatRepository.findById(2L)).thenReturn(Optional.of(unavailable));
+        when(airplaneSeatRepository.findByCode("1A")).thenReturn(Optional.of(available));
+        when(airplaneSeatRepository.findByCode("1B")).thenReturn(Optional.of(unavailable));
 
-        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of(1L, 2L));
+        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of("1A", "1B"));
 
         assertThatThrownBy(() -> bookingService.createBookings(request))
                 .isInstanceOf(ResponseStatusException.class)

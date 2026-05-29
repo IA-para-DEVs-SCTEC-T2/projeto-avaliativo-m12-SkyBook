@@ -384,3 +384,17 @@ Busque a issue 15 Realização de reserva de poltrona e implemente suas funciona
 ```
 Realize os seguintes ajustes:1. O endpoint para a realização da reserva deve ter a rota /bookings/bookSeat2. Crie um DTO para armazenar as informações de erros. Ele deve conter o status do erro, a mensagem de erro e o timestamp de quando ocorreu.3. Para lidar com os erros desse endpoint, deve ser criada a classe GlobalExceptionHandler que deve capturar os erros e retornar o objeto DTO que armazena as informações de erro.Como nesse exemplo:@ExceptionHandler(<excpetion-name>.class) public ResponseEntity<<error-dto>> handlerBadRequest(<excpetion-name> ex) {     return ResponseEntity //             .status(HttpStatus.<status>) //             .body(new <error-dto>(HttpStatus.<status>.name(), ex.getMessage(), LocalDateTime.now())); }
 ```
+
+---
+
+## Substituir seatIds por seatCodes no endpoint bookSeat
+
+* Data: 2026-05-29 19:15
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Em vez de Ids, a lista de poltronas no objeto de entrada do enpoint bookSeat deve ser formado pelos códigos string das poltronas. Altere todos os pontos necessários.
+Quebre essa alteração em pequenos passos, descrevendo seu processo de pensamento, e aplique as alterações.
+```

@@ -35,7 +35,7 @@ class BookingControllerTest {
     @Test
     @DisplayName("createBookings → retorna 201 com lista de reservas criadas")
     void createBookings_shouldReturn201WithBookingList() {
-        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of(1L, 2L));
+        BookingRequestDTO request = new BookingRequestDTO("João", "joao@email.com", List.of("1A", "1B"));
         List<BookingResponseDTO> serviceResponse = List.of(
                 new BookingResponseDTO(100L, "1A", new BigDecimal("198.89"), "João", LocalDateTime.now()),
                 new BookingResponseDTO(101L, "1B", new BigDecimal("198.89"), "João", LocalDateTime.now())
@@ -56,7 +56,7 @@ class BookingControllerTest {
     @Test
     @DisplayName("createBookings → retorna 201 com reserva única")
     void createBookings_shouldReturn201WithSingleBooking() {
-        BookingRequestDTO request = new BookingRequestDTO("Maria", "maria@email.com", List.of(5L));
+        BookingRequestDTO request = new BookingRequestDTO("Maria", "maria@email.com", List.of("5A"));
         List<BookingResponseDTO> serviceResponse = List.of(
                 new BookingResponseDTO(200L, "5A", new BigDecimal("110.00"), "Maria", LocalDateTime.now())
         );
@@ -75,7 +75,7 @@ class BookingControllerTest {
     @Test
     @DisplayName("createBookings → delega para o service exatamente uma vez")
     void createBookings_shouldDelegateToServiceOnce() {
-        BookingRequestDTO request = new BookingRequestDTO("Carlos", "carlos@email.com", List.of(3L));
+        BookingRequestDTO request = new BookingRequestDTO("Carlos", "carlos@email.com", List.of("3C"));
         when(bookingService.createBookings(request)).thenReturn(List.of());
 
         bookingController.createBookings(request);

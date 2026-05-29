@@ -42,14 +42,14 @@ public class BookingService {
      *   <li>Se o e-mail do passageiro já existir, o usuário existente é reutilizado.</li>
      * </ul>
      *
-     * @param request DTO com dados do passageiro e IDs das poltronas desejadas
+     * @param request DTO com dados do passageiro e códigos das poltronas desejadas
      * @return lista de {@link BookingResponseDTO} com os detalhes de cada reserva criada
      * @throws ResponseStatusException 409 se alguma poltrona já estiver reservada
-     * @throws ResponseStatusException 404 se algum ID de poltrona não for encontrado
+     * @throws ResponseStatusException 404 se algum código de poltrona não for encontrado
      */
     @Transactional
     public List<BookingResponseDTO> createBookings(BookingRequestDTO request) {
-        List<AirplaneSeatEntity> seats = resolveAndValidateSeats(request.getSeatIds());
+        List<AirplaneSeatEntity> seats = resolveAndValidateSeats(request.getSeatCodes());
 
         UserEntity user = resolveUser(request.getPassengerName(), request.getPassengerEmail());
 
@@ -78,21 +78,21 @@ public class BookingService {
     }
 
     /**
-     * Busca as poltronas pelos IDs fornecidos e valida que todas estão disponíveis.
+     * Busca as poltronas pelos códigos fornecidos e valida que todas estão disponíveis.
      *
-     * @param seatIds lista de IDs das poltronas
+     * @param seatCodes lista de códigos das poltronas (ex: "1A", "3C")
      * @return lista de entidades de poltrona validadas
-     * @throws ResponseStatusException 404 se algum ID não for encontrado
+     * @throws ResponseStatusException 404 se algum código não for encontrado
      * @throws ResponseStatusException 409 se alguma poltrona já estiver reservada
      */
-    private List<AirplaneSeatEntity> resolveAndValidateSeats(List<Long> seatIds) {
+    private List<AirplaneSeatEntity> resolveAndValidateSeats(List<String> seatCodes) {
         List<AirplaneSeatEntity> seats = new ArrayList<>();
 
-        for (Long seatId : seatIds) {
-            AirplaneSeatEntity seat = airplaneSeatRepository.findById(seatId)
+        for (String code : seatCodes) {
+            AirplaneSeatEntity seat = airplaneSeatRepository.findByCode(code)
                     .orElseThrow(() -> new ResponseStatusException(
                             HttpStatus.NOT_FOUND,
-                            "Poltrona não encontrada: id=" + seatId));
+                            "Poltrona não encontrada: " + code));
 
             if (!seat.getAvailable()) {
                 throw new ResponseStatusException(

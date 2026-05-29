@@ -25,8 +25,8 @@ public class BookingRequestDTO {
     String passengerEmail;
 
     /**
-     * Lista de IDs das poltronas a serem reservadas.
+     * Lista de códigos das poltronas a serem reservadas (ex: "1A", "3C").
      * Deve conter ao menos um elemento.
      */
-    List<Long> seatIds;
+    List<String> seatCodes;
 }
