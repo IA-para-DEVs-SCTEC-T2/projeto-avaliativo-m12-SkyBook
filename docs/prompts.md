@@ -343,3 +343,18 @@ Detalhes
 ```
 Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:```json[{ "id": 1, "code": "1A", "price": 198.89, "available": true },{ "id": 2, "code": "1B", "price": 198.89, "available": false }...{ "id": 59, "code": "10E", "price": <valor>, "available": true },{ "id": 60, "code": "10F", "price": <valor>, "available": false }]```Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.Adicione também no steering do produto essa definião da aeronave que está sendo considerada.Exclua o cenário 2 dessa funcionalidade.
 ```
+
+---
+
+## Testes unitários com JUnit e Mockito para Service e Controller
+
+* Data: 2026-05-29 18:10
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Adicione testes unitários para AirplaneSeatService e AirplaneSeatController. Use Junit e Mockito. As classes de testes devem ser criadas da seguinte forma:
+@ExtendWith(MockitoExtension.class)
+class <class-name>Test {
+```
