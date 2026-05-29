@@ -1,4 +1,4 @@
-# SkyBook
+# [Nome da Aplicação]
 
 ---
 
@@ -6,13 +6,13 @@
 
 ### Descrição
 
-> O **SkyBook** é um sistema de reservas de poltronas de aeronave. Permite que passageiros visualizem a disponibilidade de assentos, realizem reservas e obtenham um resumo consolidado com o valor total a pagar.
+> Breve descrição do problema resolvido e do valor que a aplicação entrega.
 
 ### Funcionalidades
 
-- Listagem de poltronas da aeronave com status atual (disponível / indisponível)
-- Reserva de uma ou mais poltronas disponíveis, atualizando seu status automaticamente
-- Resumo das reservas com valor individual de cada poltrona e valor total
+- [Funcionalidade 1 — ex: Listagem de poltronas com status de disponibilidade]
+- [Funcionalidade 2 — ex: Reserva de poltronas selecionadas]
+- [Funcionalidade 3 — ex: Resumo das reservas com valor total]
 
 > Escopo e domínio do produto detalhados em [`.kiro/steering/product.md`](.kiro/steering/product.md)
 
@@ -22,15 +22,14 @@
 
 ### Quadro de Tarefas
 
-📋 [Acompanhe o backlog no GitHub Projects](https://github.com/orgs/IA-para-DEVs-SCTEC-T2/projects/26/views/1)
+📋 [Acompanhe o backlog no GitHub Projects]([link do board])
 
 ### Melhorias Futuras
 
-- [ ] Autenticação e cadastro de usuários
-- [ ] Pagamento online
-- [ ] Cancelamento de reservas
-- [ ] Suporte a múltiplos voos ou aeronaves
-- [ ] Histórico de reservas
+- [ ] [Melhoria 1 — ex: Autenticação e autorização com JWT]
+- [ ] [Melhoria 2 — ex: Cancelamento de reservas]
+- [ ] [Melhoria 3 — ex: Suporte a múltiplos voos]
+- [ ] [Melhoria 4 — ex: Histórico de reservas por usuário]
 
 ---
 
@@ -65,9 +64,9 @@ com.ia.para.devs.skybook
 
 #### Decisões Técnicas
 
-- Arquitetura MVC para separação clara de responsabilidades
-- DTOs para desacoplar a camada de apresentação das entidades JPA — endpoints nunca expõem entidades diretamente
-- H2 em memória para simplificar o ambiente de desenvolvimento, com schema gerenciado automaticamente pelo Hibernate
+- [Decisão 1 — ex: "Uso do H2 em memória para simplificar o ambiente de desenvolvimento"]
+- [Decisão 2 — ex: "Arquitetura MVC para separação clara de responsabilidades"]
+- [Decisão 3 — ex: "DTOs para desacoplar a camada de apresentação das entidades JPA"]
 
 > Padrão arquitetural e estrutura de pacotes detalhados em [`.kiro/steering/structure.md`](.kiro/steering/structure.md)
 
@@ -84,12 +83,6 @@ com.ia.para.devs.skybook
 ### Modelagem do Banco de Dados
 
 O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente pelo Hibernate via Spring Data JPA.
-
-| Entidade | Tabela | Descrição |
-|---|---|---|
-| `UserEntity` | `app_user` | Dados do usuário que realiza reservas |
-| `AirplaneSeatEntity` | `airplane_seat` | Dados de cada poltrona (código, preço, disponibilidade) |
-| `BookingEntity` | `booking` | Reserva — vínculo entre um usuário e um assento |
 
 > Diagrama ER completo e descrição das entidades em [`docs/data-model.md`](docs/data-model.md)
 
@@ -118,8 +111,8 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 
 ```bash
 # Clone o repositório
-git clone https://github.com/IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook.git
-cd projeto-avaliativo-m12-SkyBook
+git clone https://github.com/[usuario]/[repositorio].git
+cd [repositorio]
 
 # Execute com Maven
 ./mvnw spring-boot:run
@@ -133,6 +126,8 @@ A aplicação estará disponível em: `http://localhost:8080`
 |---|---|
 | Swagger UI | `http://localhost:8080/swagger-ui.html` |
 | H2 Console | `http://localhost:8080/h2-console` |
+| [Endpoint 1] | `http://localhost:8080/api/...` |
+| [Endpoint 2] | `http://localhost:8080/api/...` |
 
 ### Cenários de Uso
 
@@ -196,12 +191,12 @@ Configurado via GitHub Actions em `.github/workflows/`.
 
 | Etapa | Ferramenta | Modelo | Descrição do uso |
 |---|---|---|---|
-| Especificação | Kiro | Claude Sonnet 4.6 | Definição de requisitos, escopo e steerings do projeto |
-| Arquitetura | Kiro | Claude Sonnet 4.6 | Planejamento da estrutura MVC e modelagem de dados |
-| Geração de código | Kiro | Claude Sonnet 4.6 | Criação das entidades JPA e DTOs |
+| Especificação | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Definição de requisitos e escopo] |
+| Arquitetura | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Planejamento da estrutura MVC] |
+| Geração de código | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Implementação das funcionalidades principais] |
 | Refatoração | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Aplicação de princípios SOLID] |
 | Testes | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Geração da suíte de testes unitários] |
-| Documentação | Kiro | Claude Sonnet 4.6 | Criação do data-model, template de README e docs/prompts.md |
+| Documentação | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Geração do Swagger e README] |
 | Pipeline CI/CD | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Configuração do GitHub Actions] |
 
 ### Padrões de Prompting Aplicados
@@ -210,43 +205,25 @@ Os prompts utilizados estão organizados em [`docs/prompts.md`](docs/prompts.md)
 
 #### Zero Shot
 
-**Quando foi usado:** Criação do steering de produto — instrução direta sem exemplos prévios de formato ou conteúdo.
+**Quando foi usado:** [ex: Criação do steering de produto sem exemplos prévios]
 
 **Prompt original:**
 ```
-Instrução
-Crie o steering the produto deste projeto.
-Detalhes
-1. Esse projeto é um sistema de reservas de poltronas de uma aeronave.
-2. As funcionalidades para o MVP devem ser:
-2.1. Listar as poltronas da aeronave com seu status (disponível ou não).
-2.2. Realizar as reservas de poltronas escolhidas.
-2.3. Obter o resumo das reservas e o valor total.
+[Cole aqui o prompt Zero Shot utilizado]
 ```
 
 #### Few Shot
 
-**Quando foi usado:** Criação das entidades JPA — o prompt forneceu um exemplo concreto da estrutura de código esperada.
+**Quando foi usado:** [ex: Geração das entidades JPA com exemplo de estrutura esperada]
 
 **Prompt original:**
 ```
-Crie as entidades de acordo com a modelagem do projeto.
-As entidades devem ser criadas seguindo este exemplo:
-<code>
-@Entity
-@Data
-@Table(name = "table_name")
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@EqualsAndHashCode(of = "id")
-public class <entity-name>Entity {...}
-<code>
-Restrições
-Apenas crie as entidades neste momento. Não crie outras funcionalidades não solicitadas.
+[Cole aqui o prompt Few Shot utilizado, incluindo os exemplos fornecidos]
 ```
 
 #### Chain of Thought
 
-**Quando foi usado:** [Cole aqui o prompt Chain of Thought utilizado]
+**Quando foi usado:** [ex: Planejamento da arquitetura com raciocínio passo a passo]
 
 **Prompt original:**
 ```
@@ -319,3 +296,5 @@ Apenas crie as entidades neste momento. Não crie outras funcionalidades não so
 **Lição aprendida:**
 
 [O que esse caso ensinou sobre o uso de IA no desenvolvimento]
+
+---

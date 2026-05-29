@@ -193,3 +193,67 @@ public class <entity-name>Entity {...}
 Restrições
 Apenas crie as entidades neste momento. Não crie outras funcionalidades não solicitadas.
 ```
+
+---
+
+## Criar template README baseado nos requisitos do projeto avaliativo
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Crie um template do README de acordo com os requisito dispostos nesse arquivo. Adicione o template no diretório docs/templates
+```
+
+---
+
+## Reorganizar template README em 3 partes estruturadas
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Organize o template em 3 partes:
+Primeira parte: deve conter a visão geral do projeto. Nome da aplicação, descrição, funcionalidades, vídeo de demosntração.
+Segunda parte: deve conter as especificações do projeto e como executá-lo. Arquitetura, Descrição das Camadas, Tecnologias, Pré-requisitos, Como executar localmente, endpoits, cenários de uso, Como executar os testes, Pipeline Ci/CD, melhorias futuras.
+Terceira parte: deve conter como a IA foi utilizada no fluxo de desenvolvimento. Ferramentas de IA Utilizadas, Padrões de Prompting Aplicados, Ciclos de Geração e Refinamento com IA, Refatoração com IA, Análise Crítica — Saída Incorreta da IA
+```
+
+---
+
+## Ajustar template README com referências e estrutura de pastas
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Alguns ajustes:
+1. No tópivo arquitetura, adicione tambéma estruturada de pastas.
+2. Adicione uma referência ao steering de produto logo após a parte de funcionalides do produto.
+3. Adicione uma referência ao steering de arquitetura logo após a parte de arquitetura do projeto.
+4. Adicione uma referência ao steering de tecnologias logo após a parte de tecnologias do projeto.
+5. Após a parte de Descrição das Camadas, adicione um tópico sobre a modelagem do banco de dados e adicione referência ao arquivo do banco de dados data-model
+```
+
+---
+
+## Atualizar README do projeto conforme template criado
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Agora atualize o README do projeto para ficar de acordo com o template criado.
+Restrições
+Não adicione funcionalidades, tecnologias, desiões de organização, exemplos de prompts, ferramentas utilizadas ou quais quer outras informações que não existem ou não estão detalhadas neste projeto neste momento.
+Apenas atualize com as informações que já existem no projeto agora e, para as partes que não houver informações suficientes, manter os placeholders presentes no template.
+```

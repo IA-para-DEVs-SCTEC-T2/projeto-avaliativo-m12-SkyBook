@@ -26,11 +26,11 @@ Apresentar um resumo consolidado contendo:
 - O valor individual de cada poltrona
 - O valor total da reserva
 
-## Fora do escopo do MVP
+## Melhorias Futuras
 
-As funcionalidades abaixo **não fazem parte do MVP** e não devem ser implementadas nesta fase:
+As funcionalidades abaixo **não fazem parte do MVP** e não devem ser implementadas nesta fase.Funcionalidades planejadas para versões posteriores ao MVP:
 - Autenticação e cadastro de usuários
 - Pagamento online
 - Cancelamento de reservas
-- Múltiplos voos ou aeronaves
-- Histórico de reservas
+- Suporte a múltiplos voos ou aeronaves
+- Histórico de reservas por usuário
