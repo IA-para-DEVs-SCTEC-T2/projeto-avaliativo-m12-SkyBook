@@ -169,3 +169,27 @@ Proibido criar as entidades de fato neste momento.
 ```
 Altere o script para também mover a task para a coluna "Em revisão". Use como exemplo a parte de movimentar a issue no script c:\git\projeto-avaliativo-m12-BookingFlow\.kiro\skills\start-issue\scripts\start_issue.sh
 ```
+
+---
+
+## Criar entidades JPA conforme modelagem do projeto
+
+* Data: 2026-05-28 00:00
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Crie as entidades de acordo com a modelagem do projeto.
+As entidades devem ser criadas seguindo este exemplo:
+<code>
+@Entity
+@Data
+@Table(name = "table_name")
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode(of = "id")
+public class <entity-name>Entity {...}
+<code>
+Restrições
+Apenas crie as entidades neste momento. Não crie outras funcionalidades não solicitadas.
+```
