@@ -309,3 +309,24 @@ Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.
 ```
 Cire o arquivo docs/feat-list-seats.md e adicione os dois últimos prompts como exemplo de um prompt Zero Shot (Ciclo 1) seguido de um prompt Few Shot (Ciclo 2) de refinamento, seguindo as definições de ciclos definidas no c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
 ```
+
+---
+
+## Criar DataLoader para inserir 60 poltronas na inicialização
+
+* Data: 2026-05-29 17:30
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Instrução
+Crie uma classe em JAva com um método que deve ser executada assim que o projeto subir. O método deve ser resposável por inserir 60 poltronas diferentes assim que o projeto subir.
+Detalhes
+1. Assuma que o avião tem 6 poltronas por fileira.
+2. Todas as poltronas devem estar disponíveis.
+3. As duas primeiras fileiras devem ser da calsse executiva e ter o custo de 198,89.
+4. As duas fileiras seguintes da a classe executiva, devem ser da classe econômicas premium e ter o custo de 149,90
+5. Por último, será a classe econômica que terá o custo de 110,00 e serão todas as poltronas restantes.
+6. Mostre a sua linha de pensamento enquanto executa a implementação.
+```
