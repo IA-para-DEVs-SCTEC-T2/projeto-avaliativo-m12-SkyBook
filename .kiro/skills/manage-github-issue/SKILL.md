@@ -28,17 +28,18 @@ Consulte o [fluxo detalhado](references/workflow.md) para o passo a passo comple
 
 Consulte as referências para detalhes completos:
 
-- [Padrão de títulos](references/issue-title.md) — prefixos `[STORY]`, `[TECH]`, `[DOCS]`
+- [Padrão de títulos](references/issue-title.md) — prefixos `[EPIC]`, `[STORY]`, `[TECH]`, `[DOCS]`
 - [Labels disponíveis](references/issue-labels.md) — tipos, área técnica e prioridade
-- [Hierarquia de issues](references/issue-hierarchy.md) — vínculos entre Story e Tech
+- [Hierarquia de issues](references/issue-hierarchy.md) — vínculos entre Epic, Story e Tech
 
 ### Resumo dos tipos
 
-| Tipo  | Prefixo   | Descrição                                   |
-|-------|-----------|---------------------------------------------|
-| Story | `[STORY]` | Entrega funcional implementável             |
-| Tech  | `[TECH]`  | Tarefa técnica (infra, config, refactoring) |
-| Docs  | `[DOCS]`  | Documentação do projeto                     |
+| Tipo  | Prefixo   | Descrição                                        |
+|-------|-----------|--------------------------------------------------|
+| Epic  | `[EPIC]`  | Objetivo macro de um conjunto de funcionalidades |
+| Story | `[STORY]` | Entrega funcional implementável                  |
+| Tech  | `[TECH]`  | Tarefa técnica (infra, config, refactoring)      |
+| Docs  | `[DOCS]`  | Documentação do projeto                          |
 
 - O campo `--type` é **sempre `Feature`** em todos os casos.
 - Tarefas técnicas pequenas ficam como checklist dentro da Story, não como issues separadas.
@@ -49,6 +50,7 @@ Os templates de corpo das issues estão em `assets/`:
 
 | Tipo  | Template                  |
 |-------|---------------------------|
+| Epic  | `epic_template.yml`       |
 | Story | `user_story_template.yml` |
 | Tech  | `tech_template.yml`       |
 | Docs  | `docs_template.yml`       |

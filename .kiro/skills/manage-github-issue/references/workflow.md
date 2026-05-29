@@ -32,6 +32,7 @@ O corpo da issue deve seguir o template correspondente ao tipo de issue sendo cr
 
 | Tipo de issue | Template a utilizar       |
 |---------------|---------------------------|
+| Epic          | `epic_template.yml`       |
 | Story         | `user_story_template.yml` |
 | Tech          | `tech_template.yml`       |
 | Docs          | `docs_template.yml`       |
