@@ -5,20 +5,24 @@ Este documento define as regras de hierarquia e vínculo entre issues no projeto
 ## Estrutura hierárquica
 
 ```
-Story
- └── Tech (quando vinculada a uma Story)
+Epic
+ └── Story
+      └── Tech (quando vinculada a uma Story)
 ```
 
-- **Story** → entrega funcional implementável.
-- **Tech** → tarefa técnica que pode ser vinculada a uma Story.
+- **Epic** → agrupa Stories relacionadas a um objetivo macro.
+- **Story** → entrega funcional implementável, sempre vinculada a uma Epic.
+- **Tech** → tarefa técnica que pode ser vinculada a uma Story ou diretamente a uma Epic.
 
 ## Vínculo no corpo da issue
 
 Quando o usuário informar a issue pai, inclua no **final do corpo** da issue filha a referência textual:
 
-| Tipo da issue filha | Tipo da issue pai | Texto no body                |
-|---------------------|-------------------|------------------------------|
-| Tech                | Story             | `Parent Story: #ID_DA_STORY` |
+| Tipo da issue filha | Tipo da issue pai | Texto no body                  |
+|---------------------|-------------------|--------------------------------|
+| Story               | Epic              | `Parent Epic: #ID_DA_EPIC`     |
+| Tech                | Epic              | `Parent Epic: #ID_DA_EPIC`     |
+| Tech                | Story             | `Parent Story: #ID_DA_STORY`   |
 
 Essa linha deve ser adicionada como última seção do body, separada por uma linha em branco.
 
@@ -43,10 +47,17 @@ gh api graphql -f query="mutation { addSubIssue(input: { issueId: \"<NODE_ID_ISS
 ```
 
 Substitua:
-- `<NODE_ID_ISSUE_PAI>` pelo ID GraphQL da issue pai (Story)
-- `<NODE_ID_ISSUE_FILHA>` pelo ID GraphQL da issue filha (Tech)
+- `<NODE_ID_ISSUE_PAI>` pelo ID GraphQL da issue pai (Epic ou Story)
+- `<NODE_ID_ISSUE_FILHA>` pelo ID GraphQL da issue filha (Story ou Tech)
 
-### Exemplo
+### Exemplos
+
+**Story vinculada a uma Epic:**
+```bash
+EPIC_ID=$(gh issue view 60 --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook --json id --jq .id)
+STORY_ID=$(gh issue view 62 --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook --json id --jq .id)
+gh api graphql -f query="mutation { addSubIssue(input: { issueId: \"$EPIC_ID\", subIssueId: \"$STORY_ID\" }) { issue { id title } subIssue { id title } } }"
+```
 
 **Tech vinculada a uma Story:**
 ```bash
@@ -57,7 +68,7 @@ gh api graphql -f query="mutation { addSubIssue(input: { issueId: \"$STORY_ID\",
 
 ## Regras
 
-1. **Sempre** adicione o texto de referência no body (`Parent Story:`).
+1. **Sempre** adicione o texto de referência no body (`Parent Epic:` ou `Parent Story:`).
 2. **Sempre** execute o vínculo via GraphQL `addSubIssue` para garantir a hierarquia nativa no GitHub.
 3. Execute os dois passos na ordem: primeiro o body, depois o vínculo GraphQL.
 4. Se o vínculo GraphQL falhar (feature não disponível), mantenha ao menos o texto no body como fallback.

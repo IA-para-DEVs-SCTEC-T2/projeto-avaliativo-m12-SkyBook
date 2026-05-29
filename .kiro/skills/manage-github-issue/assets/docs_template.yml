@@ -8,45 +8,22 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Descrição da demanda
-      description: Breve descrição do que deve ser implementado/atualizado/corrigido.
+      label: Descrição
+      description: Descreva brevemente as modificações que devem ser feitas.
       placeholder: |
-        Descreva aqui de forma objetiva o que esta issue de documentação propõe,
-        indicando quais documentos serão criados, atualizados ou corrigidos.
-    validations:
-      required: true
-
-  - type: textarea
-    id: objectives
-    attributes:
-      label: Objetivo
-      description: Lista de objetivos que devem ser realizados no decorrer da demanda.
-      placeholder: |
-        - Objetivo 1
-        - Objetivo 2
-        - Objetivo 3
-    validations:
-      required: true
-
-  - type: textarea
-    id: scope
-    attributes:
-      label: Escopo
-      description: Lista de pontos/trechos/arquivos que a demanda propõe modificar.
-      placeholder: |
-        - Arquivo de documentação afetado (ex: README.md)
-        - Seção ou tópico específico
-        - Diagramas ou artefatos relacionados
+        Documentar visão geral do projeto, arquitetura do MVP, contratos de API principais,
+        convenções de desenvolvimento (branching, PR, linting) e como a equipe usará IA
+        para acelerar backlog, docs e PRs.
     validations:
       required: true
 
   - type: checkboxes
-    id: expected-results
+    id: minimum-content
     attributes:
-      label: Resultado esperado
-      description: Checklist de resultados esperados ao final da demanda.
+      label: Conteúdo mínimo
+      description: Marque as alterações que devem ser feitas nesta issue de documentação.
       options:
-        - label: Descreva aqui o primeiro resultado esperado
-        - label: Descreva aqui o segundo resultado esperado
+        - label: Descreva aqui o primeiro item de documentação a ser produzido ou atualizado
+        - label: Descreva aqui o segundo item de documentação a ser produzido ou atualizado
     validations:
       required: true

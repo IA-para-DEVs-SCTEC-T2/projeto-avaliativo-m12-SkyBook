@@ -25,6 +25,21 @@ Aguarde a resposta antes de prosseguir.
 - Solicite o título, descrição e demais informações necessárias caso não tenham sido fornecidas.
 - O título deve ser claro, objetivo e em português.
 - O tipo (`--type`) é obrigatório. O valor é sempre `Feature`.
+- As labels são **obrigatórias** e devem ser definidas automaticamente com base no tipo da issue e no contexto (ver tabela abaixo). Não aguarde instrução do usuário.
+
+#### Labels obrigatórias por tipo de issue
+
+| Tipo  | Labels mínimas obrigatórias                        | Labels de área (aplicar quando pertinente) |
+|-------|----------------------------------------------------|--------------------------------------------|
+| Epic  | `epic`                                             | `backend`, `frontend`, `ai`                |
+| Story | `story`                                            | `backend`, `frontend`, `ai`                |
+| Tech  | `tech`                                             | `backend`, `frontend`, `ai`                |
+| Docs  | `docs`                                             | —                                          |
+
+- Sempre inclua também uma label de **prioridade**: `priority:high`, `priority:medium` ou `priority:low`.
+  - Inferir a prioridade pelo contexto da issue. Na dúvida, usar `priority:medium`.
+- Sempre inclua a label de **área técnica** (`backend`, `frontend`, `ai`) quando o escopo da issue envolver aquela área.
+- Consulte [issue-labels.md](issue-labels.md) para a lista completa e descrição de cada label.
 
 ### 2A.2 — Montar o corpo da issue
 
@@ -32,6 +47,7 @@ O corpo da issue deve seguir o template correspondente ao tipo de issue sendo cr
 
 | Tipo de issue | Template a utilizar       |
 |---------------|---------------------------|
+| Epic          | `epic_template.yml`       |
 | Story         | `user_story_template.yml` |
 | Tech          | `tech_template.yml`       |
 | Docs          | `docs_template.yml`       |
@@ -75,13 +91,14 @@ Apresente o comando que será executado e aguarde confirmação antes de prosseg
 gh issue create \
   --repo IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook \
   --title "[TIPO] Título da issue" \
-  --type Feature \
   --assignee "@me" \
+  --label "label1" --label "label2" \
   --body-file <arquivo-temporario>.md
 ```
 
 Regras do comando:
 - Não use `--json` nem `--jq` com `gh issue create`.
+- Inclua **todas as labels** definidas no passo 2A.1 usando `--label` para cada uma.
 - O comando deve retornar a URL da issue criada.
 - Para capturar o número da issue, salve a URL em uma variável e extraia o número final com `sed`.
 
@@ -150,5 +167,5 @@ gh issue edit <ISSUE_NUMBER> \
 - Sempre operar no repositório `IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook`.
 - Títulos sempre em português, claros e objetivos.
 - Assignee sempre `@me` (joaopuel) em toda criação e edição de issue.
-- Labels somente quando explicitamente informados.
+- **Labels**: sempre aplicar automaticamente ao criar uma issue — tipo obrigatório + área técnica quando pertinente + prioridade. Não aguardar instrução do usuário.
 - Proibido executar comandos sem solicitar permissão do usuário antes.

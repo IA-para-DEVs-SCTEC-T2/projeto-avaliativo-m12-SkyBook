@@ -6,14 +6,28 @@ type: Feature
 
 body:
   - type: textarea
-    id: description
+    id: user-story
     attributes:
-      label: Descrição da demanda
-      description: Breve descrição do que deve ser implementado/atualizado/corrigido.
+      label: User Story
+      description: Descreva no formato Como / Quero / Para.
       placeholder: |
-        Como <perfil de usuário>,
-        quero <funcionalidade>,
-        para <benefício ou objetivo>.
+        Como cliente,
+        quero buscar produtos,
+        para encontrar itens rapidamente.
+    validations:
+      required: true
+
+  - type: textarea
+    id: bdd
+    attributes:
+      label: Critérios de aceitação — BDD
+      description: Use Dado / Quando / Então.
+      placeholder: |
+        Cenário 1:
+
+        Dado que ...
+        Quando ...
+        Então ...
     validations:
       required: true
 
