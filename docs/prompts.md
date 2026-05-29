@@ -358,3 +358,16 @@ Adicione testes unitários para AirplaneSeatService e AirplaneSeatController. Us
 @ExtendWith(MockitoExtension.class)
 class <class-name>Test {
 ```
+
+---
+
+## Implementar reserva de poltronas com testes unitários (issue 15)
+
+* Data: 2026-05-29 18:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Busque a issue 15 Realização de reserva de poltrona e implemente suas funcionalidades e implemente testes unitários
+```
