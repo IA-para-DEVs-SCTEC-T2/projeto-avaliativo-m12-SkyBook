@@ -270,3 +270,91 @@ Apenas atualize com as informações que já existem no projeto agora e, para as
 ```
 Ajuste a skill manage-git-issue para sempre inserir as labels apropriadas ao criar uma nova issue.
 ```
+
+---
+
+## Implementar listagem de poltronas da aeronave (issue 14)
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Busque informações da issue 14 e implemente a funcionalidade proposta
+```
+
+---
+
+## Adicionar Javadoc, rota /listSeats e @ApiResponses no endpoint
+
+* Data: 2026-05-29 16:50
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.2. O endpoints deve ter a roda /listSeats3. Adicione também no endpoint a anotação que descreve o status 200 retornado pelo endpoint. Para isso, siga o seguinte exemplo:@ApiResponses({     @ApiResponse(responseCode = "200", description = "descrição do status") })
+```
+
+---
+
+## Criar doc de ciclos de prompting para feat listagem de poltronas
+
+* Data: 2026-05-29 17:10
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Cire o arquivo docs/feat-list-seats.md e adicione os dois últimos prompts como exemplo de um prompt Zero Shot (Ciclo 1) seguido de um prompt Few Shot (Ciclo 2) de refinamento, seguindo as definições de ciclos definidas no c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
+```
+
+---
+
+## Criar DataLoader para inserir 60 poltronas na inicialização
+
+* Data: 2026-05-29 17:30
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Instrução
+Crie uma classe em JAva com um método que deve ser executada assim que o projeto subir. O método deve ser resposável por inserir 60 poltronas diferentes assim que o projeto subir.
+Detalhes
+1. Assuma que o avião tem 6 poltronas por fileira.
+2. Todas as poltronas devem estar disponíveis.
+3. As duas primeiras fileiras devem ser da calsse executiva e ter o custo de 198,89.
+4. As duas fileiras seguintes da a classe executiva, devem ser da classe econômicas premium e ter o custo de 149,90
+5. Por último, será a classe econômica que terá o custo de 110,00 e serão todas as poltronas restantes.
+6. Mostre a sua linha de pensamento enquanto executa a implementação.
+```
+
+---
+
+## Ajustar cenários de uso e steering com definição da aeronave
+
+* Data: 2026-05-29 17:50
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Como não há funcionalidade para inserção de poltronas. No cenário 1 adicione "..." para representar mais poltronas e finalize com as últimas poltronas, como no exemplo abaixo:```json[{ "id": 1, "code": "1A", "price": 198.89, "available": true },{ "id": 2, "code": "1B", "price": 198.89, "available": false }...{ "id": 59, "code": "10E", "price": <valor>, "available": true },{ "id": 60, "code": "10F", "price": <valor>, "available": false }]```Adicione um aviso que somente um cenário deve ocorrer, pois no MVP é considerado apenas um avião com 60 assentos nesta formação.Adicione também no steering do produto essa definião da aeronave que está sendo considerada.Exclua o cenário 2 dessa funcionalidade.
+```
+
+---
+
+## Testes unitários com JUnit e Mockito para Service e Controller
+
+* Data: 2026-05-29 18:10
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Adicione testes unitários para AirplaneSeatService e AirplaneSeatController. Use Junit e Mockito. As classes de testes devem ser criadas da seguinte forma:
+@ExtendWith(MockitoExtension.class)
+class <class-name>Test {
+```
