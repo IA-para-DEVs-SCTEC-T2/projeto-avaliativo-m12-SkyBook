@@ -424,3 +424,29 @@ Crie o arquivo docs/feat-book-seat.md e adicione os 3 últimos prompts presentes
 ```
 Refatore a classe BookingService, usando princípios do SOLID e clean code.1. Por exemplo, seguindo o Princípio da Responsabilidade Única, separe a funcionalidade do método createBookings em métodos menores.2. Além disso, faça ajustes para que a busca e a atualização de poltronas seja realizada no AirplaneSeatService. A busca e criação de usuáros seja feita no UserService. Enquanto o BookingService apenas lida com o que diz respeito as reservas.3. Os repositórios airplaneSeatRepository, bookingRepository e userRepository somente devem ser acessados pelos serviços correspondentes.Faça ajustes nos testes unitários para que estejam de acordo com estas alterações.Divida as alterações em pequenos passos, demostrando a sua linha de pensamento, e, depois, aplique as alterações.
 ```
+
+---
+
+## Documentar refatoração SOLID BookingService em feat-book-seat.md
+
+* Data: 2026-05-29 20:15
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.mdAdicione no final do arquivo também o exemplo de refatoração aplicada com o último prompt, seguindo a requisição sobre isso do arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
+```
+
+---
+
+## Adicionar lições aprendidas dos ciclos em feat-book-seat.md
+
+* Data: 2026-05-29 20:30
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Adicione também a lição aprendida com com o refatoramento e as outros refinamentos no arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.md
+```
