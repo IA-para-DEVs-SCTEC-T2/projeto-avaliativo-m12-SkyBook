@@ -270,3 +270,42 @@ Apenas atualize com as informações que já existem no projeto agora e, para as
 ```
 Ajuste a skill manage-git-issue para sempre inserir as labels apropriadas ao criar uma nova issue.
 ```
+
+---
+
+## Implementar listagem de poltronas da aeronave (issue 14)
+
+* Data: 2026-05-29 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Busque informações da issue 14 e implemente a funcionalidade proposta
+```
+
+---
+
+## Adicionar Javadoc, rota /listSeats e @ApiResponses no endpoint
+
+* Data: 2026-05-29 16:50
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajustes:1. Adicione javadoc em todos os métodos publicos e nas classes criadas.2. O endpoints deve ter a roda /listSeats3. Adicione também no endpoint a anotação que descreve o status 200 retornado pelo endpoint. Para isso, siga o seguinte exemplo:@ApiResponses({     @ApiResponse(responseCode = "200", description = "descrição do status") })
+```
+
+---
+
+## Criar doc de ciclos de prompting para feat listagem de poltronas
+
+* Data: 2026-05-29 17:10
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Cire o arquivo docs/feat-list-seats.md e adicione os dois últimos prompts como exemplo de um prompt Zero Shot (Ciclo 1) seguido de um prompt Few Shot (Ciclo 2) de refinamento, seguindo as definições de ciclos definidas no c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md
+```
