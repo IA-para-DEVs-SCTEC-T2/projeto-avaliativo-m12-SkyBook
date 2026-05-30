@@ -5,7 +5,7 @@
 ```
 projeto-avaliativo-m12-SkyBook/
 ├── backend/    # API REST — Java/Spring Boot
-├── frontend/   # Interface web (a ser implementada)
+├── frontend/   # Interface web — React + Atomic Design
 └── docs/       # Documentação do projeto
 ```
 
