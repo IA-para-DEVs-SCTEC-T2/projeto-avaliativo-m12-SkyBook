@@ -1,3 +1,4 @@
+import React from 'react';
 import SeatCard from '../../molecules/SeatCard';
 
 const COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -47,13 +48,12 @@ function SeatMap({ seats, selectedIds, onToggle }) {
         <div style={{ width: '32px', flexShrink: 0 }} />
 
         {COLUMNS.map((col, i) => (
-          <>
+          <React.Fragment key={col}>
             {/* Corredor entre C e D — elemento irmão, não dentro do span da coluna */}
             {i === 3 && (
-              <div key="aisle-header" style={{ width: `${AISLE_WIDTH}px`, flexShrink: 0 }} />
+              <div style={{ width: `${AISLE_WIDTH}px`, flexShrink: 0 }} />
             )}
             <div
-              key={col}
               style={{
                 width: `${CELL_SIZE}px`,
                 flexShrink: 0,
@@ -65,7 +65,7 @@ function SeatMap({ seats, selectedIds, onToggle }) {
             >
               {col}
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
 
@@ -96,13 +96,10 @@ function SeatMap({ seats, selectedIds, onToggle }) {
               const seat = seatByCode[code];
 
               return (
-                <>
+                <React.Fragment key={col}>
                   {/* Corredor entre C e D — elemento irmão, não dentro do wrapper da célula */}
                   {colIdx === 3 && (
-                    <div
-                      key={`aisle-${rowNum}`}
-                      style={{ width: `${AISLE_WIDTH}px`, flexShrink: 0 }}
-                    />
+                    <div style={{ width: `${AISLE_WIDTH}px`, flexShrink: 0 }} />
                   )}
                   <div
                     key={col}
@@ -116,7 +113,7 @@ function SeatMap({ seats, selectedIds, onToggle }) {
                       />
                     ) : null}
                   </div>
-                </>
+                </React.Fragment>
               );
             })}
           </div>

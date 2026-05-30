@@ -752,3 +752,16 @@ Dividas as alterações em pequenos passos, mostrando sua linha de pensamento, e
 ```
 Crie um novo diretório frontend e descreva os 3 ciclos de desenvolvimento empregados com os últimos 3 prompts do arquivo de prompts em um novo arquivo feat-list-seats. Use o arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\development-cycles\backend\feat-book-seat.md como referência.
 ```
+
+---
+
+## Criar testes unitários para principais funcionalidades do frontend
+
+* Data: 2026-05-30 18:45
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Crie testes unitários para as principais funcionalidades criadas no frontend
+```
