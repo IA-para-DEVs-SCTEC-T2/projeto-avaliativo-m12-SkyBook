@@ -570,3 +570,122 @@ quanto no c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
 ```
 Busque a isseu 21 Configurar pipeline de CI/CD com GitHub Actions e implemente o CI/CD, conforme solicitado.
 ```
+
+---
+
+## Separar estrutura do projeto em diretórios backend e frontend
+
+* Data: 2026-05-30 16:12
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Vamos começar criar uma divisão clara entre o backend e o frontend.
+Detalhes
+1. Criar um diretório onde vamos consentrar os códigos e configuração relacionadas ao backend.
+2. Criar um diretório onde será carregado o código do frontend.
+3. Realizar separações nas documentações e steerings entre o backend e o que será o frontend. Os steering que devem ser modificados são o structure e o tech, realizar a mesma separação no README.
+Mostre seu processo de pensamento durante as alterações;
+```
+
+---
+
+## Documentar estrutura e tecnologias do frontend com Atomic Design
+
+* Data: 2026-05-30 16:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Documente a estrutura e tecnoligias que serão utilizadas no frontend
+Detalhes
+1. A arquitetura deve ser baseada nos princípios do Atomic Design
+2. A tecnologia utilizada será o React
+```
+
+---
+
+## Criar configuração inicial do projeto frontend com teste de execução
+
+* Data: 2026-05-30 16:50
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+```backend/src/test/java/com/ia/para/devs/skybook/SkybookApplicationTests.java
+package com.ia.para.devs.skybook;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SkybookApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+```
+Instrução
+Crie a configuração inicial do projeto de frontend.
+Detalhes
+1. Adicione as configurações inciais.
+2. Crie a classe Server e quaisquer outras classes necenssárias.
+3. Crie um testes unitário que deve verificar somente a execução do projeto, assim como o teste c:\git\projeto-avaliativo-m12-SkyBook\backend\src\test\java\com\ia\para\devs\skybook\SkybookApplicationTests.java
+```
+
+---
+
+## Criar tela inicial com placeholder "It works!"
+
+* Data: 2026-05-30 17:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Crie a tela inicial do projeto. Ela deve conter somente a inscrição "It works!" como placeholder por enquanto.
+Não acrescente mais nenhuma funcionalidade.
+```
+
+---
+
+## Atualizar CI com jobs de frontend e gate ci-passed
+
+* Data: 2026-05-30 17:15
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Atualize o pipeline de CI/CD para incluir os jobs do frontend e organize os jobs em etapas visuais.
+Detalhes
+1. Adicione os jobs frontend-build e frontend-test para o projeto React em frontend/, usando Node 20.
+2. Separe os jobs de backend e frontend com prefixos [Backend] e [Frontend] nos nomes.
+3. Adicione um job final que depende de backend-test e frontend-test, servindo como gate de aprovação do pipeline.
+4. Os jobs de build e test de cada módulo devem ser encadeados.
+```
+
+---
+
+## Reorganizar README com subtópicos de arquitetura backend e frontend
+
+* Data: 2026-05-30 17:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o README:
+1. Dentro do tópico ## Parte 2 — Especificações e Execução, crie um grande subtópico de arquitetura
+2. Este subtópico de arquitetura deve estar separados em outros dois tópicos Backend e frontend
+3. Cada subtópico de arquitetura deve conter sua Estrutura de Pastas, Descrição de camadas, Decisões Técnicas e Modelagem do Banco de Dados (Somente backend)
+4. Realize a separação dos conteúdos correspondetes e aplique divisores visuais evidentes
+```
