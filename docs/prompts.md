@@ -689,3 +689,95 @@ Ajuste o README:
 3. Cada subtópico de arquitetura deve conter sua Estrutura de Pastas, Descrição de camadas, Decisões Técnicas e Modelagem do Banco de Dados (Somente backend)
 4. Realize a separação dos conteúdos correspondetes e aplique divisores visuais evidentes
 ```
+
+---
+
+## Implementar tela de listagem de poltronas da aeronave (issue 25)
+
+* Data: 2026-05-30 17:45
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Busque a issue 25 Tela de listagem de poltronas da aeronave e implemente as funcionalidades
+```
+
+---
+
+## Configurar CORS no backend para liberar acesso do frontend
+
+* Data: 2026-05-30 18:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+O frontend está recebendo erro de CORS ao tentar acessar a API:
+"Access to XMLHttpRequest at 'http://localhost:8080/skybook/seats/listSeats' from origin
+'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin'
+header is present on the requested resource."
+
+Configure o CORS no backend Spring Boot para permitir requisições vindas do frontend
+em http://localhost:5173.
+```
+
+---
+
+## Ajustar rota, redirect e alinhamento do grid de poltronas
+
+* Data: 2026-05-30 18:10
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Ajuste o teal de listagem de poltronas:
+1. A tela de listagem deve ter a rota /skybook
+2. Ao acessar a aplicação pela rota http://localhost:5173/, o usuário deve ser redirecionado automaticamente para rota  /skybook já que consiste da homepage
+3. O grid está desalinhado, a coluna D está sendo preenchida com componentes span do tamanho 64x85 em vez do tamanho 64x64 como as outras. Ajuse para que todas tenham o mesmo tamanho e tudo fique alinhado.
+4. O componente span da letra D também apresenta um tamanho desproporcional. Com tamanho 88x21 em vez de 64x21 como os das demais letras. Ajute para que fique tudo alinhado.
+Dividas as alterações em pequenos passos, mostrando sua linha de pensamento, e aplique as alterações.
+```
+
+---
+
+## Criar feat-list-seats frontend com ciclos de desenvolvimento
+
+* Data: 2026-05-30 18:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Crie um novo diretório frontend e descreva os 3 ciclos de desenvolvimento empregados com os últimos 3 prompts do arquivo de prompts em um novo arquivo feat-list-seats. Use o arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\development-cycles\backend\feat-book-seat.md como referência.
+```
+
+---
+
+## Criar testes unitários para principais funcionalidades do frontend
+
+* Data: 2026-05-30 18:45
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Crie testes unitários para as principais funcionalidades criadas no frontend
+```
+
+---
+
+## Ajustar README com cenários de uso separados por backend e frontend
+
+* Data: 2026-05-30 19:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o README do projeto.
+1. Dividas os Cenários de Uso em dois subtópicos: backend e frontend. Adicioone divisores evidente entre os subtópicos
+2. Acione os Endpoints Disponíveis dentro do subtópico do backend e os Cenários do backend em seguida
+3. No Cenário de uso do front adicione o acesso a rota http://localhost:5173/ com visualização das poltronas e interação com as mesmas
+```

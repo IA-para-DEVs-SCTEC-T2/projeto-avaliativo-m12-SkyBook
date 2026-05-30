@@ -1,13 +1,22 @@
-import HomePage from './pages/HomePage';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import SeatMapPage from './pages/SeatMapPage';
 
 /**
  * App — componente raiz da aplicação SkyBook.
  *
- * Ponto de entrada da árvore de componentes React.
- * Responsável por definir o layout global e o roteamento da aplicação.
+ * Define o roteamento da aplicação:
+ * - /         → redireciona para /skybook
+ * - /skybook  → tela de listagem e seleção de poltronas
  */
 function App() {
-  return <HomePage />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/skybook" replace />} />
+        <Route path="/skybook" element={<SeatMapPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

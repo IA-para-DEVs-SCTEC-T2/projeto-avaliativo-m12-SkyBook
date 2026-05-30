@@ -70,6 +70,7 @@
 | `react` | Biblioteca principal de UI |
 | `react-dom` | Renderização no DOM |
 | `axios` | Cliente HTTP para consumo da API REST |
+| `react-router-dom` | Roteamento client-side (SPA) |
 
 ### Dependências de Desenvolvimento
 
