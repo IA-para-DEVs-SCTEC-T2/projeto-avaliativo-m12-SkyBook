@@ -38,7 +38,7 @@
 
 ### Arquitetura
 
-#### Estrutura de Diretórios
+#### Estrutura de Diretórios Raiz
 
 ```
 projeto-avaliativo-m12-SkyBook/
@@ -47,7 +47,34 @@ projeto-avaliativo-m12-SkyBook/
 └── docs/       # Documentação do projeto
 ```
 
-#### Backend — Diagrama MVC
+> Padrão arquitetural e estrutura de pacotes detalhados em [`.kiro/steering/structure.md`](.kiro/steering/structure.md)
+
+---
+
+### 🔧 Backend
+
+#### Estrutura de Pacotes
+
+```
+backend/src/main/java/com/ia/para/devs/skybook
+├── controller      # Controllers REST
+├── service         # Lógica de negócio
+├── repository      # Interfaces Spring Data JPA
+├── model           # Entidades JPA
+└── dto             # DTOs de request e response
+```
+
+#### Descrição das Camadas
+
+| Camada | Responsabilidade |
+|---|---|
+| Controller | Recebe requisições HTTP, delega para o Service, retorna respostas |
+| Service | Contém a lógica de negócio |
+| Repository | Acesso e persistência de dados via Spring Data JPA |
+| Model/Entity | Entidades JPA mapeadas para o banco H2 |
+| DTO | Objetos de transferência de dados (entrada e saída dos endpoints) |
+
+#### Diagrama MVC
 
 ```mermaid
 graph TD
@@ -63,18 +90,29 @@ graph TD
     Repository --> DB
 ```
 
-#### Backend — Estrutura de Pacotes
+#### Decisões Técnicas
 
-```
-backend/src/main/java/com/ia/para/devs/skybook
-├── controller      # Controllers REST
-├── service         # Lógica de negócio
-├── repository      # Interfaces Spring Data JPA
-├── model           # Entidades JPA
-└── dto             # DTOs de request e response
-```
+- Arquitetura MVC para separação clara de responsabilidades
+- DTOs para desacoplar a camada de apresentação das entidades JPA — endpoints nunca expõem entidades diretamente
+- H2 em memória para simplificar o ambiente de desenvolvimento, com schema gerenciado automaticamente pelo Hibernate
 
-#### Frontend — Atomic Design
+#### Modelagem do Banco de Dados
+
+O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente pelo Hibernate via Spring Data JPA.
+
+| Entidade | Tabela | Descrição |
+|---|---|---|
+| `UserEntity` | `app_user` | Dados do usuário que realiza reservas |
+| `AirplaneSeatEntity` | `airplane_seat` | Dados de cada poltrona (código, preço, disponibilidade) |
+| `BookingEntity` | `booking` | Reserva — vínculo entre um usuário e um assento |
+
+> Diagrama ER completo e descrição das entidades em [`docs/data-model.md`](docs/data-model.md)
+
+---
+
+### 🖥️ Frontend
+
+#### Estrutura de Diretórios
 
 ```
 frontend/src/
@@ -87,35 +125,49 @@ frontend/src/
 └── hooks/          # Custom hooks React
 ```
 
+#### Descrição das Camadas (Atomic Design)
+
+| Nível | Responsabilidade |
+|---|---|
+| Atoms | Elementos básicos e indivisíveis da UI |
+| Molecules | Combinação de átomos com função específica |
+| Organisms | Seções completas compostas de moléculas |
+| Templates | Layout de página sem dados reais |
+| Pages | Templates com dados reais conectados à API |
+| Services | Comunicação com a API REST do backend |
+| Hooks | Lógica reutilizável com estado React |
+
+#### Diagrama Atomic Design
+
+```mermaid
+graph TD
+    User([Usuário])
+    API([API REST — Backend])
+    Services[Services]
+    Pages[Pages]
+    Templates[Templates]
+    Organisms[Organisms]
+    Molecules[Molecules]
+    Atoms[Atoms]
+
+    User -->|interação| Pages
+    Pages -->|requisição HTTP| Services
+    Services -->|resposta JSON| API
+    API -->|dados| Services
+    Services -->|dados| Pages
+    Pages -->|props| Templates
+    Templates -->|props| Organisms
+    Organisms -->|props| Molecules
+    Molecules -->|props| Atoms
+```
+
 #### Decisões Técnicas
 
-- Arquitetura MVC para separação clara de responsabilidades
-- DTOs para desacoplar a camada de apresentação das entidades JPA — endpoints nunca expõem entidades diretamente
-- H2 em memória para simplificar o ambiente de desenvolvimento, com schema gerenciado automaticamente pelo Hibernate
+- Atomic Design para organização escalável e reutilizável dos componentes
+- Camada `services/` centraliza toda comunicação com a API — componentes nunca fazem chamadas HTTP diretamente
+- Variável de ambiente `VITE_API_BASE_URL` desacopla o endereço da API do código-fonte
 
-> Padrão arquitetural e estrutura de pacotes detalhados em [`.kiro/steering/structure.md`](.kiro/steering/structure.md)
-
-### Descrição das Camadas
-
-| Camada | Responsabilidade |
-|---|---|
-| Controller | Recebe requisições HTTP, delega para o Service, retorna respostas |
-| Service | Contém a lógica de negócio |
-| Repository | Acesso e persistência de dados via Spring Data JPA |
-| Model/Entity | Entidades JPA mapeadas para o banco H2 |
-| DTO | Objetos de transferência de dados (entrada e saída dos endpoints) |
-
-### Modelagem do Banco de Dados
-
-O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente pelo Hibernate via Spring Data JPA.
-
-| Entidade | Tabela | Descrição |
-|---|---|---|
-| `UserEntity` | `app_user` | Dados do usuário que realiza reservas |
-| `AirplaneSeatEntity` | `airplane_seat` | Dados de cada poltrona (código, preço, disponibilidade) |
-| `BookingEntity` | `booking` | Reserva — vínculo entre um usuário e um assento |
-
-> Diagrama ER completo e descrição das entidades em [`docs/data-model.md`](docs/data-model.md)
+---
 
 ### Tecnologias
 
@@ -148,19 +200,40 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 
 - Java 17+
 - Maven 3.8+
+- Node 20+
+- npm 10+
+
+#### Clonando o Repositório
+
+```bash
+git clone https://github.com/IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook.git
+cd projeto-avaliativo-m12-SkyBook
+```
 
 #### Backend
 
 ```bash
-# Clone o repositório
-git clone https://github.com/IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook.git
-cd projeto-avaliativo-m12-SkyBook/backend
+cd backend
 
 # Execute com Maven
 ./mvnw spring-boot:run
 ```
 
 A aplicação estará disponível em: `http://localhost:8080`
+
+#### Frontend
+
+```bash
+cd frontend
+
+# Instale as dependências (apenas na primeira vez)
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+A interface estará disponível em: `http://localhost:5173`
 
 ### Endpoints
 
@@ -257,15 +330,25 @@ A aplicação estará disponível em: `http://localhost:8080`
 
 ### Como Executar os Testes
 
+#### Backend
+
 ```bash
 cd backend
 ./mvnw test
 ```
 
-| Tipo | Cenários cobertos |
-|---|---|
-| Unitários | [ex: Service layer — regras de negócio] |
-| Integração / API | [ex: Endpoints REST — status codes e payloads] |
+#### Frontend
+
+```bash
+cd frontend
+npm test
+```
+
+| Módulo | Tipo | Cenários cobertos |
+|---|---|---|
+| Backend | Unitários | Service layer — regras de negócio |
+| Backend | Integração / API | Endpoints REST — status codes e payloads |
+| Frontend | Unitários | Renderização dos componentes React |
 
 ### Pipeline CI/CD
 
@@ -275,12 +358,15 @@ Configurado via GitHub Actions em [`.github/workflows/ci.yml`](.github/workflows
 
 **Jobs:**
 
-| Job | Comando | Descrição |
-|---|---|---|
-| `build` | `./mvnw package -DskipTests` | Compila o projeto e gera o `.jar` |
-| `test` | `./mvnw test` | Executa os testes automatizados (depende do `build`) |
+| Job | Módulo | Comando | Descrição |
+|---|---|---|---|
+| `backend-build` | Backend | `./mvnw package -DskipTests` | Compila o projeto e gera o `.jar` |
+| `backend-test` | Backend | `./mvnw test` | Executa os testes (depende do `backend-build`) |
+| `frontend-build` | Frontend | `npm run build` | Compila o projeto React |
+| `frontend-test` | Frontend | `npm test` | Executa os testes (depende do `frontend-build`) |
+| `ci-passed` | — | — | Gate final — depende de `backend-test` e `frontend-test` |
 
-Os relatórios de teste (Surefire) são publicados como artefato na aba **Actions** do GitHub, retidos por 7 dias.
+Os relatórios de teste do backend (Surefire) são publicados como artefato na aba **Actions** do GitHub, retidos por 7 dias.
 
 ---
 

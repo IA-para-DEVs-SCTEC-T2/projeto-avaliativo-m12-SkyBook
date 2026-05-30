@@ -672,3 +672,20 @@ Detalhes
 3. Adicione um job final que depende de backend-test e frontend-test, servindo como gate de aprovação do pipeline.
 4. Os jobs de build e test de cada módulo devem ser encadeados.
 ```
+
+---
+
+## Reorganizar README com subtópicos de arquitetura backend e frontend
+
+* Data: 2026-05-30 17:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o README:
+1. Dentro do tópico ## Parte 2 — Especificações e Execução, crie um grande subtópico de arquitetura
+2. Este subtópico de arquitetura deve estar separados em outros dois tópicos Backend e frontend
+3. Cada subtópico de arquitetura deve conter sua Estrutura de Pastas, Descrição de camadas, Decisões Técnicas e Modelagem do Banco de Dados (Somente backend)
+4. Realize a separação dos conteúdos correspondetes e aplique divisores visuais evidentes
+```
