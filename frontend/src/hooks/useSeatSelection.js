@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchSeats } from '../services/seatsService';
 
 /**
@@ -10,7 +10,9 @@ import { fetchSeats } from '../services/seatsService';
  *   total: number,
  *   loading: boolean,
  *   error: string|null,
- *   toggleSeat: (seat: object) => void
+ *   toggleSeat: (seat: object) => void,
+ *   clearSelection: () => void,
+ *   refetch: () => void
  * }}
  */
 export function useSeatSelection() {
@@ -20,12 +22,18 @@ export function useSeatSelection() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const loadSeats = useCallback(() => {
+    setLoading(true);
+    setError(null);
     fetchSeats()
       .then(setSeats)
       .catch(() => setError('Não foi possível carregar as poltronas. Tente novamente mais tarde.'))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    loadSeats();
+  }, [loadSeats]);
 
   /**
    * Seleciona ou deseleciona uma poltrona disponível.
@@ -48,5 +56,16 @@ export function useSeatSelection() {
     });
   }
 
-  return { seats, selectedIds, total, loading, error, toggleSeat };
+  /** Limpa toda a seleção e zera o total. */
+  function clearSelection() {
+    setSelectedIds(new Set());
+    setTotal(0);
+  }
+
+  /** Recarrega a lista de poltronas do backend. */
+  function refetch() {
+    loadSeats();
+  }
+
+  return { seats, selectedIds, total, loading, error, toggleSeat, clearSelection, refetch };
 }
