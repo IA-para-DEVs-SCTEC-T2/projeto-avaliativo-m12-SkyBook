@@ -606,3 +606,51 @@ Detalhes
 1. A arquitetura deve ser baseada nos princípios do Atomic Design
 2. A tecnologia utilizada será o React
 ```
+
+---
+
+## Criar configuração inicial do projeto frontend com teste de execução
+
+* Data: 2026-05-30 16:50
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+```backend/src/test/java/com/ia/para/devs/skybook/SkybookApplicationTests.java
+package com.ia.para.devs.skybook;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SkybookApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+```
+Instrução
+Crie a configuração inicial do projeto de frontend.
+Detalhes
+1. Adicione as configurações inciais.
+2. Crie a classe Server e quaisquer outras classes necenssárias.
+3. Crie um testes unitário que deve verificar somente a execução do projeto, assim como o teste c:\git\projeto-avaliativo-m12-SkyBook\backend\src\test\java\com\ia\para\devs\skybook\SkybookApplicationTests.java
+```
+
+---
+
+## Criar tela inicial com placeholder "It works!"
+
+* Data: 2026-05-30 17:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Crie a tela inicial do projeto. Ela deve conter somente a inscrição "It works!" como placeholder por enquanto.
+Não acrescente mais nenhuma funcionalidade.
+```
