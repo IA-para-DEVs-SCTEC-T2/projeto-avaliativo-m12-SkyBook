@@ -765,3 +765,19 @@ Crie um novo diretório frontend e descreva os 3 ciclos de desenvolvimento empre
 ```
 Crie testes unitários para as principais funcionalidades criadas no frontend
 ```
+
+---
+
+## Ajustar README com cenários de uso separados por backend e frontend
+
+* Data: 2026-05-30 19:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o README do projeto.
+1. Dividas os Cenários de Uso em dois subtópicos: backend e frontend. Adicioone divisores evidente entre os subtópicos
+2. Acione os Endpoints Disponíveis dentro do subtópico do backend e os Cenários do backend em seguida
+3. No Cenário de uso do front adicione o acesso a rota http://localhost:5173/ com visualização das poltronas e interação com as mesmas
+```

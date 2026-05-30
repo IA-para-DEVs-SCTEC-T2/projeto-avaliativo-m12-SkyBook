@@ -235,7 +235,13 @@ npm run dev
 
 A interface estará disponível em: `http://localhost:5173`
 
-### Endpoints
+### Cenários de Uso
+
+---
+
+#### 🔧 Backend
+
+##### Endpoints Disponíveis
 
 | Recurso | Método | URL |
 |---|---|---|
@@ -245,9 +251,7 @@ A interface estará disponível em: `http://localhost:5173`
 | Swagger UI | — | `http://localhost:8080/skybook/swagger-ui.html` |
 | H2 Console | — | `http://localhost:8080/skybook/h2-console` |
 
-### Cenários de Uso
-
-#### Cenário 1 — Listagem de poltronas disponíveis e indisponíveis
+##### Cenário 1 — Listagem de poltronas disponíveis e indisponíveis
 
 **Entrada:** `GET /skybook/seats/listSeats`
 
@@ -262,7 +266,7 @@ A interface estará disponível em: `http://localhost:5173`
 ]
 ```
 
-#### Cenário 2 — Reserva de poltronas
+##### Cenário 2 — Reserva de poltronas
 
 **Entrada:** `POST /skybook/bookings/bookSeat`
 
@@ -298,7 +302,7 @@ A interface estará disponível em: `http://localhost:5173`
 - `404 Not Found` — código de poltrona não existe
 - `409 Conflict` — poltrona já está reservada
 
-#### Cenário 3 — Resumo consolidado das reservas
+##### Cenário 3 — Resumo consolidado das reservas
 
 **Entrada:** `GET /skybook/bookings/summary?email=joao@email.com`
 
@@ -327,6 +331,38 @@ A interface estará disponível em: `http://localhost:5173`
 
 **Erros possíveis:**
 - `404 Not Found` — e-mail não encontrado no sistema
+
+---
+
+#### 🖥️ Frontend
+
+##### Cenário 1 — Visualização do grid de poltronas
+
+**Acesso:** `http://localhost:5173/` → redireciona automaticamente para `http://localhost:5173/skybook`
+
+Ao acessar a aplicação, o passageiro visualiza um grid com as 60 poltronas da aeronave organizadas em 10 fileiras × 6 colunas (A–F):
+
+- ![Verde](https://img.shields.io/badge/Verde-22c55e?style=flat-square) — poltrona disponível para reserva
+- ![Vermelho](https://img.shields.io/badge/Vermelho-ef4444?style=flat-square) — poltrona já reservada (indisponível)
+- ![Azul](https://img.shields.io/badge/Azul-3b82f6?style=flat-square) — poltrona selecionada pelo passageiro na sessão atual
+
+O painel lateral exibe o total acumulado iniciando em **R$ 0,00**.
+
+> ⚠️ Se o backend estiver indisponível ao carregar a página, o sistema exibe uma mensagem de erro amigável no lugar do grid.
+
+##### Cenário 2 — Seleção e deseleção de poltronas
+
+O passageiro clica em uma poltrona ![Verde](https://img.shields.io/badge/Verde-22c55e?style=flat-square) (disponível):
+
+- A poltrona muda para ![Azul](https://img.shields.io/badge/Azul-3b82f6?style=flat-square) (selecionada)
+- O valor unitário da poltrona é somado ao total exibido no painel lateral
+
+O passageiro clica novamente na mesma poltrona ![Azul](https://img.shields.io/badge/Azul-3b82f6?style=flat-square):
+
+- A poltrona volta para ![Verde](https://img.shields.io/badge/Verde-22c55e?style=flat-square) (disponível)
+- O valor é subtraído do total
+
+Clicar em uma poltrona ![Vermelho](https://img.shields.io/badge/Vermelho-ef4444?style=flat-square) (indisponível) não produz nenhum efeito.
 
 ### Como Executar os Testes
 
