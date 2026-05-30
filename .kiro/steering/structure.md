@@ -61,13 +61,41 @@ backend/src/main/java/com/ia/para/devs/skybook
 
 ## Frontend
 
-### Status
+### Padrão Arquitetural
 
-Estrutura a ser definida. O diretório `frontend/` está reservado para a implementação da interface web.
+O frontend segue os princípios do **Atomic Design**, que organiza os componentes em níveis de complexidade crescente:
 
-### Diretrizes (a definir)
+| Nível | Descrição | Exemplos |
+|---|---|---|
+| **Atoms** | Elementos básicos e indivisíveis da UI | Botão, Input, Label, Badge de status |
+| **Molecules** | Combinação de átomos com função específica | Card de poltrona, Campo de formulário com label |
+| **Organisms** | Seções completas compostas de moléculas | Mapa de assentos, Formulário de reserva, Resumo da compra |
+| **Templates** | Layout de página sem dados reais | Estrutura da tela de seleção de assentos |
+| **Pages** | Templates com dados reais conectados à API | Página de listagem, Página de confirmação |
 
-- Framework/biblioteca a ser escolhido (React, Vue, Angular ou HTML/CSS/JS puro)
-- Organização de pastas: `components/`, `pages/`, `services/`, `assets/`
-- Comunicação com o backend via cliente HTTP (fetch ou axios)
-- Variáveis de ambiente para URL base da API
+### Estrutura de Diretórios
+
+```
+frontend/
+├── public/                 # Arquivos estáticos públicos
+├── src/
+│   ├── atoms/              # Componentes atômicos (botões, inputs, badges)
+│   ├── molecules/          # Componentes moleculares (cards, campos compostos)
+│   ├── organisms/          # Seções completas (mapa de assentos, formulários)
+│   ├── templates/          # Layouts de página sem dados
+│   ├── pages/              # Páginas com dados reais
+│   ├── services/           # Comunicação com a API REST do backend
+│   ├── hooks/              # Custom hooks React
+│   ├── assets/             # Imagens, ícones e fontes
+│   └── main.jsx            # Ponto de entrada da aplicação
+├── .env                    # Variáveis de ambiente (URL base da API)
+├── package.json
+└── README.md
+```
+
+### Convenções
+
+- Cada componente em seu próprio diretório com arquivo `index.jsx`
+- Comunicação com o backend exclusivamente via camada `services/`
+- Variável de ambiente `VITE_API_BASE_URL` para URL base da API
+- Componentes nomeados em PascalCase; arquivos em kebab-case

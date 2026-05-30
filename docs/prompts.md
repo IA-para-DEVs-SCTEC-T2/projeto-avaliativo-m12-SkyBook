@@ -589,3 +589,20 @@ Detalhes
 3. Realizar separações nas documentações e steerings entre o backend e o que será o frontend. Os steering que devem ser modificados são o structure e o tech, realizar a mesma separação no README.
 Mostre seu processo de pensamento durante as alterações;
 ```
+
+---
+
+## Documentar estrutura e tecnologias do frontend com Atomic Design
+
+* Data: 2026-05-30 16:30
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Documente a estrutura e tecnoligias que serão utilizadas no frontend
+Detalhes
+1. A arquitetura deve ser baseada nos princípios do Atomic Design
+2. A tecnologia utilizada será o React
+```

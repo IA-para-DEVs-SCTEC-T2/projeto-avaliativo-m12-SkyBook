@@ -53,13 +53,39 @@
 
 ## Frontend
 
-### Status
+### Linguagem e Plataforma
 
-A ser definido. O diretório `frontend/` está reservado para a implementação da interface web.
+- **JavaScript** (JSX)
+- **npm** como gerenciador de pacotes
+- Código localizado em `frontend/`
 
-### Diretrizes (a definir)
+### Framework Principal
 
-- Framework/biblioteca: React, Vue, Angular ou HTML/CSS/JS puro
-- Gerenciador de pacotes: npm ou yarn
-- Cliente HTTP: fetch nativo ou axios
-- Variáveis de ambiente para URL base da API do backend
+- **React** — biblioteca para construção de interfaces
+
+### Dependências de Produção
+
+| Biblioteca | Finalidade |
+|---|---|
+| `react` | Biblioteca principal de UI |
+| `react-dom` | Renderização no DOM |
+| `axios` | Cliente HTTP para consumo da API REST |
+
+### Dependências de Desenvolvimento
+
+| Biblioteca | Finalidade |
+|---|---|
+| `vite` | Bundler e servidor de desenvolvimento |
+| `@vitejs/plugin-react` | Suporte a JSX/React no Vite |
+
+### Variáveis de Ambiente
+
+| Variável | Descrição |
+|---|---|
+| `VITE_API_BASE_URL` | URL base da API REST do backend |
+
+### Convenções de Build
+
+- Servidor de desenvolvimento: `cd frontend && npm run dev`
+- Build de produção: `cd frontend && npm run build`
+- Porta padrão de desenvolvimento: `5173`

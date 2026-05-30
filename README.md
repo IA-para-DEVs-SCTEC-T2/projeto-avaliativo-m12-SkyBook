@@ -43,7 +43,7 @@
 ```
 projeto-avaliativo-m12-SkyBook/
 ├── backend/    # API REST — Java/Spring Boot
-├── frontend/   # Interface web (a ser implementada)
+├── frontend/   # Interface web — React + Atomic Design
 └── docs/       # Documentação do projeto
 ```
 
@@ -72,6 +72,19 @@ backend/src/main/java/com/ia/para/devs/skybook
 ├── repository      # Interfaces Spring Data JPA
 ├── model           # Entidades JPA
 └── dto             # DTOs de request e response
+```
+
+#### Frontend — Atomic Design
+
+```
+frontend/src/
+├── atoms/          # Elementos básicos: botão, input, badge
+├── molecules/      # Combinações: card de poltrona, campo com label
+├── organisms/      # Seções: mapa de assentos, formulário de reserva
+├── templates/      # Layouts de página sem dados
+├── pages/          # Páginas com dados reais conectados à API
+├── services/       # Comunicação com a API REST
+└── hooks/          # Custom hooks React
 ```
 
 #### Decisões Técnicas
@@ -122,7 +135,10 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
-| A definir | — | Interface web |
+| React | — | Biblioteca de UI |
+| Vite | — | Bundler e servidor de desenvolvimento |
+| Axios | — | Cliente HTTP para consumo da API |
+| JavaScript (JSX) | — | Linguagem principal |
 
 > Stack completa e configurações de build detalhadas em [`.kiro/steering/tech.md`](.kiro/steering/tech.md)
 
