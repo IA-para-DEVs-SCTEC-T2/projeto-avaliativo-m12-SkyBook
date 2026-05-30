@@ -364,6 +364,35 @@ O passageiro clica novamente na mesma poltrona ![Azul](https://img.shields.io/ba
 
 Clicar em uma poltrona ![Vermelho](https://img.shields.io/badge/Vermelho-ef4444?style=flat-square) (indisponível) não produz nenhum efeito.
 
+##### Cenário 3 — Reserva de poltronas (fluxo de dois modais)
+
+Com ao menos uma poltrona selecionada, o botão **"Realizar Reserva"** no painel lateral é habilitado.
+
+**Passo 1 — Modal de resumo ("Confirmar Reserva?"):**
+
+O passageiro clica em "Realizar Reserva". Um modal exibe:
+- Lista das poltronas selecionadas com seus valores individuais
+- Valor total acumulado
+- Botões: **"Continuar"**, **"Cancelar"** e **"✕"**
+
+**Passo 2 — Modal de dados do passageiro ("Confirmar Reserva?"):**
+
+O passageiro clica em "Continuar". Um segundo modal exibe:
+- Campo **Nome completo**
+- Campo **E-mail**
+- Botões: **"Confirmar Reserva"**, **"Cancelar"** e **"✕"**
+
+O botão "Confirmar Reserva" fica habilitado somente após o preenchimento de ambos os campos.
+
+**Confirmação:**
+
+Ao clicar em "Confirmar Reserva", o sistema envia `POST /bookings/bookSeat`. Em caso de sucesso:
+- Os modais são fechados
+- A seleção é limpa
+- O mapa de poltronas é recarregado automaticamente com as poltronas reservadas marcadas como indisponíveis
+
+Em caso de erro na API, uma mensagem amigável é exibida no modal sem perder a seleção atual.
+
 ### Como Executar os Testes
 
 #### Backend
