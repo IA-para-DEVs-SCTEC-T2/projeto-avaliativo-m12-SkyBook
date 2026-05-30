@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import SeatMapPage from './index';
@@ -92,5 +92,28 @@ describe('SeatMapPage', () => {
     await waitFor(() => {
       expect(screen.getByText('Nenhuma poltrona selecionada')).toBeInTheDocument();
     });
+  });
+
+  it('exibe o botão "Consultar Reservas"', async () => {
+    seatsService.fetchSeats.mockResolvedValue(generateSeats());
+    renderPage();
+    await waitFor(() => {
+      expect(
+        screen.getByRole('button', { name: /Consultar Reservas/i })
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('abre o modal de consulta ao clicar em "Consultar Reservas"', async () => {
+    seatsService.fetchSeats.mockResolvedValue(generateSeats());
+    renderPage();
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /Consultar Reservas/i })).toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: /Consultar Reservas/i }));
+
+    expect(screen.getByPlaceholderText('Digite seu e-mail')).toBeInTheDocument();
+    expect(screen.getAllByText('Consultar Reservas').length).toBeGreaterThanOrEqual(2);
   });
 });

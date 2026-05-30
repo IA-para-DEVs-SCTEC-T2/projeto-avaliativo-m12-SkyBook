@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSeatSelection } from '../../hooks/useSeatSelection';
 import { useBooking } from '../../hooks/useBooking';
 import SeatMapLayout from '../../templates/SeatMapLayout';
@@ -5,6 +6,7 @@ import SeatMap from '../../organisms/SeatMap';
 import TotalPanel from '../../organisms/TotalPanel';
 import ConfirmBookingModal from '../../organisms/ConfirmBookingModal';
 import PassengerFormModal from '../../organisms/PassengerFormModal';
+import BookingSummaryModal from '../../organisms/BookingSummaryModal';
 
 /**
  * SeatMapPage — página principal do mapa de poltronas da aeronave.
@@ -27,6 +29,8 @@ function SeatMapPage() {
 
   const { step, loading: bookingLoading, error: bookingError, openSummary, goToForm, cancel, confirm } =
     useBooking(handleBookingSuccess);
+
+  const [summaryModalOpen, setSummaryModalOpen] = useState(false);
 
   /** Poltronas selecionadas como objetos completos (para exibir no modal). */
   const selectedSeats = seats.filter((s) => selectedIds.has(s.id));
@@ -98,6 +102,7 @@ function SeatMapPage() {
             total={total}
             count={selectedIds.size}
             onBook={openSummary}
+            onConsult={() => setSummaryModalOpen(true)}
           />
         }
         map={<SeatMap seats={seats} selectedIds={selectedIds} onToggle={toggleSeat} />}
@@ -119,6 +124,12 @@ function SeatMapPage() {
         onConfirm={(name, email) => confirm(name, email, selectedCodes)}
         loading={bookingLoading}
         error={bookingError}
+      />
+
+      {/* Modal — Consultar Reservas */}
+      <BookingSummaryModal
+        open={summaryModalOpen}
+        onClose={() => setSummaryModalOpen(false)}
       />
     </>
   );
