@@ -133,6 +133,7 @@ A aplicação estará disponível em: `http://localhost:8080`
 |---|---|---|
 | Listar poltronas | GET | `http://localhost:8080/skybook/seats/listSeats` |
 | Reservar poltronas | POST | `http://localhost:8080/skybook/bookings/bookSeat` |
+| Resumo das reservas | GET | `http://localhost:8080/skybook/bookings/summary?email={email}` |
 | Swagger UI | — | `http://localhost:8080/skybook/swagger-ui.html` |
 | H2 Console | — | `http://localhost:8080/skybook/h2-console` |
 
@@ -188,6 +189,36 @@ A aplicação estará disponível em: `http://localhost:8080`
 **Erros possíveis:**
 - `404 Not Found` — código de poltrona não existe
 - `409 Conflict` — poltrona já está reservada
+
+#### Cenário 3 — Resumo consolidado das reservas
+
+**Entrada:** `GET /skybook/bookings/summary?email=joao@email.com`
+
+**Saída esperada (200 OK):**
+```json
+{
+  "passengerName": "João Silva",
+  "passengerEmail": "joao@email.com",
+  "totalAmount": 348.79,
+  "bookings": [
+    {
+      "bookingId": 1,
+      "seatCode": "1A",
+      "seatPrice": 198.89,
+      "bookedAt": "2026-05-29T20:00:00"
+    },
+    {
+      "bookingId": 2,
+      "seatCode": "3C",
+      "seatPrice": 149.90,
+      "bookedAt": "2026-05-29T20:00:00"
+    }
+  ]
+}
+```
+
+**Erros possíveis:**
+- `404 Not Found` — e-mail não encontrado no sistema
 
 ### Como Executar os Testes
 

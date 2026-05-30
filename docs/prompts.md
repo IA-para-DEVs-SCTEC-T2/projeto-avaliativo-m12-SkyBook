@@ -487,3 +487,73 @@ c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.mdAdicione no final do
 ```
 Adicione também a lição aprendida com com o refatoramento e as outros refinamentos no arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.md
 ```
+
+---
+
+## Implementar resumo consolidado da compra (issue 16)
+
+* Data: 2026-05-29 21:00
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Busque a issue 16 Resumo consolidado da compra e implemente a funcionalidade e os testes
+```
+
+---
+
+## Ajustar /summary para filtrar por email e novo DTO
+
+* Data: 2026-05-29 21:15
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Ajuste o endpoint /summary.
+Ele deve receber o email do usuário e retornar apenas as reservas feitas naquele e-mail.
+O resultado deve seguir este template:
+{
+  "passengerName": <name>,
+  "passengerEmail": <email>,
+  "totalAmount": <total>,
+  "bookings": [
+    {
+      "bookingId": <id>,
+      "seatCode": <code>,
+      "seatPrice": <individual-price>,
+      "bookedAt": <date-time>
+    }
+  ]
+}
+```
+
+---
+
+## Criar doc feat-summary com ciclos de prompting da feature
+
+* Data: 2026-05-29 21:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Cire o arquivo docs/feat-summary.md e adicione os doius últimos prompts do c:\git\projeto-avaliativo-m12-SkyBook\docs\prompts.md
+como prompts utilizados no ciclo 1 e 2, requisitos descritos no arquivo  c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md. Use o c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
+como exemplo.
+```
+
+---
+
+## Adicionar lições aprendidas em feat-summary e feat-list-seats
+
+* Data: 2026-05-29 21:45
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Adicione também as lições aprendidas tanto nesse c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-summary.md
+quanto no c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
+```

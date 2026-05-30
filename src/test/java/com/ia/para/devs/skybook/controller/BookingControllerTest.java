@@ -16,8 +16,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.ia.para.devs.skybook.dto.BookingItemDTO;
 import com.ia.para.devs.skybook.dto.BookingRequestDTO;
 import com.ia.para.devs.skybook.dto.BookingResponseDTO;
+import com.ia.para.devs.skybook.dto.BookingSummaryResponseDTO;
 import com.ia.para.devs.skybook.service.BookingService;
 
 /**
@@ -81,5 +83,49 @@ class BookingControllerTest {
         bookingController.createBookings(request);
 
         verify(bookingService).createBookings(request);
+    }
+
+    // -------------------------------------------------------------------------
+    // Cenários: GET /bookings/summary
+    // -------------------------------------------------------------------------
+
+    @Test
+    @DisplayName("getSummary → retorna 200 com lista de reservas e valor total")
+    void getSummary_shouldReturn200WithBookingsAndTotal() {
+        List<BookingItemDTO> items = List.of(
+                new BookingItemDTO(1L, "1A", new BigDecimal("198.89"), LocalDateTime.now()),
+                new BookingItemDTO(2L, "5A", new BigDecimal("110.00"), LocalDateTime.now())
+        );
+        BookingSummaryResponseDTO summary = new BookingSummaryResponseDTO(
+                "João", "joao@email.com", new BigDecimal("308.89"), items);
+        when(bookingService.getSummary("joao@email.com")).thenReturn(summary);
+
+        ResponseEntity<BookingSummaryResponseDTO> response = bookingController.getSummary("joao@email.com");
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().getPassengerName()).isEqualTo("João");
+        assertThat(response.getBody().getPassengerEmail()).isEqualTo("joao@email.com");
+        assertThat(response.getBody().getBookings()).hasSize(2);
+        assertThat(response.getBody().getTotalAmount()).isEqualByComparingTo("308.89");
+
+        verify(bookingService).getSummary("joao@email.com");
+    }
+
+    @Test
+    @DisplayName("getSummary → retorna 200 com lista vazia e total zero quando não há reservas")
+    void getSummary_shouldReturn200WithEmptyListAndZeroTotal() {
+        BookingSummaryResponseDTO summary = new BookingSummaryResponseDTO(
+                "João", "joao@email.com", BigDecimal.ZERO, List.of());
+        when(bookingService.getSummary("joao@email.com")).thenReturn(summary);
+
+        ResponseEntity<BookingSummaryResponseDTO> response = bookingController.getSummary("joao@email.com");
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().getBookings()).isEmpty();
+        assertThat(response.getBody().getTotalAmount()).isEqualByComparingTo(BigDecimal.ZERO);
+
+        verify(bookingService).getSummary("joao@email.com");
     }
 }

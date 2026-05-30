@@ -1,13 +1,18 @@
 package com.ia.para.devs.skybook.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.ia.para.devs.skybook.dto.BookingItemDTO;
 import com.ia.para.devs.skybook.dto.BookingRequestDTO;
 import com.ia.para.devs.skybook.dto.BookingResponseDTO;
+import com.ia.para.devs.skybook.dto.BookingSummaryResponseDTO;
 import com.ia.para.devs.skybook.model.AirplaneSeatEntity;
 import com.ia.para.devs.skybook.model.BookingEntity;
 import com.ia.para.devs.skybook.model.UserEntity;
@@ -53,6 +58,33 @@ public class BookingService {
     }
 
     /**
+     * Retorna o resumo consolidado das reservas do passageiro identificado pelo e-mail.
+     * <p>
+     * Lança 404 se o e-mail não corresponder a nenhum usuário cadastrado.
+     *
+     * @param email e-mail do passageiro
+     * @return {@link BookingSummaryResponseDTO} com nome, e-mail, lista de reservas e valor total
+     * @throws ResponseStatusException 404 se o usuário não for encontrado
+     */
+    public BookingSummaryResponseDTO getSummary(String email) {
+        UserEntity user = userService.findByEmail(email)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Usuário não encontrado: " + email));
+
+        List<BookingEntity> bookingEntities = bookingRepository.findByUserEmail(email);
+
+        List<BookingItemDTO> items = bookingEntities.stream()
+                .map(this::toBookingItemDTO)
+                .toList();
+
+        BigDecimal totalAmount = items.stream()
+                .map(BookingItemDTO::getSeatPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return new BookingSummaryResponseDTO(user.getName(), user.getEmail(), totalAmount, items);
+    }
+
+    /**
      * Reserva uma única poltrona: marca como indisponível, persiste a reserva e retorna o DTO.
      *
      * @param user     usuário que está realizando a reserva
@@ -83,7 +115,7 @@ public class BookingService {
     }
 
     /**
-     * Converte a entidade de reserva para o DTO de resposta.
+     * Converte a entidade de reserva para o DTO de resposta do endpoint bookSeat.
      *
      * @param booking reserva persistida
      * @param seat    poltrona reservada
@@ -96,6 +128,20 @@ public class BookingService {
                 seat.getCode(),
                 seat.getPrice(),
                 user.getName(),
+                booking.getBookedAt());
+    }
+
+    /**
+     * Converte uma entidade {@link BookingEntity} para {@link BookingItemDTO}.
+     *
+     * @param booking entidade de reserva
+     * @return {@link BookingItemDTO} com os dados do item de reserva
+     */
+    private BookingItemDTO toBookingItemDTO(BookingEntity booking) {
+        return new BookingItemDTO(
+                booking.getId(),
+                booking.getSeat().getCode(),
+                booking.getSeat().getPrice(),
                 booking.getBookedAt());
     }
 }

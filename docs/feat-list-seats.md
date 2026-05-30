@@ -95,3 +95,35 @@ O refinamento foi aplicado corretamente em todos os pontos. O build compilou com
 |-------|-----------|-----------------------------------------------|-------------------|
 | 1     | Zero Shot | Gerar a feature completa a partir da issue    | Funcional, com pontos de melhoria identificados |
 | 2     | Few Shot  | Refinar: Javadoc + rota + `@ApiResponses`     | Ajustes aplicados corretamente, build OK |
+
+---
+
+## Lições Aprendidas
+
+Esta seção documenta as lições extraídas de cada ciclo de geração e refinamento com IA ao longo do desenvolvimento da funcionalidade de listagem de poltronas.
+
+---
+
+### Ciclo 1 — Zero shot: a IA gera, mas não conhece as convenções do projeto
+
+O prompt inicial foi direto e sem exemplos. A IA buscou a issue no GitHub, interpretou os critérios e gerou uma implementação funcional completa. No entanto, algumas decisões não estavam alinhadas com as convenções do projeto:
+
+- O endpoint foi criado como `GET /seats` em vez de `GET /seats/listSeats`
+- Não havia Javadoc nos métodos e classes públicas
+- Não havia a anotação `@ApiResponses` descrevendo os status HTTP retornados
+
+**Lição:** Zero shot é eficiente para gerar uma base funcional rapidamente, mas a saída precisa ser revisada criticamente. A IA não tem acesso às convenções implícitas do projeto — rotas, nomenclaturas e padrões de documentação precisam ser explicitados nos ciclos seguintes.
+
+---
+
+### Ciclo 2 — Few shot: exemplos concretos eliminam ambiguidade
+
+Ao fornecer um exemplo real de `@ApiResponses` no prompt, a IA reproduziu exatamente o padrão esperado — sem inventar variações. O mesmo ocorreu com a rota: ao especificar `/listSeats`, a alteração foi aplicada sem desvios. O Javadoc foi adicionado em todos os pontos solicitados.
+
+**Lição:** Few shot é o padrão mais eficaz quando há um padrão de código específico a seguir. Fornecer um exemplo concreto elimina a ambiguidade e reduz a necessidade de correções posteriores. A IA usa o exemplo como âncora — quanto mais preciso o exemplo, mais precisa a saída.
+
+---
+
+### Lição geral: convenções implícitas precisam ser tornadas explícitas
+
+A IA gera código funcional com Zero shot, mas não conhece as convenções do projeto. Rotas descritivas, padrões de documentação e anotações específicas precisam ser comunicados explicitamente — seja via steering (para convenções permanentes) ou via Few shot (para padrões pontuais). A combinação dos dois é o que garante consistência entre as features geradas.

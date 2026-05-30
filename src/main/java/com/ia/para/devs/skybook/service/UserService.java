@@ -1,5 +1,7 @@
 package com.ia.para.devs.skybook.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.ia.para.devs.skybook.model.UserEntity;
@@ -25,6 +27,16 @@ public class UserService {
      */
     public UserEntity resolveOrCreate(String name, String email) {
         return userRepository.findByEmail(email).orElseGet(() -> createUser(name, email));
+    }
+
+    /**
+     * Busca um usuário pelo e-mail.
+     *
+     * @param email e-mail do usuário
+     * @return {@link Optional} contendo o usuário, se encontrado
+     */
+    public Optional<UserEntity> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     /**
