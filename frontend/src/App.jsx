@@ -1,4 +1,4 @@
-import HomePage from './pages/HomePage';
+import SeatMapPage from './pages/SeatMapPage';
 
 /**
  * App — componente raiz da aplicação SkyBook.
@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
  * Responsável por definir o layout global e o roteamento da aplicação.
  */
 function App() {
-  return <HomePage />;
+  return <SeatMapPage />;
 }
 
 export default App;

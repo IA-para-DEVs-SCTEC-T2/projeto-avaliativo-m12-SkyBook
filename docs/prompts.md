@@ -689,3 +689,16 @@ Ajuste o README:
 3. Cada subtópico de arquitetura deve conter sua Estrutura de Pastas, Descrição de camadas, Decisões Técnicas e Modelagem do Banco de Dados (Somente backend)
 4. Realize a separação dos conteúdos correspondetes e aplique divisores visuais evidentes
 ```
+
+---
+
+## Implementar tela de listagem de poltronas da aeronave (issue 25)
+
+* Data: 2026-05-30 17:45
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Busque a issue 25 Tela de listagem de poltronas da aeronave e implemente as funcionalidades
+```
