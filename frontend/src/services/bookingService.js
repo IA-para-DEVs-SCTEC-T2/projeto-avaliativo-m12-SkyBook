@@ -20,3 +20,14 @@ export async function createBooking(seatCodes, passengerName, passengerEmail) {
   });
   return response.data;
 }
+
+/**
+ * Busca o resumo consolidado das reservas de um passageiro pelo e-mail.
+ *
+ * @param {string} email - E-mail do passageiro.
+ * @returns {Promise<object>} Resumo com passengerName, passengerEmail, totalAmount e bookings[].
+ */
+export async function getBookingSummary(email) {
+  const response = await api.get('/bookings/summary', { params: { email } });
+  return response.data;
+}

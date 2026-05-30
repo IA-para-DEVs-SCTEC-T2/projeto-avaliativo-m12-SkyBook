@@ -10,8 +10,9 @@ import MoneyValue from '../../atoms/MoneyValue';
  * @param {number} props.total - Valor total acumulado das poltronas selecionadas.
  * @param {number} props.count - Quantidade de poltronas selecionadas.
  * @param {function} props.onBook - Callback ao clicar em "Realizar Reserva".
+ * @param {function} props.onConsult - Callback ao clicar em "Consultar Reservas".
  */
-function TotalPanel({ total, count, onBook }) {
+function TotalPanel({ total, count, onBook, onConsult }) {
   return (
     <aside
       style={{
@@ -77,6 +78,35 @@ function TotalPanel({ total, count, onBook }) {
         }}
       >
         Realizar Reserva
+      </button>
+
+      {/* Botão Consultar Reservas */}
+      <button
+        onClick={onConsult}
+        aria-label="Consultar reservas realizadas"
+        style={{
+          width: '100%',
+          padding: '10px 16px',
+          borderRadius: '10px',
+          border: '1px solid #475569',
+          backgroundColor: 'transparent',
+          color: '#94a3b8',
+          fontSize: '13px',
+          fontWeight: 600,
+          cursor: 'pointer',
+          transition: 'background-color 0.2s, color 0.2s',
+          letterSpacing: '0.3px',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = '#334155';
+          e.currentTarget.style.color = '#f1f5f9';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'transparent';
+          e.currentTarget.style.color = '#94a3b8';
+        }}
+      >
+        Consultar Reservas
       </button>
     </aside>
   );

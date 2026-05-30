@@ -807,3 +807,30 @@ Busque as informações da issue 26 e implemente as funcionalidades.Divida as im
 ```
 Crie um arquivo feat-book-set.md para descrever o ciclo de desenvolvimento da reserva da poltrona no frontend. Apenas um ciclo foi necessário com o último prompt enviado.
 ```
+
+---
+
+## Implementar tela de resumo consolidado da compra (issue 27)
+
+* Data: 2026-05-30 20:05
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Busque as informações da issue 27 e implemente as funcionalidades propostas. Também crie testes das principais funcionalidades do frontennd.
+Dividas as implementações em pequenos passos, descrevendo seu processo de raciocínio, e implemente as modificações.
+```
+
+---
+
+## Criar doc feat-summary frontend com ciclo de desenvolvimento
+
+* Data: 2026-05-30 20:10
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Conforme o arquivo anexado, crie o arquivo feat-summary para descrever o ciclio 1 para consulta das reservas. Apenas um ciclo foi necessário novamente
+```

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import TotalPanel from './index';
 
 describe('TotalPanel', () => {
@@ -41,5 +41,17 @@ describe('TotalPanel', () => {
   it('não exibe dica de desselecionar quando count é 0', () => {
     render(<TotalPanel total={0} count={0} />);
     expect(screen.queryByText(/desselecionar/i)).not.toBeInTheDocument();
+  });
+
+  it('renderiza o botão "Consultar Reservas"', () => {
+    render(<TotalPanel total={0} count={0} onConsult={() => {}} />);
+    expect(screen.getByRole('button', { name: /Consultar Reservas/i })).toBeInTheDocument();
+  });
+
+  it('chama onConsult ao clicar em "Consultar Reservas"', () => {
+    const onConsult = vi.fn();
+    render(<TotalPanel total={0} count={0} onConsult={onConsult} />);
+    fireEvent.click(screen.getByRole('button', { name: /Consultar Reservas/i }));
+    expect(onConsult).toHaveBeenCalledTimes(1);
   });
 });
