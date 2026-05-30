@@ -739,3 +739,16 @@ Ajuste o teal de listagem de poltronas:
 4. O componente span da letra D também apresenta um tamanho desproporcional. Com tamanho 88x21 em vez de 64x21 como os das demais letras. Ajute para que fique tudo alinhado.
 Dividas as alterações em pequenos passos, mostrando sua linha de pensamento, e aplique as alterações.
 ```
+
+---
+
+## Criar feat-list-seats frontend com ciclos de desenvolvimento
+
+* Data: 2026-05-30 18:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Crie um novo diretório frontend e descreva os 3 ciclos de desenvolvimento empregados com os últimos 3 prompts do arquivo de prompts em um novo arquivo feat-list-seats. Use o arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\development-cycles\backend\feat-book-seat.md como referência.
+```
