@@ -1,8 +1,21 @@
 # Arquitetura e Estrutura do Projeto
 
-## Padrão Arquitetural
+## Estrutura de Diretórios Raiz
 
-O projeto segue a arquitetura **MVC (Model-View-Controller)**, organizada nas seguintes camadas:
+```
+projeto-avaliativo-m12-SkyBook/
+├── backend/    # API REST — Java/Spring Boot
+├── frontend/   # Interface web (a ser implementada)
+└── docs/       # Documentação do projeto
+```
+
+---
+
+## Backend
+
+### Padrão Arquitetural
+
+O backend segue a arquitetura **MVC (Model-View-Controller)**, organizada nas seguintes camadas:
 
 - **Controller** — recebe as requisições HTTP, delega para a camada de serviço e retorna as respostas
 - **Service** — contém a lógica de negócio
@@ -10,10 +23,10 @@ O projeto segue a arquitetura **MVC (Model-View-Controller)**, organizada nas se
 - **Model/Entity** — entidades JPA que representam as tabelas do banco de dados
 - **DTO** — objetos de transferência de dados usados nas entradas e saídas dos endpoints
 
-## Estrutura de Pacotes
+### Estrutura de Pacotes
 
 ```
-com.ia.para.devs.skybook
+backend/src/main/java/com/ia/para/devs/skybook
 ├── controller      # Controllers REST (camada MVC - Controller)
 ├── service         # Lógica de negócio (camada MVC - intermediária)
 ├── repository      # Interfaces Spring Data JPA
@@ -21,20 +34,20 @@ com.ia.para.devs.skybook
 └── dto             # DTOs de request e response
 ```
 
-## DTOs
+### DTOs
 
 - Todos os endpoints devem utilizar **DTOs** para receber dados de entrada (request) e retornar dados de saída (response)
 - DTOs não devem expor diretamente as entidades JPA
 - Nomeação sugerida: `<Entidade>RequestDTO` para entrada e `<Entidade>ResponseDTO` para saída
 
-## Entidades JPA
+### Entidades JPA
 
 - As entidades devem ser anotadas com `@Entity` e mapeadas para as tabelas do banco H2
 - Usar `@Id` e `@GeneratedValue` para chaves primárias
 - As entidades **não devem ser retornadas diretamente** pelos endpoints — sempre converter para DTO
 - O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente pelo Spring Data JPA
 
-### Entidades do domínio
+#### Entidades do domínio
 
 | Entidade             | Tabela          | Descrição                                      |
 |----------------------|-----------------|------------------------------------------------|
@@ -43,3 +56,18 @@ com.ia.para.devs.skybook
 | `BookingEntity`      | `booking`       | Reserva — vínculo entre um usuário e um assento |
 
 > Diagrama ER completo em [`docs/data-model.md`](../../docs/data-model.md)
+
+---
+
+## Frontend
+
+### Status
+
+Estrutura a ser definida. O diretório `frontend/` está reservado para a implementação da interface web.
+
+### Diretrizes (a definir)
+
+- Framework/biblioteca a ser escolhido (React, Vue, Angular ou HTML/CSS/JS puro)
+- Organização de pastas: `components/`, `pages/`, `services/`, `assets/`
+- Comunicação com o backend via cliente HTTP (fetch ou axios)
+- Variáveis de ambiente para URL base da API

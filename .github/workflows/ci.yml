@@ -26,13 +26,14 @@ jobs:
           cache: maven
 
       - name: Compilar projeto
+        working-directory: backend
         run: ./mvnw package -DskipTests --no-transfer-progress
 
       - name: Publicar artefato de build
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: target/
+          path: backend/target/
           retention-days: 1
 
   test:
@@ -55,9 +56,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
-          path: target/
+          path: backend/target/
 
       - name: Executar testes
+        working-directory: backend
         run: ./mvnw test --no-transfer-progress
 
       - name: Publicar relatório de testes
@@ -65,5 +67,5 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: target/surefire-reports/
+          path: backend/target/surefire-reports/
           retention-days: 7

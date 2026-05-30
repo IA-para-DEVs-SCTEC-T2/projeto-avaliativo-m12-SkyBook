@@ -570,3 +570,22 @@ quanto no c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
 ```
 Busque a isseu 21 Configurar pipeline de CI/CD com GitHub Actions e implemente o CI/CD, conforme solicitado.
 ```
+
+---
+
+## Separar estrutura do projeto em diretórios backend e frontend
+
+* Data: 2026-05-30 16:12
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Instrução
+Vamos começar criar uma divisão clara entre o backend e o frontend.
+Detalhes
+1. Criar um diretório onde vamos consentrar os códigos e configuração relacionadas ao backend.
+2. Criar um diretório onde será carregado o código do frontend.
+3. Realizar separações nas documentações e steerings entre o backend e o que será o frontend. Os steering que devem ser modificados são o structure e o tech, realizar a mesma separação no README.
+Mostre seu processo de pensamento durante as alterações;
+```

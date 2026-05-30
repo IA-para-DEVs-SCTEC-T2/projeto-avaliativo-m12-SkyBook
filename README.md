@@ -38,6 +38,17 @@
 
 ### Arquitetura
 
+#### Estrutura de Diretórios
+
+```
+projeto-avaliativo-m12-SkyBook/
+├── backend/    # API REST — Java/Spring Boot
+├── frontend/   # Interface web (a ser implementada)
+└── docs/       # Documentação do projeto
+```
+
+#### Backend — Diagrama MVC
+
 ```mermaid
 graph TD
     Client([Cliente / Requisição HTTP])
@@ -52,10 +63,10 @@ graph TD
     Repository --> DB
 ```
 
-#### Estrutura de Pacotes
+#### Backend — Estrutura de Pacotes
 
 ```
-com.ia.para.devs.skybook
+backend/src/main/java/com/ia/para/devs/skybook
 ├── controller      # Controllers REST
 ├── service         # Lógica de negócio
 ├── repository      # Interfaces Spring Data JPA
@@ -95,6 +106,8 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 
 ### Tecnologias
 
+#### Backend
+
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
 | Java | 17 | Linguagem principal |
@@ -105,6 +118,12 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 | SpringDoc OpenAPI | 3.0.2 | Documentação Swagger |
 | Maven | — | Build e dependências |
 
+#### Frontend
+
+| Tecnologia | Versão | Finalidade |
+|---|---|---|
+| A definir | — | Interface web |
+
 > Stack completa e configurações de build detalhadas em [`.kiro/steering/tech.md`](.kiro/steering/tech.md)
 
 ### Como Executar Localmente
@@ -114,12 +133,12 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 - Java 17+
 - Maven 3.8+
 
-#### Passos
+#### Backend
 
 ```bash
 # Clone o repositório
 git clone https://github.com/IA-para-DEVs-SCTEC-T2/projeto-avaliativo-m12-SkyBook.git
-cd projeto-avaliativo-m12-SkyBook
+cd projeto-avaliativo-m12-SkyBook/backend
 
 # Execute com Maven
 ./mvnw spring-boot:run
@@ -223,6 +242,7 @@ A aplicação estará disponível em: `http://localhost:8080`
 ### Como Executar os Testes
 
 ```bash
+cd backend
 ./mvnw test
 ```
 
