@@ -233,11 +233,18 @@ A aplicação estará disponível em: `http://localhost:8080`
 
 ### Pipeline CI/CD
 
-Configurado via GitHub Actions em `.github/workflows/`.
+Configurado via GitHub Actions em [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
-**Executa a cada push:**
-- Lint / verificação de estilo
-- Testes automatizados
+**Gatilhos:** push em qualquer branch e pull requests para `develop` e `main`.
+
+**Jobs:**
+
+| Job | Comando | Descrição |
+|---|---|---|
+| `build` | `./mvnw package -DskipTests` | Compila o projeto e gera o `.jar` |
+| `test` | `./mvnw test` | Executa os testes automatizados (depende do `build`) |
+
+Os relatórios de teste (Surefire) são publicados como artefato na aba **Actions** do GitHub, retidos por 7 dias.
 
 ---
 
