@@ -61,7 +61,20 @@ describe('SeatMapPage', () => {
     seatsService.fetchSeats.mockResolvedValue(generateSeats());
     renderPage();
     await waitFor(() => {
-      expect(screen.getAllByRole('button')).toHaveLength(60);
+      // 60 botões de poltrona + 1 botão "Realizar Reserva" = 61 botões no total
+      const seatButtons = screen
+        .getAllByRole('button')
+        .filter((btn) => btn.getAttribute('aria-label')?.startsWith('Poltrona'));
+      expect(seatButtons).toHaveLength(60);
+    });
+  });
+
+  it('exibe o botão "Realizar Reserva" desabilitado sem seleção', async () => {
+    seatsService.fetchSeats.mockResolvedValue(generateSeats());
+    renderPage();
+    await waitFor(() => {
+      const bookBtn = screen.getByRole('button', { name: /Realizar Reserva/i });
+      expect(bookBtn).toBeDisabled();
     });
   });
 

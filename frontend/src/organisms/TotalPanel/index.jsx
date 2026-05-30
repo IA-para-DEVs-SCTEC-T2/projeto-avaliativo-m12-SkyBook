@@ -3,13 +3,15 @@ import MoneyValue from '../../atoms/MoneyValue';
 /**
  * TotalPanel — organismo que exibe o painel lateral com o valor total acumulado.
  *
- * Mostra o total em destaque e a contagem de poltronas selecionadas.
+ * Mostra o total em destaque, a contagem de poltronas selecionadas
+ * e o botão "Realizar Reserva" (habilitado somente com ao menos uma poltrona selecionada).
  *
  * @param {object} props
  * @param {number} props.total - Valor total acumulado das poltronas selecionadas.
  * @param {number} props.count - Quantidade de poltronas selecionadas.
+ * @param {function} props.onBook - Callback ao clicar em "Realizar Reserva".
  */
-function TotalPanel({ total, count }) {
+function TotalPanel({ total, count, onBook }) {
   return (
     <aside
       style={{
@@ -53,6 +55,29 @@ function TotalPanel({ total, count }) {
           Clique novamente para desselecionar
         </span>
       )}
+
+      {/* Botão Realizar Reserva */}
+      <button
+        onClick={onBook}
+        disabled={count === 0}
+        aria-label="Realizar reserva das poltronas selecionadas"
+        style={{
+          marginTop: '8px',
+          width: '100%',
+          padding: '12px 16px',
+          borderRadius: '10px',
+          border: 'none',
+          backgroundColor: count === 0 ? '#334155' : '#3b82f6',
+          color: count === 0 ? '#64748b' : '#fff',
+          fontSize: '14px',
+          fontWeight: 700,
+          cursor: count === 0 ? 'not-allowed' : 'pointer',
+          transition: 'background-color 0.2s',
+          letterSpacing: '0.3px',
+        }}
+      >
+        Realizar Reserva
+      </button>
     </aside>
   );
 }

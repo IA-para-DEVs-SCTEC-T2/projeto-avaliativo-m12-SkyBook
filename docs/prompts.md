@@ -781,3 +781,29 @@ Ajuste o README do projeto.
 2. Acione os Endpoints Disponíveis dentro do subtópico do backend e os Cenários do backend em seguida
 3. No Cenário de uso do front adicione o acesso a rota http://localhost:5173/ com visualização das poltronas e interação com as mesmas
 ```
+
+---
+
+## Implementar tela de reserva de poltronas (issue 26)
+
+* Data: 2026-05-30 19:15
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Busque as informações da issue 26 e implemente as funcionalidades.Divida as implementações em pequenos passos, evidenciando sua linha de raciocício, e prossiga com as modificações.
+```
+
+---
+
+## Criar doc feat-book-seat frontend com ciclo de desenvolvimento
+
+* Data: 2026-05-30 19:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Crie um arquivo feat-book-set.md para descrever o ciclo de desenvolvimento da reserva da poltrona no frontend. Apenas um ciclo foi necessário com o último prompt enviado.
+```
