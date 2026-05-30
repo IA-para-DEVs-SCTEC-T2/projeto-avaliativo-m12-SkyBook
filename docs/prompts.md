@@ -702,3 +702,22 @@ Ajuste o README:
 ```
 Busque a issue 25 Tela de listagem de poltronas da aeronave e implemente as funcionalidades
 ```
+
+---
+
+## Configurar CORS no backend para liberar acesso do frontend
+
+* Data: 2026-05-30 18:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+O frontend está recebendo erro de CORS ao tentar acessar a API:
+"Access to XMLHttpRequest at 'http://localhost:8080/skybook/seats/listSeats' from origin
+'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin'
+header is present on the requested resource."
+
+Configure o CORS no backend Spring Boot para permitir requisições vindas do frontend
+em http://localhost:5173.
+```
