@@ -364,6 +364,22 @@ O passageiro clica novamente na mesma poltrona ![Azul](https://img.shields.io/ba
 
 Clicar em uma poltrona ![Vermelho](https://img.shields.io/badge/Vermelho-ef4444?style=flat-square) (indisponível) não produz nenhum efeito.
 
+##### Cenário 4 — Consulta de reservas realizadas
+
+O passageiro clica em **"Consultar Reservas"** (botão abaixo de "Realizar Reserva" no painel lateral). Um modal é aberto com:
+
+- Campo **E-mail** e botão **"Buscar"**
+
+Após informar o e-mail e clicar em "Buscar", o sistema chama `GET /bookings/summary?email=`:
+
+- **E-mail encontrado:** o modal exibe o nome do passageiro, a lista de poltronas reservadas com código e preço individual, e o valor total
+- **E-mail não encontrado (404):** mensagem informando que nenhuma reserva foi encontrada para o e-mail informado
+- **API indisponível:** mensagem de erro amigável
+
+O modal pode ser fechado pelo botão **"✕"** ou pressionando **Escape**.
+
+---
+
 ##### Cenário 3 — Reserva de poltronas (fluxo de dois modais)
 
 Com ao menos uma poltrona selecionada, o botão **"Realizar Reserva"** no painel lateral é habilitado.
