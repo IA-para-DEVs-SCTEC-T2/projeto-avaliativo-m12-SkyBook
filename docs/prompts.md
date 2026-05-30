@@ -654,3 +654,21 @@ Detalhes
 Crie a tela inicial do projeto. Ela deve conter somente a inscrição "It works!" como placeholder por enquanto.
 Não acrescente mais nenhuma funcionalidade.
 ```
+
+---
+
+## Atualizar CI com jobs de frontend e gate ci-passed
+
+* Data: 2026-05-30 17:15
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Atualize o pipeline de CI/CD para incluir os jobs do frontend e organize os jobs em etapas visuais.
+Detalhes
+1. Adicione os jobs frontend-build e frontend-test para o projeto React em frontend/, usando Node 20.
+2. Separe os jobs de backend e frontend com prefixos [Backend] e [Frontend] nos nomes.
+3. Adicione um job final que depende de backend-test e frontend-test, servindo como gate de aprovação do pipeline.
+4. Os jobs de build e test de cada módulo devem ser encadeados.
+```
