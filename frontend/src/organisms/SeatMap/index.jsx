@@ -3,6 +3,12 @@ import SeatCard from '../../molecules/SeatCard';
 const COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F'];
 const ROWS = 10;
 
+/** Largura fixa de cada célula (poltrona ou header de coluna). */
+const CELL_SIZE = 64;
+
+/** Largura do corredor central entre colunas C e D. */
+const AISLE_WIDTH = 24;
+
 /**
  * SeatMap — organismo que renderiza a silhueta do avião com o grid de poltronas.
  *
@@ -37,23 +43,29 @@ function SeatMap({ seats, selectedIds, onToggle }) {
     >
       {/* Cabeçalho das colunas */}
       <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <span style={{ width: '32px' }} />
+        {/* Espaço reservado para o número da fileira */}
+        <div style={{ width: '32px', flexShrink: 0 }} />
+
         {COLUMNS.map((col, i) => (
-          <span key={col}>
-            {i === 3 && <span style={{ width: '24px', display: 'inline-block' }} />}
-            <span
+          <>
+            {/* Corredor entre C e D — elemento irmão, não dentro do span da coluna */}
+            {i === 3 && (
+              <div key="aisle-header" style={{ width: `${AISLE_WIDTH}px`, flexShrink: 0 }} />
+            )}
+            <div
+              key={col}
               style={{
-                width: '64px',
+                width: `${CELL_SIZE}px`,
+                flexShrink: 0,
                 textAlign: 'center',
                 fontWeight: 700,
                 fontSize: '13px',
                 color: '#64748b',
-                display: 'inline-block',
               }}
             >
               {col}
-            </span>
-          </span>
+            </div>
+          </>
         ))}
       </div>
 
@@ -66,9 +78,10 @@ function SeatMap({ seats, selectedIds, onToggle }) {
             style={{ display: 'flex', gap: '8px', alignItems: 'center' }}
           >
             {/* Número da fileira */}
-            <span
+            <div
               style={{
                 width: '32px',
+                flexShrink: 0,
                 textAlign: 'right',
                 fontWeight: 700,
                 fontSize: '13px',
@@ -76,28 +89,34 @@ function SeatMap({ seats, selectedIds, onToggle }) {
               }}
             >
               {rowNum}
-            </span>
+            </div>
 
             {COLUMNS.map((col, colIdx) => {
               const code = `${rowNum}${col}`;
               const seat = seatByCode[code];
 
               return (
-                <span key={col}>
-                  {/* Corredor entre C e D */}
+                <>
+                  {/* Corredor entre C e D — elemento irmão, não dentro do wrapper da célula */}
                   {colIdx === 3 && (
-                    <span style={{ width: '24px', display: 'inline-block' }} />
-                  )}
-                  {seat ? (
-                    <SeatCard
-                      seat={seat}
-                      selected={selectedIds.has(seat.id)}
-                      onToggle={onToggle}
+                    <div
+                      key={`aisle-${rowNum}`}
+                      style={{ width: `${AISLE_WIDTH}px`, flexShrink: 0 }}
                     />
-                  ) : (
-                    <span style={{ width: '64px', height: '64px', display: 'inline-block' }} />
                   )}
-                </span>
+                  <div
+                    key={col}
+                    style={{ width: `${CELL_SIZE}px`, height: `${CELL_SIZE}px`, flexShrink: 0 }}
+                  >
+                    {seat ? (
+                      <SeatCard
+                        seat={seat}
+                        selected={selectedIds.has(seat.id)}
+                        onToggle={onToggle}
+                      />
+                    ) : null}
+                  </div>
+                </>
               );
             })}
           </div>

@@ -721,3 +721,21 @@ header is present on the requested resource."
 Configure o CORS no backend Spring Boot para permitir requisições vindas do frontend
 em http://localhost:5173.
 ```
+
+---
+
+## Ajustar rota, redirect e alinhamento do grid de poltronas
+
+* Data: 2026-05-30 18:10
+* Autor: joaopuel
+* Tipo: Chain of Thought
+
+### Prompt original
+```
+Ajuste o teal de listagem de poltronas:
+1. A tela de listagem deve ter a rota /skybook
+2. Ao acessar a aplicação pela rota http://localhost:5173/, o usuário deve ser redirecionado automaticamente para rota  /skybook já que consiste da homepage
+3. O grid está desalinhado, a coluna D está sendo preenchida com componentes span do tamanho 64x85 em vez do tamanho 64x64 como as outras. Ajuse para que todas tenham o mesmo tamanho e tudo fique alinhado.
+4. O componente span da letra D também apresenta um tamanho desproporcional. Com tamanho 88x21 em vez de 64x21 como os das demais letras. Ajute para que fique tudo alinhado.
+Dividas as alterações em pequenos passos, mostrando sua linha de pensamento, e aplique as alterações.
+```
