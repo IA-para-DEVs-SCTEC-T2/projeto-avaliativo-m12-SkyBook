@@ -528,3 +528,32 @@ O resultado deve seguir este template:
   ]
 }
 ```
+
+---
+
+## Criar doc feat-summary com ciclos de prompting da feature
+
+* Data: 2026-05-29 21:30
+* Autor: joaopuel
+* Tipo: Contextual
+
+### Prompt original
+```
+Cire o arquivo docs/feat-summary.md e adicione os doius últimos prompts do c:\git\projeto-avaliativo-m12-SkyBook\docs\prompts.md
+como prompts utilizados no ciclo 1 e 2, requisitos descritos no arquivo  c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md. Use o c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
+como exemplo.
+```
+
+---
+
+## Adicionar lições aprendidas em feat-summary e feat-list-seats
+
+* Data: 2026-05-29 21:45
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Adicione também as lições aprendidas tanto nesse c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-summary.md
+quanto no c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
+```
