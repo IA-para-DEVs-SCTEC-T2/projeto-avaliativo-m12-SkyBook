@@ -2,8 +2,10 @@ package com.ia.para.devs.skybook.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +16,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.ia.para.devs.skybook.dto.BookingRequestDTO;
 import com.ia.para.devs.skybook.dto.BookingResponseDTO;
@@ -147,18 +150,21 @@ class BookingServiceTest {
     // -------------------------------------------------------------------------
 
     @Test
-    @DisplayName("getSummary → retorna lista de reservas com valor total calculado")
-    void getSummary_shouldReturnBookingsWithCalculatedTotal() {
+    @DisplayName("getSummary → retorna resumo com nome, email, reservas e total calculado")
+    void getSummary_shouldReturnSummaryWithPassengerDataAndTotal() {
         UserEntity user = buildUser(10L, "João", "joao@email.com");
         AirplaneSeatEntity seat1 = buildSeat(1L, "1A", new BigDecimal("198.89"));
         AirplaneSeatEntity seat2 = buildSeat(5L, "5A", new BigDecimal("110.00"));
         BookingEntity booking1 = buildBooking(100L, user, seat1);
         BookingEntity booking2 = buildBooking(101L, user, seat2);
 
-        when(bookingRepository.findAll()).thenReturn(List.of(booking1, booking2));
+        when(userService.findByEmail("joao@email.com")).thenReturn(Optional.of(user));
+        when(bookingRepository.findByUserEmail("joao@email.com")).thenReturn(List.of(booking1, booking2));
 
-        BookingSummaryResponseDTO result = bookingService.getSummary();
+        BookingSummaryResponseDTO result = bookingService.getSummary("joao@email.com");
 
+        assertThat(result.getPassengerName()).isEqualTo("João");
+        assertThat(result.getPassengerEmail()).isEqualTo("joao@email.com");
         assertThat(result.getBookings()).hasSize(2);
         assertThat(result.getTotalAmount()).isEqualByComparingTo("308.89");
         assertThat(result.getBookings().get(0).getSeatCode()).isEqualTo("1A");
@@ -166,14 +172,28 @@ class BookingServiceTest {
     }
 
     @Test
-    @DisplayName("getSummary → retorna lista vazia e total zero quando não há reservas")
-    void getSummary_shouldReturnEmptyListAndZeroTotalWhenNoBookings() {
-        when(bookingRepository.findAll()).thenReturn(List.of());
+    @DisplayName("getSummary → retorna lista vazia e total zero quando usuário não tem reservas")
+    void getSummary_shouldReturnEmptyBookingsAndZeroTotalWhenNoBookings() {
+        UserEntity user = buildUser(10L, "João", "joao@email.com");
 
-        BookingSummaryResponseDTO result = bookingService.getSummary();
+        when(userService.findByEmail("joao@email.com")).thenReturn(Optional.of(user));
+        when(bookingRepository.findByUserEmail("joao@email.com")).thenReturn(List.of());
 
+        BookingSummaryResponseDTO result = bookingService.getSummary("joao@email.com");
+
+        assertThat(result.getPassengerName()).isEqualTo("João");
         assertThat(result.getBookings()).isEmpty();
         assertThat(result.getTotalAmount()).isEqualByComparingTo(BigDecimal.ZERO);
+    }
+
+    @Test
+    @DisplayName("getSummary → lança 404 quando e-mail não encontrado")
+    void getSummary_shouldThrow404WhenEmailNotFound() {
+        when(userService.findByEmail("naoexiste@email.com")).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> bookingService.getSummary("naoexiste@email.com"))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("Usuário não encontrado");
     }
 
     // -------------------------------------------------------------------------

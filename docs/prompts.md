@@ -500,3 +500,31 @@ Adicione também a lição aprendida com com o refatoramento e as outros refinam
 ```
 Busque a issue 16 Resumo consolidado da compra e implemente a funcionalidade e os testes
 ```
+
+---
+
+## Ajustar /summary para filtrar por email e novo DTO
+
+* Data: 2026-05-29 21:15
+* Autor: joaopuel
+* Tipo: Few shot
+
+### Prompt original
+```
+Ajuste o endpoint /summary.
+Ele deve receber o email do usuário e retornar apenas as reservas feitas naquele e-mail.
+O resultado deve seguir este template:
+{
+  "passengerName": <name>,
+  "passengerEmail": <email>,
+  "totalAmount": <total>,
+  "bookings": [
+    {
+      "bookingId": <id>,
+      "seatCode": <code>,
+      "seatPrice": <individual-price>,
+      "bookedAt": <date-time>
+    }
+  ]
+}
+```

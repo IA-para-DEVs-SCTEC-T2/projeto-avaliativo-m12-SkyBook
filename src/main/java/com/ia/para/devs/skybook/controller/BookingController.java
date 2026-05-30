@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ia.para.devs.skybook.dto.BookingRequestDTO;
@@ -55,20 +56,22 @@ public class BookingController {
     }
 
     /**
-     * Retorna o resumo consolidado de todas as reservas realizadas.
-     * Inclui a lista de poltronas reservadas com preço individual e o valor total.
+     * Retorna o resumo consolidado das reservas do passageiro identificado pelo e-mail.
+     * Inclui nome, e-mail, lista de poltronas reservadas com preço individual e o valor total.
      *
-     * @return {@link BookingSummaryResponseDTO} com a lista de reservas e o valor total
+     * @param email e-mail do passageiro
+     * @return {@link BookingSummaryResponseDTO} com os dados consolidados da reserva
      */
     @GetMapping("/summary")
     @Operation(
         summary = "Resumo consolidado das reservas",
-        description = "Retorna todas as reservas realizadas com preço individual de cada poltrona e o valor total"
+        description = "Retorna as reservas do passageiro identificado pelo e-mail, com preço individual e valor total"
     )
     @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Resumo retornado com sucesso")
+        @ApiResponse(responseCode = "200", description = "Resumo retornado com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Usuário não encontrado para o e-mail informado")
     })
-    public ResponseEntity<BookingSummaryResponseDTO> getSummary() {
-        return ResponseEntity.ok(bookingService.getSummary());
+    public ResponseEntity<BookingSummaryResponseDTO> getSummary(@RequestParam String email) {
+        return ResponseEntity.ok(bookingService.getSummary(email));
     }
 }
