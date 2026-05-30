@@ -557,3 +557,16 @@ como exemplo.
 Adicione também as lições aprendidas tanto nesse c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-summary.md
 quanto no c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-list-seats.md
 ```
+
+---
+
+## Configurar pipeline CI/CD com GitHub Actions (issue 21)
+
+* Data: 2026-05-30 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Busque a isseu 21 Configurar pipeline de CI/CD com GitHub Actions e implemente o CI/CD, conforme solicitado.
+```
