@@ -487,3 +487,16 @@ c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.mdAdicione no final do
 ```
 Adicione também a lição aprendida com com o refatoramento e as outros refinamentos no arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\feat-book-seat.md
 ```
+
+---
+
+## Implementar resumo consolidado da compra (issue 16)
+
+* Data: 2026-05-29 21:00
+* Autor: joaopuel
+* Tipo: Zero shot
+
+### Prompt original
+```
+Busque a issue 16 Resumo consolidado da compra e implemente a funcionalidade e os testes
+```

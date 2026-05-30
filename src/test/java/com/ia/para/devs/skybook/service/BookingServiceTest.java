@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ia.para.devs.skybook.dto.BookingRequestDTO;
 import com.ia.para.devs.skybook.dto.BookingResponseDTO;
+import com.ia.para.devs.skybook.dto.BookingSummaryResponseDTO;
 import com.ia.para.devs.skybook.model.AirplaneSeatEntity;
 import com.ia.para.devs.skybook.model.BookingEntity;
 import com.ia.para.devs.skybook.model.UserEntity;
@@ -139,6 +140,40 @@ class BookingServiceTest {
         bookingService.createBookings(new BookingRequestDTO("Maria", "maria@email.com", List.of("1A")));
 
         verify(userService).resolveOrCreate("Maria", "maria@email.com");
+    }
+
+    // -------------------------------------------------------------------------
+    // Cenários: getSummary
+    // -------------------------------------------------------------------------
+
+    @Test
+    @DisplayName("getSummary → retorna lista de reservas com valor total calculado")
+    void getSummary_shouldReturnBookingsWithCalculatedTotal() {
+        UserEntity user = buildUser(10L, "João", "joao@email.com");
+        AirplaneSeatEntity seat1 = buildSeat(1L, "1A", new BigDecimal("198.89"));
+        AirplaneSeatEntity seat2 = buildSeat(5L, "5A", new BigDecimal("110.00"));
+        BookingEntity booking1 = buildBooking(100L, user, seat1);
+        BookingEntity booking2 = buildBooking(101L, user, seat2);
+
+        when(bookingRepository.findAll()).thenReturn(List.of(booking1, booking2));
+
+        BookingSummaryResponseDTO result = bookingService.getSummary();
+
+        assertThat(result.getBookings()).hasSize(2);
+        assertThat(result.getTotalAmount()).isEqualByComparingTo("308.89");
+        assertThat(result.getBookings().get(0).getSeatCode()).isEqualTo("1A");
+        assertThat(result.getBookings().get(1).getSeatCode()).isEqualTo("5A");
+    }
+
+    @Test
+    @DisplayName("getSummary → retorna lista vazia e total zero quando não há reservas")
+    void getSummary_shouldReturnEmptyListAndZeroTotalWhenNoBookings() {
+        when(bookingRepository.findAll()).thenReturn(List.of());
+
+        BookingSummaryResponseDTO result = bookingService.getSummary();
+
+        assertThat(result.getBookings()).isEmpty();
+        assertThat(result.getTotalAmount()).isEqualByComparingTo(BigDecimal.ZERO);
     }
 
     // -------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 package com.ia.para.devs.skybook.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ia.para.devs.skybook.dto.BookingRequestDTO;
 import com.ia.para.devs.skybook.dto.BookingResponseDTO;
+import com.ia.para.devs.skybook.dto.BookingSummaryResponseDTO;
 import com.ia.para.devs.skybook.model.AirplaneSeatEntity;
 import com.ia.para.devs.skybook.model.BookingEntity;
 import com.ia.para.devs.skybook.model.UserEntity;
@@ -83,6 +85,27 @@ public class BookingService {
     }
 
     /**
+     * Retorna o resumo consolidado de todas as reservas realizadas.
+     * <p>
+     * Inclui a lista de poltronas reservadas com código e preço individual,
+     * além do valor total calculado pela soma dos preços.
+     * Retorna lista vazia e total zero caso não haja reservas.
+     *
+     * @return {@link BookingSummaryResponseDTO} com a lista de reservas e o valor total
+     */
+    public BookingSummaryResponseDTO getSummary() {
+        List<BookingResponseDTO> bookings = bookingRepository.findAll().stream()
+                .map(this::toResponseDTOFromEntity)
+                .toList();
+
+        BigDecimal totalAmount = bookings.stream()
+                .map(BookingResponseDTO::getSeatPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return new BookingSummaryResponseDTO(bookings, totalAmount);
+    }
+
+    /**
      * Converte a entidade de reserva para o DTO de resposta.
      *
      * @param booking reserva persistida
@@ -96,6 +119,22 @@ public class BookingService {
                 seat.getCode(),
                 seat.getPrice(),
                 user.getName(),
+                booking.getBookedAt());
+    }
+
+    /**
+     * Converte uma entidade {@link BookingEntity} para {@link BookingResponseDTO},
+     * navegando pelas associações JPA.
+     *
+     * @param booking entidade de reserva
+     * @return {@link BookingResponseDTO} com os dados da reserva
+     */
+    private BookingResponseDTO toResponseDTOFromEntity(BookingEntity booking) {
+        return new BookingResponseDTO(
+                booking.getId(),
+                booking.getSeat().getCode(),
+                booking.getSeat().getPrice(),
+                booking.getUser().getName(),
                 booking.getBookedAt());
     }
 }
