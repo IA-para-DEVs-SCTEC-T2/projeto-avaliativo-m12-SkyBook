@@ -219,6 +219,8 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
+> No Windows CMD, use `mvnw.cmd spring-boot:run` em vez de `./mvnw spring-boot:run`
+
 A aplicação estará disponível em: `http://localhost:8080`
 
 #### Frontend
@@ -417,6 +419,8 @@ Em caso de erro na API, uma mensagem amigável é exibida no modal sem perder a 
 cd backend
 ./mvnw test
 ```
+
+> No Windows CMD, use `mvnw.cmd test` em vez de `./mvnw test`
 
 #### Frontend
 
