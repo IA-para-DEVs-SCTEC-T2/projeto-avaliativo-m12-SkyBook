@@ -26,11 +26,23 @@ Apresentar um resumo consolidado contendo:
 - O valor individual de cada poltrona
 - O valor total da reserva
 
-## Fora do escopo do MVP
+## Aeronave do MVP
 
-As funcionalidades abaixo **não fazem parte do MVP** e não devem ser implementadas nesta fase:
+O MVP considera **uma única aeronave** com configuração fixa de **60 poltronas**, distribuídas em 10 fileiras de 6 assentos cada (colunas A–F):
+
+| Fileiras | Classe             | Preço unitário |
+|----------|--------------------|----------------|
+| 1–2      | Executiva          | R$ 198,89      |
+| 3–4      | Econômica Premium  | R$ 149,90      |
+| 5–10     | Econômica          | R$ 110,00      |
+
+As poltronas são pré-carregadas automaticamente na inicialização da aplicação. Não há endpoint para cadastro de novas poltronas no MVP.
+
+## Melhorias Futuras
+
+As funcionalidades abaixo **não fazem parte do MVP** e não devem ser implementadas nesta fase.Funcionalidades planejadas para versões posteriores ao MVP:
 - Autenticação e cadastro de usuários
 - Pagamento online
 - Cancelamento de reservas
-- Múltiplos voos ou aeronaves
-- Histórico de reservas
+- Suporte a múltiplos voos ou aeronaves
+- Histórico de reservas por usuário
