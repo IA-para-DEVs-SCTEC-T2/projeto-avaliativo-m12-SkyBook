@@ -834,3 +834,79 @@ Dividas as implementações em pequenos passos, descrevendo seu processo de raci
 ```
 Conforme o arquivo anexado, crie o arquivo feat-summary para descrever o ciclio 1 para consulta das reservas. Apenas um ciclo foi necessário novamente
 ```
+
+---
+
+## Ajustar cenários de uso do frontend no README
+
+* Data: 2026-05-31 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o README do projeto. O frontend deve descrever 3 cenários de uso: Visualização das Poltronas (Apenas descerver a visualização do grid e poltronas verdes e vermelhas), Realização da reserva (Descreve a seleção das poltronas - fica azul- e realização e confirmação da reserva), Consulta das reservas (mode ser mantido como está). Os cenários devem estar ordenados da mesma forma que foram fornecidos acima.
+```
+
+---
+
+## Atualizar tabela Ferramentas de IA no README
+
+* Data: 2026-05-31 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o tópico Ferramentas de IA Utilizadas no README.
+1. Adicione também o Atomic Design na etapa de arquitetura.
+2. Na etapa geração do código, também acresente que foram implementados os códigos backend e frontend
+3. Na etapa de testes, também acrecente os testes unitários de frontend com as tecnologias utilizdas no mesmo
+4. Na etapa documentação, também adicione a criação dos steerings, a documentação das issues e a docunemtnação dos ciclos de dessenvolvimento
+5. Preencha corretamente a etapa de Pipeline que ainda não foi preenchida
+```
+
+---
+
+## Simplificar tópico Padrões de Prompting e adicionar ciclos
+
+* Data: 2026-05-31 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Ajuste o tópico Padrões de Prompting Aplicados no README.
+1. Mantenha a menção ao documento de docs/prompts.md, mas remova todo o resto
+2. Abaixo a referência do arquivo prompts.md, adicione referências a todos os arquivos de docs/development-cycles
+```
+
+---
+
+## Adicionar exemplo de ciclos de desenvolvimento no README
+
+* Data: 2026-05-31 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Como exemplo, adicione os 3 ciclos de desenvolvimento e a lição geral aprendida descritos no arquivo docs/development-cycles/backend/feat-book-seat.md.
+Evidencie que é para exemplificar o ciclo de desenvolvimento de uma funcionalidade.
+```
+
+---
+
+## Adicionar tópico de refatoração com prompt e lição no README
+
+* Data: 2026-05-31 00:00
+* Autor: joaopuel
+* Tipo: Instrução direta
+
+### Prompt original
+```
+Agora faça o mesmo refertence ao requisito de refatoração do código descrito no arquivo c:\git\projeto-avaliativo-m12-SkyBook\docs\requisitos-projeto\IA PARA DESENVOLVEDORES [T1] - M1S08 - Projeto Avaliativo.md.
+1. Crie um tópico referente a refatoração
+2. Refija um pequeno texto informando que foi realizda a refatoração junto ao cicilo de desenvolvimento da funcionalidade de reserva e todo o processo pode ser consultado no arquivo docs/development-cycles/backend/feat-book-seat.md
+3. Apresente depois um trecho da parte de refatoração, com o prompt original e a lição aprendida
+```

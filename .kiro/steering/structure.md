@@ -27,11 +27,33 @@ O backend segue a arquitetura **MVC (Model-View-Controller)**, organizada nas se
 
 ```
 backend/src/main/java/com/ia/para/devs/skybook
-├── controller      # Controllers REST (camada MVC - Controller)
-├── service         # Lógica de negócio (camada MVC - intermediária)
-├── repository      # Interfaces Spring Data JPA
-├── model           # Entidades JPA (camada MVC - Model)
-└── dto             # DTOs de request e response
+├── config/
+│   ├── AirplaneSeatDataLoader.java   # Carga inicial das 60 poltronas
+│   └── WebConfig.java                # Configuração de CORS
+├── controller/
+│   ├── AirplaneSeatController.java   # GET /seats/listSeats
+│   ├── BookingController.java        # POST /bookings/bookSeat, GET /bookings/summary
+│   └── GlobalExceptionHandler.java   # Tratamento centralizado de erros
+├── dto/
+│   ├── AirplaneSeatResponseDTO.java
+│   ├── BookingItemDTO.java
+│   ├── BookingRequestDTO.java
+│   ├── BookingResponseDTO.java
+│   ├── BookingSummaryResponseDTO.java
+│   └── ErrorResponseDTO.java
+├── model/
+│   ├── AirplaneSeatEntity.java       # Tabela airplane_seat
+│   ├── BookingEntity.java            # Tabela booking
+│   └── UserEntity.java               # Tabela app_user
+├── repository/
+│   ├── AirplaneSeatRepository.java
+│   ├── BookingRepository.java
+│   └── UserRepository.java
+├── service/
+│   ├── AirplaneSeatService.java
+│   ├── BookingService.java
+│   └── UserService.java
+└── SkybookApplication.java           # Entry point
 ```
 
 ### DTOs
@@ -76,26 +98,39 @@ O frontend segue os princípios do **Atomic Design**, que organiza os componente
 ### Estrutura de Diretórios
 
 ```
-frontend/
-├── public/                 # Arquivos estáticos públicos
-├── src/
-│   ├── atoms/              # Componentes atômicos (botões, inputs, badges)
-│   ├── molecules/          # Componentes moleculares (cards, campos compostos)
-│   ├── organisms/          # Seções completas (mapa de assentos, formulários)
-│   ├── templates/          # Layouts de página sem dados
-│   ├── pages/              # Páginas com dados reais
-│   ├── services/           # Comunicação com a API REST do backend
-│   ├── hooks/              # Custom hooks React
-│   ├── assets/             # Imagens, ícones e fontes
-│   └── main.jsx            # Ponto de entrada da aplicação
-├── .env                    # Variáveis de ambiente (URL base da API)
-├── package.json
-└── README.md
+frontend/src/
+├── atoms/
+│   ├── Modal/                        # Componente base de modal
+│   ├── MoneyValue/                   # Exibição de valores monetários
+│   ├── StatusBadge/                  # Badge de status da poltrona
+│   └── Text/                         # Componente de texto
+├── molecules/
+│   └── SeatCard/                     # Card de poltrona (disponível/indisponível/selecionado)
+├── organisms/
+│   ├── BookingSummaryModal/          # Modal de consulta de reservas por e-mail
+│   ├── ConfirmBookingModal/          # Modal passo 1 — resumo da seleção
+│   ├── PassengerFormModal/           # Modal passo 2 — dados do passageiro
+│   ├── SeatMap/                      # Grid de 60 poltronas
+│   └── TotalPanel/                   # Painel lateral com total e botões de ação
+├── templates/
+│   ├── MainLayout/                   # Layout base da aplicação
+│   └── SeatMapLayout/                # Layout da tela de seleção de poltronas
+├── pages/
+│   ├── HomePage/                     # Redireciona para /skybook
+│   └── SeatMapPage/                  # Página principal com grid + painel
+├── services/
+│   ├── bookingService.js             # POST /bookings/bookSeat, GET /bookings/summary
+│   └── seatsService.js               # GET /seats/listSeats
+├── hooks/
+│   ├── useBooking.js                 # Lógica de reserva e modais
+│   └── useSeatSelection.js           # Gerenciamento de seleção e cálculo do total
+├── App.jsx                           # Configuração de rotas
+└── main.jsx                          # Entry point
 ```
 
 ### Convenções
 
 - Cada componente em seu próprio diretório com arquivo `index.jsx`
+- Diretórios de componentes nomeados em PascalCase (ex: `SeatCard/`, `TotalPanel/`)
 - Comunicação com o backend exclusivamente via camada `services/`
 - Variável de ambiente `VITE_API_BASE_URL` para URL base da API
-- Componentes nomeados em PascalCase; arquivos em kebab-case
