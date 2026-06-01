@@ -18,7 +18,7 @@
 
 ### Demonstração
 
-🎥 [Assista ao vídeo de demonstração no YouTube](https://youtube.com/...)
+🎥 [Assista ao vídeo de demonstração no YouTube](https://youtu.be/kAtdt7tZOjo)
 
 ### Quadro de Tarefas (Kanban)
 
