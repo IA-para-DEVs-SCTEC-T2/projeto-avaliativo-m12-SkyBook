@@ -18,11 +18,13 @@
 
 ### Demonstração
 
-🎥 [Assista ao vídeo de demonstração no YouTube](https://youtube.com/...)
+🎥 [Assista ao vídeo de demonstração no YouTube](https://youtu.be/kAtdt7tZOjo)
 
-### Quadro de Tarefas
+### Quadro de Tarefas (Kanban)
 
 📋 [Acompanhe o backlog no GitHub Projects](https://github.com/orgs/IA-para-DEVs-SCTEC-T2/projects/26/views/1)
+
+📄 [Veja a lista de todas as issues do projeto](docs/issues.md)
 
 ### Melhorias Futuras
 
@@ -57,11 +59,33 @@ projeto-avaliativo-m12-SkyBook/
 
 ```
 backend/src/main/java/com/ia/para/devs/skybook
-├── controller      # Controllers REST
-├── service         # Lógica de negócio
-├── repository      # Interfaces Spring Data JPA
-├── model           # Entidades JPA
-└── dto             # DTOs de request e response
+├── config/
+│   ├── AirplaneSeatDataLoader.java   # Carga inicial das 60 poltronas
+│   └── WebConfig.java                # Configuração de CORS
+├── controller/
+│   ├── AirplaneSeatController.java   # GET /seats/listSeats
+│   ├── BookingController.java        # POST /bookings/bookSeat, GET /bookings/summary
+│   └── GlobalExceptionHandler.java   # Tratamento centralizado de erros
+├── dto/
+│   ├── AirplaneSeatResponseDTO.java
+│   ├── BookingItemDTO.java
+│   ├── BookingRequestDTO.java
+│   ├── BookingResponseDTO.java
+│   ├── BookingSummaryResponseDTO.java
+│   └── ErrorResponseDTO.java
+├── model/
+│   ├── AirplaneSeatEntity.java       # Tabela airplane_seat
+│   ├── BookingEntity.java            # Tabela booking
+│   └── UserEntity.java               # Tabela app_user
+├── repository/
+│   ├── AirplaneSeatRepository.java
+│   ├── BookingRepository.java
+│   └── UserRepository.java
+├── service/
+│   ├── AirplaneSeatService.java
+│   ├── BookingService.java
+│   └── UserService.java
+└── SkybookApplication.java           # Entry point
 ```
 
 #### Descrição das Camadas
@@ -116,13 +140,33 @@ O banco de dados utilizado é o **H2 em memória**, gerenciado automaticamente p
 
 ```
 frontend/src/
-├── atoms/          # Elementos básicos: botão, input, badge
-├── molecules/      # Combinações: card de poltrona, campo com label
-├── organisms/      # Seções: mapa de assentos, formulário de reserva
-├── templates/      # Layouts de página sem dados
-├── pages/          # Páginas com dados reais conectados à API
-├── services/       # Comunicação com a API REST
-└── hooks/          # Custom hooks React
+├── atoms/
+│   ├── Modal/                        # Componente base de modal
+│   ├── MoneyValue/                   # Exibição de valores monetários
+│   ├── StatusBadge/                  # Badge de status da poltrona
+│   └── Text/                         # Componente de texto
+├── molecules/
+│   └── SeatCard/                     # Card de poltrona (disponível/indisponível/selecionado)
+├── organisms/
+│   ├── BookingSummaryModal/          # Modal de consulta de reservas por e-mail
+│   ├── ConfirmBookingModal/          # Modal passo 1 — resumo da seleção
+│   ├── PassengerFormModal/           # Modal passo 2 — dados do passageiro
+│   ├── SeatMap/                      # Grid de 60 poltronas
+│   └── TotalPanel/                   # Painel lateral com total e botões de ação
+├── templates/
+│   ├── MainLayout/                   # Layout base da aplicação
+│   └── SeatMapLayout/                # Layout da tela de seleção de poltronas
+├── pages/
+│   ├── HomePage/                     # Redireciona para /skybook
+│   └── SeatMapPage/                  # Página principal com grid + painel
+├── services/
+│   ├── bookingService.js             # POST /bookings/bookSeat, GET /bookings/summary
+│   └── seatsService.js               # GET /seats/listSeats
+├── hooks/
+│   ├── useBooking.js                 # Lógica de reserva e modais
+│   └── useSeatSelection.js           # Gerenciamento de seleção e cálculo do total
+├── App.jsx                           # Configuração de rotas
+└── main.jsx                          # Entry point
 ```
 
 #### Descrição das Camadas (Atomic Design)
@@ -218,6 +262,8 @@ cd backend
 # Execute com Maven
 ./mvnw spring-boot:run
 ```
+
+> No Windows CMD, use `mvnw.cmd spring-boot:run` em vez de `./mvnw spring-boot:run`
 
 A aplicação estará disponível em: `http://localhost:8080`
 
@@ -336,7 +382,7 @@ A interface estará disponível em: `http://localhost:5173`
 
 #### 🖥️ Frontend
 
-##### Cenário 1 — Visualização do grid de poltronas
+##### Cenário 1 — Visualização das poltronas
 
 **Acesso:** `http://localhost:5173/` → redireciona automaticamente para `http://localhost:5173/skybook`
 
@@ -344,43 +390,15 @@ Ao acessar a aplicação, o passageiro visualiza um grid com as 60 poltronas da 
 
 - ![Verde](https://img.shields.io/badge/Verde-22c55e?style=flat-square) — poltrona disponível para reserva
 - ![Vermelho](https://img.shields.io/badge/Vermelho-ef4444?style=flat-square) — poltrona já reservada (indisponível)
-- ![Azul](https://img.shields.io/badge/Azul-3b82f6?style=flat-square) — poltrona selecionada pelo passageiro na sessão atual
-
-O painel lateral exibe o total acumulado iniciando em **R$ 0,00**.
 
 > ⚠️ Se o backend estiver indisponível ao carregar a página, o sistema exibe uma mensagem de erro amigável no lugar do grid.
 
-##### Cenário 2 — Seleção e deseleção de poltronas
+##### Cenário 2 — Realização da reserva
 
 O passageiro clica em uma poltrona ![Verde](https://img.shields.io/badge/Verde-22c55e?style=flat-square) (disponível):
 
 - A poltrona muda para ![Azul](https://img.shields.io/badge/Azul-3b82f6?style=flat-square) (selecionada)
 - O valor unitário da poltrona é somado ao total exibido no painel lateral
-
-O passageiro clica novamente na mesma poltrona ![Azul](https://img.shields.io/badge/Azul-3b82f6?style=flat-square):
-
-- A poltrona volta para ![Verde](https://img.shields.io/badge/Verde-22c55e?style=flat-square) (disponível)
-- O valor é subtraído do total
-
-Clicar em uma poltrona ![Vermelho](https://img.shields.io/badge/Vermelho-ef4444?style=flat-square) (indisponível) não produz nenhum efeito.
-
-##### Cenário 4 — Consulta de reservas realizadas
-
-O passageiro clica em **"Consultar Reservas"** (botão abaixo de "Realizar Reserva" no painel lateral). Um modal é aberto com:
-
-- Campo **E-mail** e botão **"Buscar"**
-
-Após informar o e-mail e clicar em "Buscar", o sistema chama `GET /bookings/summary?email=`:
-
-- **E-mail encontrado:** o modal exibe o nome do passageiro, a lista de poltronas reservadas com código e preço individual, e o valor total
-- **E-mail não encontrado (404):** mensagem informando que nenhuma reserva foi encontrada para o e-mail informado
-- **API indisponível:** mensagem de erro amigável
-
-O modal pode ser fechado pelo botão **"✕"** ou pressionando **Escape**.
-
----
-
-##### Cenário 3 — Reserva de poltronas (fluxo de dois modais)
 
 Com ao menos uma poltrona selecionada, o botão **"Realizar Reserva"** no painel lateral é habilitado.
 
@@ -409,6 +427,18 @@ Ao clicar em "Confirmar Reserva", o sistema envia `POST /bookings/bookSeat`. Em 
 
 Em caso de erro na API, uma mensagem amigável é exibida no modal sem perder a seleção atual.
 
+##### Cenário 3 — Consulta de reservas realizadas
+
+O passageiro clica em **"Consultar Reservas"** (botão abaixo de "Realizar Reserva" no painel lateral). Um modal é aberto com:
+
+- Campo **E-mail** e botão **"Buscar"**
+
+Após informar o e-mail e clicar em "Buscar", o sistema chama `GET /bookings/summary?email=`:
+
+- **E-mail encontrado:** o modal exibe o nome do passageiro, a lista de poltronas reservadas com código e preço individual, e o valor total
+- **E-mail não encontrado (404):** mensagem informando que nenhuma reserva foi encontrada para o e-mail informado
+- **API indisponível:** mensagem de erro amigável
+
 ### Como Executar os Testes
 
 #### Backend
@@ -417,6 +447,8 @@ Em caso de erro na API, uma mensagem amigável é exibida no modal sem perder a 
 cd backend
 ./mvnw test
 ```
+
+> No Windows CMD, use `mvnw.cmd test` em vez de `./mvnw test`
 
 #### Frontend
 
@@ -458,127 +490,99 @@ Os relatórios de teste do backend (Surefire) são publicados como artefato na a
 | Etapa | Ferramenta | Modelo | Descrição do uso |
 |---|---|---|---|
 | Especificação | Kiro | Claude Sonnet 4.6 | Definição de requisitos, escopo e steerings do projeto |
-| Arquitetura | Kiro | Claude Sonnet 4.6 | Planejamento da estrutura MVC e modelagem de dados |
-| Geração de código | Kiro | Claude Sonnet 4.6 | Criação das entidades JPA e DTOs |
+| Arquitetura | Kiro | Claude Sonnet 4.6 | Planejamento da estrutura MVC, Atomic Design e modelagem de dados |
+| Geração de código | Kiro | Claude Sonnet 4.6 | Criação das entidades JPA, DTOs, serviços e controllers (backend) e componentes React com Atomic Design (frontend) |
 | Refatoração | Kiro | Claude Sonnet 4.6 | Refatoração do BookingService com princípios SOLID (SRP, DIP) e Clean Code |
-| Testes | Kiro | Claude Sonnet 4.6 | Geração da suíte de testes unitários com JUnit e Mockito |
-| Documentação | Kiro | Claude Sonnet 4.6 | Criação do data-model, template de README e docs/prompts.md |
-| Pipeline CI/CD | [ex: Kiro] | [ex: Claude Sonnet 4.6] | [ex: Configuração do GitHub Actions] |
+| Testes | Kiro | Claude Sonnet 4.6 | Geração da suíte de testes unitários com JUnit e Mockito (backend) e Vitest + React Testing Library (frontend) |
+| Documentação | Kiro | Claude Sonnet 4.6 | Criação dos steerings, data-model, README, documentação das issues, docs/prompts.md e ciclos de desenvolvimento |
+| Pipeline CI/CD | Kiro | Claude Sonnet 4.6 | Configuração do GitHub Actions com jobs de build e test para backend e frontend, artefatos Surefire e gate ci-passed |
 
 ### Padrões de Prompting Aplicados
 
 Os prompts utilizados estão organizados em [`docs/prompts.md`](docs/prompts.md).
 
-#### Zero Shot
+#### Ciclos de Desenvolvimento
 
-**Quando foi usado:** Criação do steering de produto — instrução direta sem exemplos prévios de formato ou conteúdo.
+Os ciclos de desenvolvimento de cada funcionalidade estão documentados nos arquivos abaixo, divididos entre as frentes de backend e frontend:
 
-**Prompt original:**
+**Backend:**
+- [`docs/development-cycles/backend/feat-list-seats.md`](docs/development-cycles/backend/feat-list-seats.md)
+- [`docs/development-cycles/backend/feat-book-seat.md`](docs/development-cycles/backend/feat-book-seat.md)
+- [`docs/development-cycles/backend/feat-summary.md`](docs/development-cycles/backend/feat-summary.md)
+
+**Frontend:**
+- [`docs/development-cycles/frontend/feat-list-seats.md`](docs/development-cycles/frontend/feat-list-seats.md)
+- [`docs/development-cycles/frontend/feat-book-seat.md`](docs/development-cycles/frontend/feat-book-seat.md)
+- [`docs/development-cycles/frontend/feat-summary.md`](docs/development-cycles/frontend/feat-summary.md)
+
+> O exemplo abaixo ilustra como os ciclos de desenvolvimento de uma funcionalidade foram documentados. O conteúdo completo está em [`docs/development-cycles/backend/feat-book-seat.md`](docs/development-cycles/backend/feat-book-seat.md).
+>
+> Cada ciclo utiliza um padrão de prompt diferente — Zero shot na geração inicial, Few shot no refinamento e Chain of Thought quando a alteração se propaga por múltiplos arquivos.
+
+##### Exemplo — Reserva de Poltronas (`POST /bookings/bookSeat`)
+
+**Ciclo 1 — Geração Inicial (Zero shot)**
+
+Prompt enviado sem exemplos ou estrutura de raciocínio explícita. A IA recebeu a descrição da demanda e gerou a implementação completa a partir do zero: `BookingRequestDTO`, `BookingResponseDTO`, `BookingRepository`, `UserRepository`, `BookingService`, `BookingController` e testes unitários. Resultado: 17 testes passando.
+
 ```
-Instrução
-Crie o steering the produto deste projeto.
-Detalhes
-1. Esse projeto é um sistema de reservas de poltronas de uma aeronave.
-2. As funcionalidades para o MVP devem ser:
-2.1. Listar as poltronas da aeronave com seu status (disponível ou não).
-2.2. Realizar as reservas de poltronas escolhidas.
-2.3. Obter o resumo das reservas e o valor total.
-```
-
-#### Few Shot
-
-**Quando foi usado:** Criação das entidades JPA — o prompt forneceu um exemplo concreto da estrutura de código esperada.
-
-**Prompt original:**
-```
-Crie as entidades de acordo com a modelagem do projeto.
-As entidades devem ser criadas seguindo este exemplo:
-<code>
-@Entity
-@Data
-@Table(name = "table_name")
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@EqualsAndHashCode(of = "id")
-public class <entity-name>Entity {...}
-<code>
-Restrições
-Apenas crie as entidades neste momento. Não crie outras funcionalidades não solicitadas.
+Busque a issue 15 Realização de reserva de poltrona e implemente suas funcionalidades e implemente testes unitários
 ```
 
-#### Chain of Thought
+**Ciclo 2 — Refinamento (Few shot)**
 
-**Quando foi usado:** [Cole aqui o prompt Chain of Thought utilizado]
+Prompt com exemplo concreto de `@ExceptionHandler`. A IA usou o exemplo como referência para criar o `ErrorResponseDTO`, o `GlobalExceptionHandler` e ajustar a rota para `/bookings/bookSeat`. Resultado: erros da API passaram a retornar respostas padronizadas.
 
-**Prompt original:**
 ```
-[Cole aqui o prompt Chain of Thought utilizado]
+Realize os seguintes ajustes:
+1. O endpoint para a realização da reserva deve ter a rota /bookings/bookSeat
+2. Crie um DTO para armazenar as informações de erros. Ele deve conter o status do erro, a mensagem de erro e o timestamp de quando ocorreu.
+3. Para lidar com os erros desse endpoint, deve ser criada a classe GlobalExceptionHandler que deve capturar os erros e retornar o objeto DTO que armazena as informações de erro.
+Como nesse exemplo:
+@ExceptionHandler(<excpetion-name>.class)
+public ResponseEntity<<error-dto>> handlerBadRequest(<excpetion-name> ex) {
+    return ResponseEntity
+            .status(HttpStatus.<status>)
+            .body(new <error-dto>(HttpStatus.<status>.name(), ex.getMessage(), LocalDateTime.now()));
+}
 ```
 
-### Ciclos de Geração e Refinamento com IA
+**Ciclo 3 — Padrão Diferente (Chain of Thought)**
 
-> Documentação detalhada dos ciclos em [`docs/feat-list-seats.md`](docs/feat-list-seats.md)
+Prompt solicitando que a IA descrevesse seu raciocínio antes de agir. A IA mapeou os 5 pontos afetados pela mudança de `seatIds` para `seatCodes` (`BookingRequestDTO`, `AirplaneSeatRepository`, `BookingService`, `BookingServiceTest`, `BookingControllerTest`) e só então aplicou as alterações. Resultado: 17 testes passando com o endpoint aceitando `["1A", "3C"]` em vez de `[1, 3]`.
 
-#### Ciclo 1 — [Nome da funcionalidade]
+```
+Em vez de Ids, a lista de poltronas no objeto de entrada do enpoint bookSeat deve ser formado pelos códigos string das poltronas. Altere todos os pontos necessários.
+Quebre essa alteração em pequenos passos, descrevendo seu processo de pensamento, e aplique as alterações.
+```
 
-**Padrão:** [ex: Zero Shot]
+**Lição geral**
 
-**Prompt utilizado:** ver [`docs/prompts.md`](docs/prompts.md)
-
-**Resultado gerado:** [Descreva o que foi gerado]
-
-**Avaliação crítica:** [O que estava correto / incorreto / o que foi ajustado]
-
-#### Ciclo 2 — [Nome da funcionalidade]
-
-**Padrão:** [ex: Few Shot]
-
-**Prompt utilizado:** ver [`docs/prompts.md`](docs/prompts.md)
-
-**Resultado gerado:** [Descreva o que foi gerado]
-
-**Avaliação crítica:** [O que estava correto / incorreto / o que foi ajustado]
-
-#### Ciclo 3 — [Nome da funcionalidade]
-
-**Padrão:** [ex: Chain of Thought]
-
-**Prompt utilizado:** ver [`docs/prompts.md`](docs/prompts.md)
-
-**Resultado gerado:** [Descreva o que foi gerado]
-
-**Avaliação crítica:** [O que estava correto / incorreto / o que foi ajustado]
+A qualidade da saída da IA é diretamente proporcional à qualidade do prompt. Um prompt vago gera código funcional, mas com decisões arbitrárias. Um prompt com exemplos, restrições e raciocínio explícito gera código alinhado com as convenções do projeto. A IA é um parceiro de desenvolvimento eficaz — mas o desenvolvedor precisa saber o que quer e saber comunicar isso com precisão.
 
 ### Refatoração com IA
 
-**Critério aplicado:** [ex: Princípio da Responsabilidade Única (SOLID), Clean Code]
+A refatoração do `BookingService` — serviço responsável pela lógica de criação de reservas de poltronas — foi realizada durante o ciclo de desenvolvimento da funcionalidade de reserva de poltronas. O processo completo — com estado anterior do código, prompt utilizado, resultado gerado e avaliação — está documentado em [`docs/development-cycles/backend/feat-book-seat.md`](docs/development-cycles/backend/feat-book-seat.md).
 
-**Antes:**
-```java
-// Código antes da refatoração
+**Antes da refatoração**
+
+O `BookingService` acumulava quatro responsabilidades distintas em um único método `createBookings`: busca e validação de poltronas, criação/reutilização de usuário, atualização do status da poltrona e persistência da reserva. Além disso, dependia diretamente de três repositórios (`AirplaneSeatRepository`, `UserRepository` e `BookingRepository`), violando o DIP.
+
+**Prompt utilizado (Chain of Thought):**
+
+```
+Refatore a classe BookingService, usando princípios do SOLID e clean code.
+1. Por exemplo, seguindo o Princípio da Responsabilidade Única, separe a funcionalidade do método createBookings em métodos menores.
+2. Além disso, faça ajustes para que a busca e a atualização de poltronas seja realizada no AirplaneSeatService. A busca e criação de usuáros seja feita no UserService. Enquanto o BookingService apenas lida com o que diz respeito as reservas.
+3. Os repositórios airplaneSeatRepository, bookingRepository e userRepository somente devem ser acessados pelos serviços correspondentes.
+Faça ajustes nos testes unitários para que estejam de acordo com estas alterações.
+Divida as alterações em pequenos passos, demostrando a sua linha de pensamento, e, depois, aplique as alterações.
 ```
 
-**Prompt utilizado:**
-```
-[Cole o prompt de refatoração aqui]
-```
+**Após a refatoração**
 
-**Depois:**
-```java
-// Código após a refatoração
-```
+Cada serviço passou a ter responsabilidade única: `AirplaneSeatService` busca e atualiza poltronas, `UserService` cria e recupera usuários, e `BookingService` orquestra apenas a reserva — dependendo de serviços, não de repositórios. O método `createBookings` foi decomposto em métodos menores com nomes expressivos (`bookSeat`, `persistBooking`, `toResponseDTO`).
 
-**Avaliação do resultado:** [Descreva o que melhorou e o que foi aprendido]
+**Lição aprendida**
 
-### Análise Crítica — Saída Incorreta da IA
-
-**Problema identificado:**
-
-[Descreva o que a IA gerou de incorreto ou insuficiente]
-
-**Correção aplicada:**
-
-[Descreva o que foi corrigido e como]
-
-**Lição aprendida:**
-
-[O que esse caso ensinou sobre o uso de IA no desenvolvimento]
+A IA não aplica SOLID automaticamente na geração inicial — ela prioriza funcionalidade. A refatoração precisa ser solicitada explicitamente, com os critérios técnicos descritos. Quando o prompt é específico (SRP, DIP, quais classes devem ter quais responsabilidades), a IA executa a refatoração de forma precisa e rastreável. O resultado foram 21 testes passando, contra 17 antes da refatoração.
